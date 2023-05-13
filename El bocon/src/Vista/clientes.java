@@ -14,6 +14,7 @@ public class clientes extends javax.swing.JFrame {
      * Creates new form prueba
      */
     public clientes() {
+       
         initComponents();
     }
 
@@ -44,11 +45,13 @@ public class clientes extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jFormattedTextField5 = new javax.swing.JFormattedTextField();
-        jLabel12 = new javax.swing.JLabel();
         jFormattedTextField6 = new javax.swing.JFormattedTextField();
+        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setLocation(new java.awt.Point(390, 200));
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -139,9 +142,6 @@ public class clientes extends javax.swing.JFrame {
         });
         getContentPane().add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 221, -1));
 
-        jLabel12.setText("Apellido Del Clientre");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
-
         try {
             jFormattedTextField6.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
@@ -149,8 +149,12 @@ public class clientes extends javax.swing.JFrame {
         }
         getContentPane().add(jFormattedTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 221, -1));
 
+        jLabel12.setText("Apellido Del Clientre");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
+
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista.imagenes/background formulario.png"))); // NOI18N
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 610));
+        jLabel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
