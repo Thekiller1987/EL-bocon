@@ -166,7 +166,7 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
                                       
     try {
-        clientes panel2 = new clientes()
+        lobby panel2 = new lobby()
                 ;
         panel2.setVisible(true);
         this.dispose();
