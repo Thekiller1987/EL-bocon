@@ -33,7 +33,12 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
     private void initComponents() {
 
         panelfondo = new javax.swing.JDesktopPane();
+        jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -47,8 +52,30 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
         panelfondo.setFocusable(false);
         panelfondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("jButton1");
-        panelfondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 120, 110));
+        jButton6.setText("Estadisticas");
+        jButton6.setToolTipText("");
+        panelfondo.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 120, 110));
+
+        jButton1.setText("Salir");
+        panelfondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 50, 120, 110));
+
+        jButton4.setText("Clientes");
+        jButton4.setActionCommand("Proveedores");
+        panelfondo.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 120, 110));
+
+        jButton2.setText("Ventas");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        panelfondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 120, 110));
+
+        jButton3.setText("Productos");
+        panelfondo.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 120, 110));
+
+        jButton5.setText("Clientes");
+        panelfondo.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 120, 110));
         panelfondo.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1530, 810));
 
         fileMenu.setMnemonic('f');
@@ -104,6 +131,10 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -144,6 +175,11 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
     private javax.swing.JMenu fileMenu;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JDesktopPane panelfondo;
