@@ -85,7 +85,16 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
-        // TODO add your handling code here:
+     try {
+        clientes panel2 = new clientes()
+                ;
+        panel2.setVisible(true);
+        this.dispose();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);   
+
+// TODO add your handling code here:
+    }
     }//GEN-LAST:event_agregarActionPerformed
 
     private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed

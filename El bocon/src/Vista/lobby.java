@@ -33,29 +33,19 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelfondo = new javax.swing.JDesktopPane();
-        jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
-        menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        panelfondo.setFocusable(false);
-        panelfondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton6.setText("Estadisticas");
-        jButton6.setToolTipText("");
-        panelfondo.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 120, 110));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1540, 900));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -63,26 +53,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
                 jButton1ActionPerformed(evt);
             }
         });
-        panelfondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 50, 120, 110));
-
-        jButton4.setText("Proveedores");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        panelfondo.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 120, 110));
-
-        jButton2.setText("Ventas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        panelfondo.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 120, 110));
-
-        jButton3.setText("Productos");
-        panelfondo.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 120, 110));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 60, 120, 110));
 
         jButton5.setText("Clientes");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -90,84 +61,57 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
                 jButton5ActionPerformed(evt);
             }
         });
-        panelfondo.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 120, 110));
-        panelfondo.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1530, 810));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 120, 110));
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
+        jButton6.setText("Estadisticas");
+        jButton6.setToolTipText("");
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 120, 110));
 
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
+        jButton3.setText("Productos");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 120, 110));
 
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
-
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Ventas");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 120, 110));
 
-        menuBar.add(fileMenu);
-
-        setJMenuBar(menuBar);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelfondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1556, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelfondo, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jButton4.setText("Proveedores");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 120, 110));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1550, 910));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-   try {
-        SeClientes panel2 = new SeClientes()
-                ;
-        panel2.setVisible(true);
-        this.dispose();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }            // TODO add your handling code here:
+        try {
+            SeClientes panel2 = new SeClientes()
+            ;
+            panel2.setVisible(true);
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }            // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -206,8 +150,6 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -215,11 +157,6 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JDesktopPane panelfondo;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }

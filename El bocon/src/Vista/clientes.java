@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author waska
@@ -16,6 +18,8 @@ public class clientes extends javax.swing.JFrame {
     public clientes() {
        
         initComponents();
+ setExtendedState(MAXIMIZED_BOTH);
+ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
 
     }
 
@@ -48,7 +52,8 @@ public class clientes extends javax.swing.JFrame {
         jFormattedTextField5 = new javax.swing.JFormattedTextField();
         jFormattedTextField6 = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        cerrar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -153,9 +158,19 @@ public class clientes extends javax.swing.JFrame {
         jLabel12.setText("Apellido Del Clientre");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, -1, -1));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista.imagenes/background formulario.png"))); // NOI18N
-        jLabel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 610));
+        cerrar.setBackground(new java.awt.Color(0, 0, 0));
+        cerrar.setForeground(new java.awt.Color(255, 0, 0));
+        cerrar.setText("Regresar");
+        cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 20, 220, 30));
+
+        fondo.setAutoscrolls(true);
+        fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 1550, 910));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -167,6 +182,18 @@ public class clientes extends javax.swing.JFrame {
     private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField5ActionPerformed
+
+    private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
+        try {
+            lobby panel2 = new lobby()
+            ;
+            panel2.setVisible(true);
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,6 +232,8 @@ public class clientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cerrar;
+    private javax.swing.JLabel fondo;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
@@ -214,7 +243,6 @@ public class clientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
