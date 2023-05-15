@@ -16,6 +16,7 @@ public class clientes extends javax.swing.JFrame {
     public clientes() {
        
         initComponents();
+
     }
 
     /** 

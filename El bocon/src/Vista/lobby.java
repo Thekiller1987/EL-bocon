@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import javax.swing.JOptionPane;
 import rsscalelabel.RSScaleLabel;
  
 /**
@@ -57,10 +58,19 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
         panelfondo.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 120, 110));
 
         jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         panelfondo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 50, 120, 110));
 
-        jButton4.setText("Clientes");
-        jButton4.setActionCommand("Proveedores");
+        jButton4.setText("Proveedores");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         panelfondo.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 50, 120, 110));
 
         jButton2.setText("Ventas");
@@ -75,6 +85,11 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
         panelfondo.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 120, 110));
 
         jButton5.setText("Clientes");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         panelfondo.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 120, 110));
         panelfondo.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1530, 810));
 
@@ -134,6 +149,26 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+   try {
+        SeClientes panel2 = new SeClientes()
+                ;
+        panel2.setVisible(true);
+        this.dispose();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }            // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
