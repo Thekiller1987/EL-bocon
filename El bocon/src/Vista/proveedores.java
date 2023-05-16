@@ -110,7 +110,7 @@ public class proveedores extends javax.swing.JFrame {
         }
         getContentPane().add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 70, -1));
 
-        btncerrar.setBackground(new java.awt.Color(0, 0, 0));
+        btncerrar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btncerrar.setForeground(new java.awt.Color(255, 0, 0));
         btncerrar.setText("Regresar");
         btncerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +120,8 @@ public class proveedores extends javax.swing.JFrame {
         });
         getContentPane().add(btncerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 580, 130, 70));
 
+        btnguardar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        btnguardar.setForeground(new java.awt.Color(0, 255, 102));
         btnguardar.setText("Guardar");
         getContentPane().add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 580, 130, 70));
 
