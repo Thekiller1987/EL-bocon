@@ -73,6 +73,11 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
         jButton6.setBackground(new java.awt.Color(160, 33, 33));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/capital-humano.png"))); // NOI18N
         jButton6.setToolTipText("");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 120, 110));
 
         jButton3.setBackground(new java.awt.Color(160, 33, 33));
@@ -175,6 +180,17 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+  try {
+            estadisticas panel2 = new estadisticas()
+            ;
+            panel2.setVisible(true);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
