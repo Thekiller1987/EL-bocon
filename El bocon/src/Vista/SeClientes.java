@@ -20,7 +20,7 @@ public class SeClientes extends javax.swing.JFrame {
         initComponents();
 rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background login.png");
           this.setResizable(false);
-          this.setLocation(390 ,200);
+          this.setLocation(450 ,350);
         
     }
 
@@ -33,7 +33,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        seclientes = new javax.swing.JPanel();
         agregar = new javax.swing.JButton();
         cerrar = new javax.swing.JButton();
         editar1 = new javax.swing.JButton();
@@ -43,7 +43,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        seclientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         agregar.setBackground(new java.awt.Color(1, 17, 29));
         agregar.setForeground(new java.awt.Color(102, 255, 102));
@@ -55,7 +55,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
                 agregarActionPerformed(evt);
             }
         });
-        jPanel1.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 140, 110));
+        seclientes.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 140, 110));
 
         cerrar.setBackground(new java.awt.Color(0, 0, 0));
         cerrar.setForeground(new java.awt.Color(255, 0, 0));
@@ -65,7 +65,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
                 cerrarActionPerformed(evt);
             }
         });
-        jPanel1.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 90, 30));
+        seclientes.add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 90, 30));
 
         editar1.setBackground(new java.awt.Color(1, 17, 29));
         editar1.setForeground(new java.awt.Color(51, 51, 255));
@@ -76,10 +76,10 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
                 editar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(editar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 91, 140, 110));
-        jPanel1.add(fondoSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 280));
+        seclientes.add(editar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 91, 140, 110));
+        seclientes.add(fondoSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 280));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 280));
+        getContentPane().add(seclientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 280));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -109,7 +109,15 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
     }//GEN-LAST:event_cerrarActionPerformed
 
     private void editar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editar1ActionPerformed
+            try {
+        clientes2 panel2 = new clientes2()
+                ;
+        panel2.setVisible(true);
+        this.dispose();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);   
         // TODO add your handling code here:
+    }
     }//GEN-LAST:event_editar1ActionPerformed
 
     /**
@@ -152,7 +160,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
     private javax.swing.JButton cerrar;
     private javax.swing.JButton editar1;
     private javax.swing.JLabel fondoSec;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel seclientes;
     // End of variables declaration//GEN-END:variables
 }
 
