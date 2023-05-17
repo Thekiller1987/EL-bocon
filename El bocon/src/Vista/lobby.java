@@ -145,7 +145,14 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        try {
+            Seproveedores panel2 = new Seproveedores()
+            ;
+            panel2.setVisible(true);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }          // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -160,14 +167,14 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        try {
+             try {
             SeClientes panel2 = new SeClientes()
             ;
             panel2.setVisible(true);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }            // TODO add your handling code here:
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
