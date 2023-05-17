@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -157,6 +158,11 @@ public class clientes2 extends javax.swing.JFrame {
                 apellidoActionPerformed(evt);
             }
         });
+        apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apellidoKeyTyped(evt);
+            }
+        });
         getContentPane().add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 350, 30));
 
         try {
@@ -167,6 +173,11 @@ public class clientes2 extends javax.swing.JFrame {
         nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreActionPerformed(evt);
+            }
+        });
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreKeyTyped(evt);
             }
         });
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 350, 30));
@@ -197,27 +208,59 @@ public class clientes2 extends javax.swing.JFrame {
 
     private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
 
-        MaskFormatter formatter = null;
-        try {
-            formatter = new MaskFormatter("*************************"); //Definir la mascara
-            formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
     
    // TODO add your handling code here:
     }//GEN-LAST:event_apellidoActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
-        MaskFormatter formatter = null;
-        try {
-            formatter = new MaskFormatter("*************************"); //Definir la mascara
-            formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
       // TODO add your handling code here:
     }//GEN-LAST:event_nombreActionPerformed
+
+    private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
+char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && car != 'á'//minusculas
+                && car != 'é'
+                && car != 'í'
+                && car != 'ó'
+                && car != 'ú'
+                && car != 'Á' //Mayusculas
+                && car != 'Ë'
+                && car != 'Í'
+                && car != 'Ó'
+                && car != 'Ú'
+                && car != 'Ñ'
+                && car != 'ñ'
+                && car != 'Ü'
+                && car != 'ü'
+                && (car != (char) KeyEvent.VK_SPACE)){
+        
+        evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreKeyTyped
+
+    private void apellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apellidoKeyTyped
+char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && car != 'á'//minusculas
+                && car != 'é'
+                && car != 'í'
+                && car != 'ó'
+                && car != 'ú'
+                && car != 'Á' //Mayusculas
+                && car != 'Ë'
+                && car != 'Í'
+                && car != 'Ó'
+                && car != 'Ú'
+                && car != 'Ñ'
+                && car != 'ñ'
+                && car != 'Ü'
+                && car != 'ü'
+                && (car != (char) KeyEvent.VK_SPACE)){
+        
+        evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_apellidoKeyTyped
 
     /**
      * @param args the command line arguments

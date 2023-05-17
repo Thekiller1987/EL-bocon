@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -44,7 +45,6 @@ public class productos2 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btncerrar1 = new javax.swing.JButton();
-        apellido = new javax.swing.JFormattedTextField();
         nombre = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -54,6 +54,8 @@ public class productos2 extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jFormattedTextField4 = new javax.swing.JFormattedTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,18 +118,6 @@ public class productos2 extends javax.swing.JFrame {
         getContentPane().add(btncerrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 690, 100, 40));
 
         try {
-            apellido.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        apellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 350, 40));
-
-        try {
             nombre.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
@@ -137,10 +127,15 @@ public class productos2 extends javax.swing.JFrame {
                 nombreActionPerformed(evt);
             }
         });
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nombreKeyTyped(evt);
+            }
+        });
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 350, 30));
 
         jLabel3.setText("Precio de Compra");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, -1));
 
         jLabel4.setText("Categoria");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 110, 30));
@@ -178,9 +173,15 @@ public class productos2 extends javax.swing.JFrame {
         jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         getContentPane().add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 100, -1));
 
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 350, 60));
+
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -50, 1590, 970));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-230, -130, 1590, 970));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,27 +195,8 @@ public class productos2 extends javax.swing.JFrame {
                // TODO add your handling code here:
     }//GEN-LAST:event_btncerrar1ActionPerformed
 
-    private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
-
-        MaskFormatter formatter = null;
-        try {
-            formatter = new MaskFormatter("*************************"); //Definir la mascara
-            formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    
-   // TODO add your handling code here:
-    }//GEN-LAST:event_apellidoActionPerformed
-
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
-        MaskFormatter formatter = null;
-        try {
-            formatter = new MaskFormatter("*************************"); //Definir la mascara
-            formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
       // TODO add your handling code here:
     }//GEN-LAST:event_nombreActionPerformed
 
@@ -229,6 +211,30 @@ public class productos2 extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
+char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && car != 'á'//minusculas
+                && car != 'é'
+                && car != 'í'
+                && car != 'ó'
+                && car != 'ú'
+                && car != 'Á' //Mayusculas
+                && car != 'Ë'
+                && car != 'Í'
+                && car != 'Ó'
+                && car != 'Ú'
+                && car != 'Ñ'
+                && car != 'ñ'
+                && car != 'Ü'
+                && car != 'ü'
+                && (car != (char) KeyEvent.VK_SPACE)){
+        
+        evt.consume();}
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_nombreKeyTyped
 
     /**
      * @param args the command line arguments
@@ -273,7 +279,6 @@ public class productos2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField apellido;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btncerrar1;
     private javax.swing.JButton btneditar;
@@ -291,7 +296,9 @@ public class productos2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JFormattedTextField nombre;
     // End of variables declaration//GEN-END:variables
 }

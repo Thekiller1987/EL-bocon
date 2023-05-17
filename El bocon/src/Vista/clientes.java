@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -125,6 +126,11 @@ public class clientes extends javax.swing.JFrame {
                 jFormattedTextField3ActionPerformed(evt);
             }
         });
+        jFormattedTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextField3KeyTyped(evt);
+            }
+        });
         getContentPane().add(jFormattedTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 350, 30));
 
         try {
@@ -135,6 +141,11 @@ public class clientes extends javax.swing.JFrame {
         jFormattedTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jFormattedTextField5ActionPerformed(evt);
+            }
+        });
+        jFormattedTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextField5KeyTyped(evt);
             }
         });
         getContentPane().add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 350, 30));
@@ -165,6 +176,50 @@ this.dispose();       // TODO add your handling code here:
     private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
        // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField5ActionPerformed
+
+    private void jFormattedTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField5KeyTyped
+char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && car != 'á'//minusculas
+                && car != 'é'
+                && car != 'í'
+                && car != 'ó'
+                && car != 'ú'
+                && car != 'Á' //Mayusculas
+                && car != 'Ë'
+                && car != 'Í'
+                && car != 'Ó'
+                && car != 'Ú'
+                && car != 'Ñ'
+                && car != 'ñ'
+                && car != 'Ü'
+                && car != 'ü'
+                && (car != (char) KeyEvent.VK_SPACE)){
+        
+        evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField5KeyTyped
+
+    private void jFormattedTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField3KeyTyped
+char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && car != 'á'//minusculas
+                && car != 'é'
+                && car != 'í'
+                && car != 'ó'
+                && car != 'ú'
+                && car != 'Á' //Mayusculas
+                && car != 'Ë'
+                && car != 'Í'
+                && car != 'Ó'
+                && car != 'Ú'
+                && car != 'Ñ'
+                && car != 'ñ'
+                && car != 'Ü'
+                && car != 'ü'
+                && (car != (char) KeyEvent.VK_SPACE)){
+        
+        evt.consume();}        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField3KeyTyped
 
     /**
      * @param args the command line arguments
