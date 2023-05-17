@@ -15,7 +15,7 @@ public class conexion {
     public static Connection conectar() {
         
         String conexionUrl = "jdbc:sqlserver://localhost:1433;"
-                + "database=bd_sistemas_ventas; user=sa"
+                + "database=DB_ELBOCON; user=sa"
                 + "password=root123";
                 
         
