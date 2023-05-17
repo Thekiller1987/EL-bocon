@@ -21,6 +21,8 @@ public class Seproveedores extends javax.swing.JFrame {
 rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background login.png");
           this.setResizable(false);
           this.setLocation(450 ,350);
+          
+          
         
     }
 
@@ -85,10 +87,13 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
-     try {
+
+        try {
         proveedores panel2 = new proveedores()
                 ;
         panel2.setVisible(true);
+  
+    
         this.dispose();
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);   

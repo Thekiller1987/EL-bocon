@@ -189,15 +189,8 @@ public class clientes2 extends javax.swing.JFrame {
     }//GEN-LAST:event_btneliminarActionPerformed
 
     private void btncerrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrar1ActionPerformed
-   try {
-            lobby panel2 = new lobby()
-            ;
-            panel2.setVisible(true);
-            this.dispose();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            
-        }         // TODO add your handling code here:
+   this.dispose();  
+               // TODO add your handling code here:
     }//GEN-LAST:event_btncerrar1ActionPerformed
 
     private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
