@@ -186,7 +186,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 try {
-        Seproveedores panel2 = new Seproveedores()
+        Seproducto panel2 = new Seproducto()
                 ;
         panel2.setVisible(true);
   
