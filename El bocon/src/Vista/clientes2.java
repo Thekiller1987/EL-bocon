@@ -188,7 +188,7 @@ public class clientes2 extends javax.swing.JFrame {
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 1590, 970));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -60, 1590, 970));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

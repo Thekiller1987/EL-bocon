@@ -86,7 +86,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
      try {
-        productos panel2 = new productos()
+        productos1 panel2 = new productos1()
                 ;
         panel2.setVisible(true);
         this.dispose();
