@@ -8,8 +8,10 @@ package Modelo;
 /**
  *
  * @author Milton
+ *  *Correciones Waskar
+ * 
  */
-public class Detalle_facturacion {
+public class POJODetalle_facturacion {
  
     int id_producto;
     int id_facturacion;
@@ -39,7 +41,7 @@ public class Detalle_facturacion {
         this.cantidad = cantidad;
     }
 
-    public Detalle_facturacion(int id_producto, int id_facturacion, int cantidad) {
+    public POJODetalle_facturacion(int id_producto, int id_facturacion, int cantidad) {
         this.id_producto = id_producto;
         this.id_facturacion = id_facturacion;
         this.cantidad = cantidad;

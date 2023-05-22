@@ -7,8 +7,9 @@ package Modelo;
 /**
  *
  * @author mr540
+ *  * Correciones Waskar
  */
-public class Marca {
+public class POJOMarca {
 
 int id_marca;
 String nombre;
@@ -29,7 +30,7 @@ String nombre;
         this.nombre = nombre;
     }
 
-    public Marca(int id_marca, String nombre) {
+    public POJOMarca(int id_marca, String nombre) {
         this.id_marca = id_marca;
         this.nombre = nombre;
     }

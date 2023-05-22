@@ -8,8 +8,9 @@ package Modelo;
 /**
  *
  * @author Milton
+ *  * Correciones Waskar
  */
-public class Proveedor {
+public class POJOProveedor {
     
     String nombre;
     String direccion;
@@ -48,7 +49,7 @@ public class Proveedor {
         this.id_proveedor = id_proveedor;
     }
 
-    public Proveedor(String nombre, String direccion, String telefono, int id_proveedor) {
+    public POJOProveedor(String nombre, String direccion, String telefono, int id_proveedor) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;

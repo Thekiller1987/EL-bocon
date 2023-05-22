@@ -10,9 +10,9 @@ import java.util.Date;
  *
  * @author waska
  */
-public class Facturacion {
+public class POJOFacturacion {
 
-    public Facturacion(String id_facturacion, Date fecha, int DNI, String id_empelado) {
+    public POJOFacturacion(String id_facturacion, Date fecha, int DNI, String id_empelado) {
         this.id_facturacion = id_facturacion;
         this.fecha = fecha;
         this.DNI = DNI;

@@ -8,8 +8,9 @@ package Modelo;
 /**
  *
  * @author Milton
+ *  * Correciones Waskar
  */
-public class Productos {
+public class POJOProductos {
     
     int id_producto;
     String nombre;
@@ -93,7 +94,7 @@ public class Productos {
         this.id_categoria = id_categoria;
     }
 
-    public Productos(int id_producto, String nombre, int cantidad, float precio, String descripcion, float porcentaje_alcohol, int id_proveedor, int id_marca, int id_categoria) {
+    public POJOProductos(int id_producto, String nombre, int cantidad, float precio, String descripcion, float porcentaje_alcohol, int id_proveedor, int id_marca, int id_categoria) {
         this.id_producto = id_producto;
         this.nombre = nombre;
         this.cantidad = cantidad;

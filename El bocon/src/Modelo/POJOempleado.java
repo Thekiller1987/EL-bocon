@@ -8,8 +8,9 @@ package Modelo;
 /**
  *
  * @author Milton
+ * Correciones Waskar
  */
-public class empleado {
+public class POJOempleado {
     
     int id_empleado;
     String nombre;
@@ -57,7 +58,7 @@ public class empleado {
         this.direccion = direccion;
     }
 
-    public empleado(int id_empleado, String nombre, String apellido, String telefono, String direccion) {
+    public POJOempleado(int id_empleado, String nombre, String apellido, String telefono, String direccion) {
         this.id_empleado = id_empleado;
         this.nombre = nombre;
         this.apellido = apellido;
