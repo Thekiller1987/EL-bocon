@@ -4,10 +4,12 @@
  */
 package Vista;
 
+import Controlador.Conexion.Controlador.CRUDCliente;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -19,6 +21,7 @@ public class clientes2 extends javax.swing.JFrame {
     /**
      * Creates new form prueba
      */
+    int datoSeleccionado =  -1;
     public clientes2() {
        
         initComponents();
@@ -26,7 +29,19 @@ public class clientes2 extends javax.swing.JFrame {
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
 
     }
-
+public void mostrar(){
+    try {
+        DefaultTableModel modelo;
+        CRUDCliente cli = new CRUDCliente();
+        modelo = cli.mostrarDatos();
+        Tablaclientes.setModel(modelo);
+        
+        
+    }catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+        
+    }
+}
     /** 
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,12 +64,13 @@ public class clientes2 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btneditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tablaclientes = new javax.swing.JTable();
         btncerrar1 = new javax.swing.JButton();
         apellido = new javax.swing.JFormattedTextField();
         nombre = new javax.swing.JFormattedTextField();
         jTextField1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        buscar = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,13 +84,13 @@ public class clientes2 extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
 
         jLabel4.setText("Numero");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, -1));
 
         jLabel5.setText("Descuente del cliente %");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, -1, -1));
 
         jLabel2.setText("Nombre del Cliente");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
 
         try {
             jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
@@ -90,14 +106,14 @@ public class clientes2 extends javax.swing.JFrame {
         getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 350, -1));
 
         jLabel6.setText("Apellido Del Clientre");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
         try {
             jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 350, -1));
+        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 350, -1));
 
         jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0%"))));
         getContentPane().add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 70, -1));
@@ -118,13 +134,13 @@ public class clientes2 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Editar Cliente");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 360, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 360, -1));
 
         btneditar.setForeground(new java.awt.Color(0, 255, 51));
         btneditar.setText("Editar");
         getContentPane().add(btneditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 100, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tablaclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -135,7 +151,12 @@ public class clientes2 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        Tablaclientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaclientesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Tablaclientes);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 560, 120));
 
@@ -185,6 +206,13 @@ public class clientes2 extends javax.swing.JFrame {
 
         jLabel7.setText("Correo");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 350, -1));
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -262,6 +290,49 @@ char car = evt.getKeyChar();
         evt.consume();}        // TODO add your handling code here:
     }//GEN-LAST:event_apellidoKeyTyped
 
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+ try {
+DefaultTableModel modelo;
+CRUDCliente cli = new CRUDCliente();
+modelo = cli.buscarDatos(buscar.getText());
+if (buscar.getText().equals("")){
+     JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
+mostrar();
+
+} else {
+Tablaclientes.setModel(modelo);
+}
+} catch (Exception e) {
+JOptionPane.showMessageDialog(null, e);
+}
+
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void TablaclientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaclientesMouseClicked
+if (datoSeleccionado >= 0) {
+String dato =
+String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 0));
+CRUDCliente cli = new CRUDCliente();
+if (JOptionPane.showConfirmDialog(rootPane,
+"Se eliminará el registro, ¿desea continuar?",
+
+"Eliminar Registro",
+JOptionPane.WARNING_MESSAGE,
+JOptionPane.YES_NO_OPTION)
+== JOptionPane.YES_OPTION) {
+
+cli.eliminar(dato);
+mostrar();
+JOptionPane.showMessageDialog(null,
+"Dato eliminado correctamente");
+}
+} else {
+JOptionPane.showMessageDialog(null,
+"Debe seleccionar un registro de la tabla");
+}        // TODO add your handling code here:
+    }//GEN-LAST:event_TablaclientesMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -301,11 +372,13 @@ char car = evt.getKeyChar();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tablaclientes;
     private javax.swing.JFormattedTextField apellido;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btncerrar1;
     private javax.swing.JButton btneditar;
     private javax.swing.JButton btneliminar;
+    private javax.swing.JTextField buscar;
     private javax.swing.JLabel fondo;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
@@ -318,7 +391,6 @@ char car = evt.getKeyChar();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JFormattedTextField nombre;
     // End of variables declaration//GEN-END:variables

@@ -4,8 +4,13 @@
  */
 package Vista;
 
+import Controlador.Conexion.Controlador.CRUDCliente;
+import Modelo.POJOClientes;
 import java.awt.event.KeyEvent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import Vista.clientes;
+import java.awt.HeadlessException;
 
 /**
  *
@@ -24,6 +29,10 @@ public class clientes extends javax.swing.JFrame {
 
     }
 
+    private clientes(JFormattedTextField jTextCedula, String text, String text0, String text1, String text2, String text3) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     /** 
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,17 +46,17 @@ public class clientes extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jTextCedula = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
+        jTextTelefono = new javax.swing.JFormattedTextField();
         btncerrar = new javax.swing.JButton();
         btnguardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jFormattedTextField3 = new javax.swing.JFormattedTextField();
-        jFormattedTextField5 = new javax.swing.JFormattedTextField();
+        jTextApellidos = new javax.swing.JFormattedTextField();
+        jTextNombres = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextCorreo = new javax.swing.JTextField();
+        jTextDireccion = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,37 +72,34 @@ public class clientes extends javax.swing.JFrame {
         jLabel4.setText("Numero");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, -1, -1));
 
-        jLabel5.setText("Descuente del cliente %");
+        jLabel5.setText("Dirrecion");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, -1, -1));
 
         jLabel2.setText("Nombre del Cliente");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
+            jTextCedula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.setText("~cedula");
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextCedula.setText("~cedula");
+        jTextCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                jTextCedulaActionPerformed(evt);
             }
         });
-        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 350, -1));
+        getContentPane().add(jTextCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 350, -1));
 
         jLabel6.setText("Apellido Del Clientre");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+            jTextTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 350, -1));
-
-        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0%"))));
-        getContentPane().add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 70, -1));
+        getContentPane().add(jTextTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 350, -1));
 
         btncerrar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btncerrar.setForeground(new java.awt.Color(255, 0, 0));
@@ -108,6 +114,11 @@ public class clientes extends javax.swing.JFrame {
         btnguardar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btnguardar.setForeground(new java.awt.Color(51, 255, 51));
         btnguardar.setText("Guardar");
+        btnguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 580, 130, 70));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
@@ -115,39 +126,46 @@ public class clientes extends javax.swing.JFrame {
         jLabel1.setText("Agregar Cliente");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 360, -1));
 
-        jFormattedTextField3.setToolTipText("");
-        jFormattedTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jTextApellidos.setToolTipText("");
+        jTextApellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField3ActionPerformed(evt);
+                jTextApellidosActionPerformed(evt);
             }
         });
-        jFormattedTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jFormattedTextField3KeyTyped(evt);
+                jTextApellidosKeyTyped(evt);
             }
         });
-        getContentPane().add(jFormattedTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 350, 30));
+        getContentPane().add(jTextApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 350, 30));
 
         try {
-            jFormattedTextField5.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("******************************")));
+            jTextNombres.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("******************************")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField5.addActionListener(new java.awt.event.ActionListener() {
+        jTextNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField5ActionPerformed(evt);
+                jTextNombresActionPerformed(evt);
             }
         });
-        jFormattedTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextNombres.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jFormattedTextField5KeyTyped(evt);
+                jTextNombresKeyTyped(evt);
             }
         });
-        getContentPane().add(jFormattedTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 350, 30));
+        getContentPane().add(jTextNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 350, 30));
 
         jLabel7.setText("Correo");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 350, -1));
+
+        jTextCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCorreoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 350, -1));
+        getContentPane().add(jTextDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 340, -1));
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -156,23 +174,23 @@ public class clientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+    private void jTextCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCedulaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    }//GEN-LAST:event_jTextCedulaActionPerformed
 
     private void btncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrarActionPerformed
 this.dispose();       // TODO add your handling code here:
     }//GEN-LAST:event_btncerrarActionPerformed
 
-    private void jFormattedTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField3ActionPerformed
+    private void jTextApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextApellidosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField3ActionPerformed
+    }//GEN-LAST:event_jTextApellidosActionPerformed
 
-    private void jFormattedTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField5ActionPerformed
+    private void jTextNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombresActionPerformed
        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField5ActionPerformed
+    }//GEN-LAST:event_jTextNombresActionPerformed
 
-    private void jFormattedTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField5KeyTyped
+    private void jTextNombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextNombresKeyTyped
 char car = evt.getKeyChar();
         if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
                 && car != 'á'//minusculas
@@ -192,9 +210,9 @@ char car = evt.getKeyChar();
                 && (car != (char) KeyEvent.VK_SPACE)){
         
         evt.consume();}        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField5KeyTyped
+    }//GEN-LAST:event_jTextNombresKeyTyped
 
-    private void jFormattedTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField3KeyTyped
+    private void jTextApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextApellidosKeyTyped
 char car = evt.getKeyChar();
         if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
                 && car != 'á'//minusculas
@@ -214,7 +232,36 @@ char car = evt.getKeyChar();
                 && (car != (char) KeyEvent.VK_SPACE)){
         
         evt.consume();}        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField3KeyTyped
+    }//GEN-LAST:event_jTextApellidosKeyTyped
+
+    private void jTextCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCorreoActionPerformed
+        // TODO add your handling code here: 
+    }//GEN-LAST:event_jTextCorreoActionPerformed
+
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+       CRUDCliente cl = new CRUDCliente();
+try {
+if ((jTextCedula.getText().equals(""))
+|| (jTextNombres.getText().equals(""))
+|| (jTextApellidos.getText().equals(""))
+|| (jTextTelefono.getText().equals(""))
+|| (jTextCorreo.getText().equals(""))
+|| (jTextDireccion.getText().equals(""))) {
+
+JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
+} else {
+if (cl.verificarDatos(jTextCedula.getText())) {
+JOptionPane.showMessageDialog(null, "Ya existe cliente con ese número de Cédula");
+} else {
+guardarCliente();
+limpiar();
+JOptionPane.showMessageDialog(null, "Datos GuardadosCorrectamente");
+}
+}
+} catch (HeadlessException e) {
+    JOptionPane.showMessageDialog(null ,"error" + e);
+}
+    }//GEN-LAST:event_btnguardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,11 +303,6 @@ char car = evt.getKeyChar();
     private javax.swing.JButton btncerrar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JLabel fondo;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField3;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
-    private javax.swing.JFormattedTextField jFormattedTextField5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -268,6 +310,33 @@ char car = evt.getKeyChar();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JFormattedTextField jTextApellidos;
+    private javax.swing.JFormattedTextField jTextCedula;
+    private javax.swing.JTextField jTextCorreo;
+    private javax.swing.JTextField jTextDireccion;
+    private javax.swing.JFormattedTextField jTextNombres;
+    private javax.swing.JFormattedTextField jTextTelefono;
     // End of variables declaration//GEN-END:variables
+
+public void guardarCliente() {
+    CRUDCliente cc = new CRUDCliente();
+    POJOClientes cl = new POJOClientes(jTextCedula.getText(),
+        jTextNombres.getText(),
+        jTextApellidos.getText(),
+        jTextCorreo.getText(), // Utilizar campo "correo" en lugar de "sobrenombre"
+        jTextTelefono.getText(),
+        jTextDireccion.getText()
+    );
+    cc.Guardar(cl);
+}
+public void limpiar(){
+    jTextCedula.setText("");
+    jTextNombres.setText("");
+    jTextApellidos.setText("");
+    jTextTelefono.setText("");
+    jTextDireccion.setText("");
+    jTextCorreo.setText("");
+}
+
+  
 }
