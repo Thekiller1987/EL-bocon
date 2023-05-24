@@ -4,19 +4,23 @@
  */
 package Vista;
 
+import Controlador.Conexion.Controlador.CrudProveedor;
+import Modelo.POJOProveedor;
 import java.awt.event.KeyEvent;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
  * @author waska
  */
-public class proveedores extends javax.swing.JFrame {
+public class proveedores1 extends javax.swing.JFrame {
 
     /**
      * Creates new form prueba
      */
-    public proveedores() {
+    public proveedores1() {
        
         initComponents();
  setExtendedState(MAXIMIZED_BOTH);
@@ -33,17 +37,17 @@ public class proveedores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
+        Marca = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        Ruc = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        Numero = new javax.swing.JFormattedTextField();
         btncerrar = new javax.swing.JButton();
         btnguardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        nombre = new javax.swing.JFormattedTextField();
+        Nombre = new javax.swing.JFormattedTextField();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,12 +57,12 @@ public class proveedores extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        Marca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                MarcaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 350, 30));
+        getContentPane().add(Marca, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 350, 30));
 
         jLabel3.setText("RUC");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
@@ -69,23 +73,23 @@ public class proveedores extends javax.swing.JFrame {
         jLabel2.setText("Nombre del Proveedor");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###############"))));
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Ruc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###############"))));
+        Ruc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                RucActionPerformed(evt);
             }
         });
-        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 350, -1));
+        getContentPane().add(Ruc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 350, -1));
 
         jLabel6.setText("Marca");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+            Numero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 350, -1));
+        getContentPane().add(Numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 350, -1));
 
         btncerrar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btncerrar.setForeground(new java.awt.Color(255, 0, 0));
@@ -100,6 +104,11 @@ public class proveedores extends javax.swing.JFrame {
         btnguardar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btnguardar.setForeground(new java.awt.Color(0, 255, 102));
         btnguardar.setText("Guardar");
+        btnguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 580, 130, 70));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
@@ -108,21 +117,21 @@ public class proveedores extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 360, -1));
 
         try {
-            nombre.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
+            Nombre.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        nombre.addActionListener(new java.awt.event.ActionListener() {
+        Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreActionPerformed(evt);
+                NombreActionPerformed(evt);
             }
         });
-        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+        Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                nombreKeyTyped(evt);
+                NombreKeyTyped(evt);
             }
         });
-        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 350, 30));
+        getContentPane().add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 350, 30));
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -131,25 +140,25 @@ public class proveedores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+    private void RucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RucActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    }//GEN-LAST:event_RucActionPerformed
 
     private void btncerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrarActionPerformed
 this.dispose();       // TODO add your handling code here:
     }//GEN-LAST:event_btncerrarActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void MarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarcaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_MarcaActionPerformed
 
-    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
    
         
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreActionPerformed
+    }//GEN-LAST:event_NombreActionPerformed
 
-    private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
+    private void NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyTyped
 char car = evt.getKeyChar();
         if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
                 && car != 'á'//minusculas
@@ -169,7 +178,38 @@ char car = evt.getKeyChar();
                 && (car != (char) KeyEvent.VK_SPACE)){
         
         evt.consume();}       // TODO add your handling code here:
-    }//GEN-LAST:event_nombreKeyTyped
+    }//GEN-LAST:event_NombreKeyTyped
+
+    private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+String nombre = Nombre.getText();
+    String marca = Marca.getText();
+    String ruc = Ruc.getText();
+    String telefono = Numero.getText();
+    
+    // Crear un objeto del proveedor con los datos ingresados
+POJOProveedor proveedor = new POJOProveedor(Nombre.getText(), Marca.getText(), Ruc.getText(), Numero.getText());
+    
+    // Crear una instancia del CrudProveedor
+    CrudProveedor crudProveedor = new CrudProveedor();
+    
+    // Llamar al método Guardar del CrudProveedor para guardar el proveedor en la base de datos
+    crudProveedor.Guardar(proveedor);
+    
+    // Limpiar los campos del formulario
+    limpiarCampos();
+    
+    // Mostrar un mensaje de éxito
+    JOptionPane.showMessageDialog(null, "Proveedor guardado correctamente");
+} 
+
+private void limpiarCampos() {
+    Nombre.setText("");
+    Marca.setText("");
+    Ruc.setText("");
+    Numero.setText("");
+    
+     // TODO add your handling code here:
+    }//GEN-LAST:event_btnguardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,39 +228,43 @@ char car = evt.getKeyChar();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(proveedores1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(proveedores1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(proveedores1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(proveedores1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new proveedores().setVisible(true);
-            }
-        });
+       
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextField Marca;
+    public javax.swing.JFormattedTextField Nombre;
+    public javax.swing.JFormattedTextField Numero;
+    public javax.swing.JFormattedTextField Ruc;
     private javax.swing.JButton btncerrar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JLabel fondo;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JFormattedTextField nombre;
     // End of variables declaration//GEN-END:variables
+
+
 }

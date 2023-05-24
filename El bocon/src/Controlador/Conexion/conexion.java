@@ -12,22 +12,19 @@ import java.sql.SQLException;
  */
 public class conexion {
     
-   private final String url = "jdbc:sqlserver://localhost:1433;databaseName=DB_ELBOCON;"
-            + "integratedSecurity=true;encrypt=true;trustServerCertificate=true";
-    private Connection cn;
-
-    public Connection conectar() {
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            cn = DriverManager.getConnection(url);
-            System.out.println("Conexión establecida");
-            return cn;
-        } catch (ClassNotFoundException e) {
-            System.out.println("Error al cargar el controlador: " + e);
-        } catch (SQLException e) {
-            System.out.println("Error en la conexión: " + e);
-        }
-        return null;
-    }
+private final String
+url="jdbc:sqlserver://localhost:1433;databaseName=DB_ELBOCON;"
++ "integratedSecurity=true;" +"encrypt=true;trustServerCertificate=true; user=sa; password=123";
+Connection cn;
+public Connection conectar(){
+try {
+cn = DriverManager.getConnection(url);
+System.out.println("Conexion establecida");
+return cn;
+} catch (SQLException e) {
+System.out.println("Error en la conexión: "+e);
+}
+return null;
+}
 }
 

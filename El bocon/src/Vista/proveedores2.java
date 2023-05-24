@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import Controlador.Conexion.Controlador.CrudProveedor;
+import Modelo.POJOProveedor;
 import java.text.ParseException;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -24,7 +26,10 @@ public class proveedores2 extends javax.swing.JFrame {
  setExtendedState(MAXIMIZED_BOTH);
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
 
-    }
+    
+    
+
+}
 
     /** 
      * This method is called from within the constructor to initialize the form.
@@ -46,10 +51,12 @@ public class proveedores2 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btneditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaproveedores = new javax.swing.JTable();
         btncerrar1 = new javax.swing.JButton();
         apellido = new javax.swing.JFormattedTextField();
         nombre = new javax.swing.JFormattedTextField();
+        jtextbuscar = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -112,7 +119,7 @@ public class proveedores2 extends javax.swing.JFrame {
         btneditar.setText("Editar");
         getContentPane().add(btneditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 100, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaproveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -123,7 +130,7 @@ public class proveedores2 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaproveedores);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 560, 120));
 
@@ -159,6 +166,10 @@ public class proveedores2 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 350, 30));
+        getContentPane().add(jtextbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 310, -1));
+
+        jButton1.setText("jButton1");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, -1, -1));
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -252,6 +263,7 @@ this.dispose();      // TODO add your handling code here:
     private javax.swing.JButton btneditar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
@@ -260,7 +272,10 @@ this.dispose();      // TODO add your handling code here:
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTextField jtextbuscar;
     private javax.swing.JFormattedTextField nombre;
+    private javax.swing.JTable tablaproveedores;
     // End of variables declaration//GEN-END:variables
+
+
 }

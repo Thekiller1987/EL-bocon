@@ -89,7 +89,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
 
         try {
-        proveedores panel2 = new proveedores()
+        proveedores1 panel2 = new proveedores1()
                 ;
         panel2.setVisible(true);
   

@@ -11,51 +11,42 @@ package Modelo;
  *  * Correciones Waskar
  */
 public class POJOProveedor {
-    
-    String nombre;
-    String direccion;
-    String telefono;
-    int id_proveedor;
+ private int idProveedor;
+    private String nombre;
+    private String marca;
+    private String ruc;
+    private String numero;
 
+    // Constructor
+    public POJOProveedor(String nombre, String marca, String ruc, String numero) {
+        this.nombre = nombre;
+        this.marca = marca;
+        this.ruc = ruc;
+        this.numero = numero;
+    }
+
+    // Métodos getter
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getMarca() {
+        return marca;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getRuc() {
+        return ruc;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public String getNumero() {
+        return numero;
+        
+}  
+public int getIdProveedor() {
+        return idProveedor;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public int getId_proveedor() {
-        return id_proveedor;
-    }
-
-    public void setId_proveedor(int id_proveedor) {
-        this.id_proveedor = id_proveedor;
-    }
-
-    public POJOProveedor(String nombre, String direccion, String telefono, int id_proveedor) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.id_proveedor = id_proveedor;
-    }
-    
-    
-    
-}
+    public void setIdProveedor(int idProveedor) {
+        this.idProveedor = idProveedor;
+    }}
+  
