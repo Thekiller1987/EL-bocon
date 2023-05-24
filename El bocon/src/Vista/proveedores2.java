@@ -9,6 +9,7 @@ import Modelo.POJOProveedor;
 import java.text.ParseException;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
 /**
@@ -25,10 +26,17 @@ public class proveedores2 extends javax.swing.JFrame {
         initComponents();
  setExtendedState(MAXIMIZED_BOTH);
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
-
-    
-    
-
+    mostrar(); //llamada al método mostrar()
+}
+public void mostrar() { //Método mostrar
+try {
+    DefaultTableModel modelo;
+CrudProveedor cli = new CrudProveedor(); //objeto de la clase Crudproveedor
+modelo = cli.mostrarDatos();
+tablaproveedores.setModel(modelo);
+} catch (Exception e) {
+JOptionPane.showMessageDialog(null, e);
+}
 }
 
     /** 
@@ -274,7 +282,7 @@ this.dispose();      // TODO add your handling code here:
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextField jtextbuscar;
     private javax.swing.JFormattedTextField nombre;
-    private javax.swing.JTable tablaproveedores;
+    public javax.swing.JTable tablaproveedores;
     // End of variables declaration//GEN-END:variables
 
 

@@ -23,7 +23,7 @@ public class CrudProveedor {
         modelo = new DefaultTableModel(null, titulos);
 
         try {
-            CallableStatement cbstc = cn.prepareCall("{call MostrarProveedores}");
+            CallableStatement cbstc = cn.prepareCall("{call ObtenerProveedores}");
             rs = cbstc.executeQuery();
 
             while (rs.next()) {
@@ -50,7 +50,7 @@ public class CrudProveedor {
         modelo = new DefaultTableModel(null, titulos);
 
         try {
-            CallableStatement call = cn.prepareCall("{call ConsultarProveedores(?)}");
+            CallableStatement call = cn.prepareCall("{call ObtenerProveedores(?)}");
             call.setString(1, dato);
             rs = call.executeQuery();
 
