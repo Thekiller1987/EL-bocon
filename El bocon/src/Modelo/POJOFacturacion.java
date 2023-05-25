@@ -11,8 +11,13 @@ import java.util.Date;
  * @author waska
  */
 public class POJOFacturacion {
+    
+    String id_facturacion;
+    String fecha;
+    int DNI;
+    String id_empelado;
 
-    public POJOFacturacion(String id_facturacion, Date fecha, int DNI, String id_empelado) {
+    public POJOFacturacion(String id_facturacion, String fecha, int DNI, String id_empelado) {
         this.id_facturacion = id_facturacion;
         this.fecha = fecha;
         this.DNI = DNI;
@@ -27,11 +32,11 @@ public class POJOFacturacion {
         this.id_facturacion = id_facturacion;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -50,9 +55,5 @@ public class POJOFacturacion {
     public void setId_empelado(String id_empelado) {
         this.id_empelado = id_empelado;
     }
-    String id_facturacion;
-    Date fecha;
-    int DNI;
-    String id_empelado;
     
 }

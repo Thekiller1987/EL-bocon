@@ -8,19 +8,30 @@ package Modelo;
 /**
  *
  * @author Milton
- *  * Correciones Waskar
  */
-public class POJOProductos {
+public class POJOProducto {
     
     int id_producto;
     String nombre;
     int cantidad;
     float precio;
     String descripcion;
-    float porcentaje_alcohol;
     int id_proveedor;
     int id_marca;
     int id_categoria;
+    float porcentaje_alcohol;
+
+    public POJOProducto(int id_producto, String nombre, int cantidad, float precio, String descripcion, int id_proveedor, int id_marca, int id_categoria, float porcentaje_alcohol) {
+        this.id_producto = id_producto;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.id_proveedor = id_proveedor;
+        this.id_marca = id_marca;
+        this.id_categoria = id_categoria;
+        this.porcentaje_alcohol = porcentaje_alcohol;
+    }
 
     public int getId_producto() {
         return id_producto;
@@ -62,14 +73,6 @@ public class POJOProductos {
         this.descripcion = descripcion;
     }
 
-    public float getPorcentaje_alcohol() {
-        return porcentaje_alcohol;
-    }
-
-    public void setPorcentaje_alcohol(float porcentaje_alcohol) {
-        this.porcentaje_alcohol = porcentaje_alcohol;
-    }
-
     public int getId_proveedor() {
         return id_proveedor;
     }
@@ -94,16 +97,12 @@ public class POJOProductos {
         this.id_categoria = id_categoria;
     }
 
-    public POJOProductos(int id_producto, String nombre, int cantidad, float precio, String descripcion, float porcentaje_alcohol, int id_proveedor, int id_marca, int id_categoria) {
-        this.id_producto = id_producto;
-        this.nombre = nombre;
-        this.cantidad = cantidad;
-        this.precio = precio;
-        this.descripcion = descripcion;
+    public float getPorcentaje_alcohol() {
+        return porcentaje_alcohol;
+    }
+
+    public void setPorcentaje_alcohol(float porcentaje_alcohol) {
         this.porcentaje_alcohol = porcentaje_alcohol;
-        this.id_proveedor = id_proveedor;
-        this.id_marca = id_marca;
-        this.id_categoria = id_categoria;
     }
     
     
