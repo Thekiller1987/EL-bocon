@@ -89,6 +89,11 @@ public class proveedores1 extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        Numero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NumeroActionPerformed(evt);
+            }
+        });
         getContentPane().add(Numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 350, -1));
 
         btncerrar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -187,7 +192,7 @@ String nombre = Nombre.getText();
     String telefono = Numero.getText();
     
     // Crear un objeto del proveedor con los datos ingresados
-POJOProveedor proveedor = new POJOProveedor(Nombre.getText(), Marca.getText(), Ruc.getText(), Numero.getText());
+POJOProveedor proveedor = new POJOProveedor(PROPERTIES, Nombre.getText(), Marca.getText(), Ruc.getText(), Numero.getText());
     
     // Crear una instancia del CrudProveedor
     CrudProveedor crudProveedor = new CrudProveedor();
@@ -210,6 +215,10 @@ private void limpiarCampos() {
     
      // TODO add your handling code here:
     }//GEN-LAST:event_btnguardarActionPerformed
+
+    private void NumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NumeroActionPerformed
 
     /**
      * @param args the command line arguments

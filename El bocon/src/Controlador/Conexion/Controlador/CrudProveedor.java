@@ -17,8 +17,8 @@ public class CrudProveedor {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Nombre", "Marca", "Ruc", "Telefono"};
-        String[] registro = new String[4];
+        String[] titulos = {"Id_proveedor","Nombre", "Marca", "Ruc", "Telefono"};
+        String[] registro = new String[5];
 
         modelo = new DefaultTableModel(null, titulos);
 
@@ -27,10 +27,11 @@ public class CrudProveedor {
             rs = cbstc.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("Nombre");
-                registro[1] = rs.getString("Marca");
-                registro[2] = rs.getString("Ruc");
-                registro[3] = rs.getString("Telefono");
+                registro[0] = rs.getString("Id_proveedor");
+                registro[1] = rs.getString("Nombre");
+                registro[2] = rs.getString("Marca");
+                registro[3] = rs.getString("Ruc");
+                registro[4] = rs.getString("Telefono");
 
                 modelo.addRow(registro);
             }
@@ -44,21 +45,22 @@ public class CrudProveedor {
     public DefaultTableModel buscarDatos(String dato) {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"Nombre", "Marca", "Ruc", "Telefono"};
-        String[] registro = new String[4];
+        String[] titulos = {"Id_proveedor","Nombre", "Marca", "Ruc", "Telefono"};
+        String[] registro = new String[5];
 
         modelo = new DefaultTableModel(null, titulos);
 
         try {
-            CallableStatement call = cn.prepareCall("{call ObtenerProveedores(?)}");
+            CallableStatement call = cn.prepareCall("{call BuscarProveedores(?)}");
             call.setString(1, dato);
             rs = call.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("Nombre");
-                registro[1] = rs.getString("Marca");
-                registro[2] = rs.getString("Ruc");
-                registro[3] = rs.getString("Telefono");
+              registro[0] = rs.getString("Id_proveedor");
+                registro[1] = rs.getString("Nombre");
+                registro[2] = rs.getString("Marca");
+                registro[3] = rs.getString("Ruc");
+                registro[4] = rs.getString("Telefono");
 
                 modelo.addRow(registro);
             }
@@ -97,23 +99,25 @@ public class CrudProveedor {
         }
     }
 
-    public void actualizar(POJOProveedor proveedor) {
-        try {
-            CallableStatement cbst = cn.prepareCall("{call ModificarProveedor(?,?,?,?)}");
-            cbst.setString(1, proveedor.getNombre());
-            cbst.setString(2, proveedor.getMarca());
-            cbst.setString(3, proveedor.getRuc());
-            cbst.setString(4, proveedor.getNumero());
-            cbst.executeUpdate();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
 
-    public void eliminar(String nombre) {
+public void actualizar(POJOProveedor pro) {
+    try {
+
+        CallableStatement cs = cn.prepareCall( "{call ActualizarProveedor(?, ?, ?, ?, ?)}");
+        cs.setInt(1, pro.getIdProveedor());
+        cs.setString(2, pro.getNombre());
+        cs.setString(3, pro.getMarca());
+        cs.setString(4, pro.getRuc());
+        cs.setString(5, pro.getNumero());
+        cs.executeUpdate();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+    }
+}
+    public void eliminar(String Id_proveedor) {
         try {
             CallableStatement cbst = cn.prepareCall("{call EliminarProveedor(?)}");
-            cbst.setString(1, nombre);
+            cbst.setString(1, Id_proveedor);
             cbst.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
