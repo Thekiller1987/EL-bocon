@@ -3,11 +3,27 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Milton/Desktop/EL-bocon/El%20bocon/src/Vista/Seproducto.java</file>
             <file>file:/C:/Users/Milton/Desktop/EL-bocon/El%20bocon/src/Controlador/Conexion/conexion.java</file>
             <file>file:/C:/Users/Milton/Desktop/EL-bocon/El%20bocon/src/Controlador/Conexion/Controlador/CRUDempleado.java</file>
             <file>file:/C:/Users/Milton/Desktop/EL-bocon/El%20bocon/src/Controlador/Conexion/Controlador/CRUDProducto.java</file>
             <file>file:/C:/Users/Milton/Desktop/EL-bocon/El%20bocon/src/Modelo/POJOProducto.java</file>
+=======
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Controlador/Conexion/Controlador/CRUDCliente.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Controlador/Conexion/Controlador/CrudProveedor.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Vista/lobby.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Vista/clientes2.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Modelo/POJOClientes.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Vista/clientes.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Modelo/POJOProveedor.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Vista/SeClientes.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Modelo/Persona.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Vista/proveedores1.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Vista/ventas.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Vista/Seproveedores.java</file>
+            <file>file:/C:/Users/waska/OneDrive/Escritorio/Proyecto%20el%20bocon%20clase/El%20bocon/src/Vista/proveedores2.java</file>
+>>>>>>> 2fbaaed93fe520c031ccbb649ae01a51158f11a0
         </group>
     </open-files>
 </project-private>

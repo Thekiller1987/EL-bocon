@@ -4,10 +4,15 @@
  */
 package Vista;
 
+import Controlador.Conexion.Controlador.CrudProveedor;
+import Modelo.POJOProveedor;
+import java.awt.HeadlessException;
 import java.text.ParseException;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
+
 
 /**
  *
@@ -15,6 +20,10 @@ import javax.swing.text.MaskFormatter;
  */
 public class proveedores2 extends javax.swing.JFrame {
 
+    int datoSeleccionado = -1;
+    int Proveedor;
+    
+    
     /**
      * Creates new form prueba
      */
@@ -23,8 +32,18 @@ public class proveedores2 extends javax.swing.JFrame {
         initComponents();
  setExtendedState(MAXIMIZED_BOTH);
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
-
-    }
+    mostrar(); //llamada al método mostrar()
+}
+public void mostrar() { //Método mostrar
+try {
+    DefaultTableModel modelo;
+CrudProveedor cli = new CrudProveedor(); //objeto de la clase Crudproveedor
+modelo = cli.mostrarDatos();
+tablaproveedores.setModel(modelo);
+} catch (Exception e) {
+JOptionPane.showMessageDialog(null, e);
+}
+}
 
     /** 
      * This method is called from within the constructor to initialize the form.
@@ -38,18 +57,20 @@ public class proveedores2 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        Ruc = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        Numero = new javax.swing.JFormattedTextField();
         btneliminar = new javax.swing.JButton();
         btnactualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btneditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaproveedores = new javax.swing.JTable();
         btncerrar1 = new javax.swing.JButton();
-        apellido = new javax.swing.JFormattedTextField();
+        Marda = new javax.swing.JFormattedTextField();
         nombre = new javax.swing.JFormattedTextField();
+        BTNBuscar = new javax.swing.JButton();
+        jtextbuscar = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,26 +90,26 @@ public class proveedores2 extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
+            Ruc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Ruc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                RucActionPerformed(evt);
             }
         });
-        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 350, -1));
+        getContentPane().add(Ruc, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 350, -1));
 
         jLabel6.setText("Marca");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+            Numero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 350, -1));
+        getContentPane().add(Numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 350, 30));
 
         btneliminar.setForeground(new java.awt.Color(255, 0, 0));
         btneliminar.setText("Eliminar");
@@ -101,6 +122,11 @@ public class proveedores2 extends javax.swing.JFrame {
 
         btnactualizar.setForeground(new java.awt.Color(0, 51, 255));
         btnactualizar.setText("Actualizar");
+        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnactualizarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 100, 40));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
@@ -110,20 +136,38 @@ public class proveedores2 extends javax.swing.JFrame {
 
         btneditar.setForeground(new java.awt.Color(0, 255, 51));
         btneditar.setText("Editar");
+        btneditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btneditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 100, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaproveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaproveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaproveedoresMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaproveedores);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 560, 120));
 
@@ -137,16 +181,16 @@ public class proveedores2 extends javax.swing.JFrame {
         getContentPane().add(btncerrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 630, 100, 40));
 
         try {
-            apellido.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
+            Marda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        apellido.addActionListener(new java.awt.event.ActionListener() {
+        Marda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidoActionPerformed(evt);
+                MardaActionPerformed(evt);
             }
         });
-        getContentPane().add(apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 350, 30));
+        getContentPane().add(Marda, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 350, 30));
 
         try {
             nombre.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
@@ -160,26 +204,61 @@ public class proveedores2 extends javax.swing.JFrame {
         });
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 350, 30));
 
+        BTNBuscar.setText("Buscar");
+        BTNBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTNBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, -1, -1));
+
+        jtextbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextbuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jtextbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 320, -1));
+
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -70, 1590, 970));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -60, 1590, 970));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+    private void RucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RucActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    }//GEN-LAST:event_RucActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
-            // TODO add your handling code here:
+if (datoSeleccionado >= 0) {
+String dato =
+String.valueOf(tablaproveedores.getValueAt(datoSeleccionado, 0));
+CrudProveedor cli = new CrudProveedor();
+if (JOptionPane.showConfirmDialog(rootPane,
+"Se eliminará el registro, ¿desea continuar?",
+
+"Eliminar Registro",
+JOptionPane.WARNING_MESSAGE,
+JOptionPane.YES_NO_OPTION)
+== JOptionPane.YES_OPTION) {
+
+cli.eliminar(dato);
+mostrar();
+JOptionPane.showMessageDialog(null,
+"Dato eliminado correctamente");
+}
+} else {
+JOptionPane.showMessageDialog(null,
+"Debe seleccionar un registro de la tabla");
+}                   // TODO add your handling code here:
     }//GEN-LAST:event_btneliminarActionPerformed
 
     private void btncerrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrar1ActionPerformed
 this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_btncerrar1ActionPerformed
 
-    private void apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoActionPerformed
+    private void MardaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MardaActionPerformed
 
         MaskFormatter formatter = null;
         try {
@@ -190,7 +269,7 @@ this.dispose();      // TODO add your handling code here:
         }
     
    // TODO add your handling code here:
-    }//GEN-LAST:event_apellidoActionPerformed
+    }//GEN-LAST:event_MardaActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
         MaskFormatter formatter = null;
@@ -202,6 +281,88 @@ this.dispose();      // TODO add your handling code here:
         }
       // TODO add your handling code here:
     }//GEN-LAST:event_nombreActionPerformed
+
+    private void jtextbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextbuscarActionPerformed
+
+
+
+   // TODO add your handling code here:
+    }//GEN-LAST:event_jtextbuscarActionPerformed
+
+    private void BTNBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBuscarActionPerformed
+try {
+        DefaultTableModel modelo;
+        CrudProveedor cli = new CrudProveedor();
+
+        if (jtextbuscar.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
+            mostrar();
+        } else {
+            modelo = cli.buscarDatos(jtextbuscar.getText());
+            tablaproveedores.setModel(modelo);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_BTNBuscarActionPerformed
+
+    private void tablaproveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproveedoresMouseClicked
+
+datoSeleccionado = tablaproveedores.rowAtPoint(evt.getPoint());
+// TODO add your handling code here:
+    }//GEN-LAST:event_tablaproveedoresMouseClicked
+
+    private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
+ if (datoSeleccionado >= 0) {
+        // Obtener los datos de la fila seleccionada    
+        
+        Proveedor = Integer.parseInt((String)this.tablaproveedores.getValueAt(datoSeleccionado, 0));
+        String nombreProveedor = String.valueOf(tablaproveedores.getValueAt(datoSeleccionado, 1));
+        String marcaProveedor = String.valueOf(tablaproveedores.getValueAt(datoSeleccionado, 2));
+        String rucProveedor = String.valueOf(tablaproveedores.getValueAt(datoSeleccionado, 3));
+        String numeroProveedor = String.valueOf(tablaproveedores.getValueAt(datoSeleccionado, 4));
+        
+        // Actualizar los campos del formulario con los datos obtenidos
+        nombre.setText(nombreProveedor);
+        Marda.setText(marcaProveedor);
+        Ruc.setText(rucProveedor);
+        Numero.setText(numeroProveedor);
+
+        
+    } else {
+        JOptionPane.showMessageDialog(null, "Debe seleccionar un registro para actualizar");
+    
+ } // TODO add your handling code here:
+    }//GEN-LAST:event_btneditarActionPerformed
+
+    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+try {
+    // Obtener los datos ingresados por el usuario
+
+    String nombreProveedor = nombre.getText();
+    String marcaProveedor = Marda.getText();
+    String rucProveedor = Ruc.getText();
+    String telefonoProveedor = Numero.getText();
+
+    // Verificar si hay campos vacíos
+    if (nombreProveedor.trim().isEmpty() || marcaProveedor.trim().isEmpty() || rucProveedor.trim().isEmpty() || telefonoProveedor.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Tiene campos vacíos");
+    } else {
+         POJOProveedor proveedor = new POJOProveedor( Proveedor , nombreProveedor, marcaProveedor, rucProveedor, telefonoProveedor);
+        // Llamar al método actualizar() en la instancia de la clase CrudProveedor
+        CrudProveedor crudProveedor = new CrudProveedor();
+        crudProveedor.actualizar(proveedor);
+        mostrar();
+
+        JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
+ limpiarCampos();
+    }
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Error: " + e);
+}
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnactualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,21 +407,32 @@ this.dispose();      // TODO add your handling code here:
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField apellido;
+    public javax.swing.JButton BTNBuscar;
+    private javax.swing.JFormattedTextField Marda;
+    private javax.swing.JFormattedTextField Numero;
+    private javax.swing.JFormattedTextField Ruc;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btncerrar1;
     private javax.swing.JButton btneditar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JLabel fondo;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jtextbuscar;
     private javax.swing.JFormattedTextField nombre;
+    public javax.swing.JTable tablaproveedores;
     // End of variables declaration//GEN-END:variables
+
+private void limpiarCampos() {
+    nombre.setText("");
+    Marda.setText("");
+    Ruc.setText("");
+    Numero.setText("");
+}
+
+
 }
