@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -130,20 +130,21 @@ cbst.executeUpdate();
     
        
        public void Guardar(POJOProducto pro){
-           try{
-               CallableStatement cbst = cn.prepareCall("{call CrearProducto(?,?,?,?,?,?,?,?,?)}");
-            cbst.setInt(pro.getId_producto(), 1);
-            cbst.setString(2, pro.getNombre());
-            cbst.setInt(pro.getCantidad(),3);
-            cbst.setInt((int) pro.getPrecio(), 4);
-            cbst.setString(5, pro.getDescripcion());
-            cbst.setInt((int)pro.getPorcentaje_alcohol(), 6);
-            cbst.setInt(pro.getId_proveedor(), 7);
-            cbst.setInt(pro.getId_marca(), 8);
-            cbst.setInt(pro.getId_categoria(), 9);
-            cbst.executeUpdate();
-           }catch (SQLException e){
-               JOptionPane.showMessageDialog(null, e);
+   try {
+        CallableStatement cbst = cn.prepareCall("{call InsertarProducto(?,?,?,?,?,?,?,?,?)}");
+        cbst.setInt(1, pro.getId_producto());
+        cbst.setString(2, pro.getNombre());
+        cbst.setInt(3, pro.getCantidad());
+        cbst.setDouble(4, pro.getPrecio());
+        cbst.setString(5, pro.getDescripcion());
+        cbst.setDouble(6, pro.getPorcentaje_alcohol());
+        cbst.setInt(7, pro.getId_proveedor());
+        cbst.setInt(8, pro.getId_marca());
+        cbst.setInt(9, pro.getId_categoria());
+        cbst.executeUpdate();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+
            }
        }
        

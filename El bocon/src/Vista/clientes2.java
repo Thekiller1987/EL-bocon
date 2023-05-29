@@ -5,6 +5,8 @@
 package Vista;
 
 import Controlador.Conexion.Controlador.CRUDCliente;
+import Controlador.Conexion.Controlador.CrudProveedor;
+import Modelo.POJOClientes;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import javax.swing.JFormattedTextField;
@@ -27,6 +29,8 @@ public class clientes2 extends javax.swing.JFrame {
         initComponents();
  setExtendedState(MAXIMIZED_BOTH);
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
+ mostrar();
+ 
 
     }
 public void mostrar(){
@@ -53,12 +57,10 @@ public void mostrar(){
 
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        cedula = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
+        Numero = new javax.swing.JFormattedTextField();
         btneliminar = new javax.swing.JButton();
         btnactualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -68,9 +70,13 @@ public void mostrar(){
         btncerrar1 = new javax.swing.JButton();
         apellido = new javax.swing.JFormattedTextField();
         nombre = new javax.swing.JFormattedTextField();
-        jTextField1 = new javax.swing.JTextField();
+        correo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         buscar = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextDireccion = new javax.swing.JTextArea();
+        Buscar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,42 +87,36 @@ public void mostrar(){
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Cedula");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
 
         jLabel4.setText("Numero");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, -1));
-
-        jLabel5.setText("Descuente del cliente %");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, -1, -1));
 
         jLabel2.setText("Nombre del Cliente");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
+            cedula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField1.setText("~cedula");
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        cedula.setText("~cedula");
+        cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                cedulaActionPerformed(evt);
             }
         });
-        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 350, -1));
+        getContentPane().add(cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 350, -1));
 
         jLabel6.setText("Apellido Del Clientre");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+            Numero.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 350, -1));
-
-        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0%"))));
-        getContentPane().add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 70, -1));
+        getContentPane().add(Numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 350, -1));
 
         btneliminar.setForeground(new java.awt.Color(255, 0, 0));
         btneliminar.setText("Eliminar");
@@ -129,7 +129,12 @@ public void mostrar(){
 
         btnactualizar.setForeground(new java.awt.Color(0, 51, 255));
         btnactualizar.setText("Actualizar");
-        getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 100, 40));
+        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnactualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, 100, 40));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -138,10 +143,21 @@ public void mostrar(){
 
         btneditar.setForeground(new java.awt.Color(0, 255, 51));
         btneditar.setText("Editar");
+        btneditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btneditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 100, 40));
 
         Tablaclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, ""},
+                {null, null, null, ""},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -202,31 +218,66 @@ public void mostrar(){
             }
         });
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 350, 30));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 350, -1));
+        getContentPane().add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 350, -1));
 
         jLabel7.setText("Correo");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
         buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarActionPerformed(evt);
             }
         });
-        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 350, -1));
+        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 320, -1));
+
+        jLabel5.setText("Direccion");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, -1, -1));
+
+        jTextDireccion.setColumns(20);
+        jTextDireccion.setRows(5);
+        jScrollPane2.setViewportView(jTextDireccion);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 350, 40));
+
+        Buscar.setForeground(new java.awt.Color(153, 153, 153));
+        Buscar.setText("Buscar");
+        Buscar.setToolTipText("");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 50, -1));
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -60, 1590, 970));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -70, 1590, 970));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+    private void cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    }//GEN-LAST:event_cedulaActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
-            // TODO add your handling code here:
+    int datoSeleccionado = Tablaclientes.getSelectedRow();
+    if (datoSeleccionado >= 0) {
+        String idCliente = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 0));
+        CRUDCliente cli = new CRUDCliente();
+        if (JOptionPane.showConfirmDialog(rootPane,
+                "Se eliminará el registro, ¿desea continuar?",
+                "Eliminar Registro",
+                JOptionPane.WARNING_MESSAGE,
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            cli.eliminar(idCliente);
+            mostrar();
+            JOptionPane.showMessageDialog(null, "Dato eliminado correctamente");
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Debe seleccionar un registro de la tabla");
+    }
+       // TODO add your handling code here:
     }//GEN-LAST:event_btneliminarActionPerformed
 
     private void btncerrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrar1ActionPerformed
@@ -291,7 +342,20 @@ char car = evt.getKeyChar();
     }//GEN-LAST:event_apellidoKeyTyped
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
-        // TODO add your handling code here:
+try {
+        DefaultTableModel modelo;
+        CrudProveedor cli = new CrudProveedor();
+
+        if (buscar.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
+            mostrar();
+        } else {
+            modelo = cli.buscarDatos(buscar.getText());
+            Tablaclientes.setModel(modelo);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+    }          // TODO add your handling code here:
  try {
 DefaultTableModel modelo;
 CRUDCliente cli = new CRUDCliente();
@@ -327,11 +391,85 @@ mostrar();
 JOptionPane.showMessageDialog(null,
 "Dato eliminado correctamente");
 }
-} else {
-JOptionPane.showMessageDialog(null,
-"Debe seleccionar un registro de la tabla");
+
 }        // TODO add your handling code here:
     }//GEN-LAST:event_TablaclientesMouseClicked
+
+    private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
+    int datoSeleccionado = Tablaclientes.getSelectedRow();
+    if (datoSeleccionado >= 0) {
+        String idCliente = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 0));
+        String nombre = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 1));
+        String apellido = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 2));
+        String correo = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 3));
+         String telefono = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 4));
+        String direccion = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 5));
+
+        
+        this.nombre.setText(nombre);
+        this.apellido.setText(apellido);
+        this.correo.setText(correo);
+        this.jTextDireccion.setText(direccion);
+        this.Numero.setText(telefono);
+        this.cedula.setText(idCliente);
+        
+        
+        
+    } else {
+        JOptionPane.showMessageDialog(null, "Debe seleccionar un registro de la tabla");
+    
+}        // TODO add your handling code here:
+    }//GEN-LAST:event_btneditarActionPerformed
+
+    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+try {
+    // Obtener los datos ingresados por el usuario
+    String ced = cedula.getText();
+    String nom = nombre.getText();
+    String ape = apellido.getText();
+    String cor = correo.getText();
+String num = Numero.getText();
+    String dir = jTextDireccion.getText();
+
+  
+    // Verificar si hay campos vacíos
+    if (ced.isEmpty() || nom.isEmpty() || ape.isEmpty() || dir.isEmpty() || num.isEmpty() || cor.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+    } else {
+        POJOClientes cliente = new POJOClientes(ced, nom, ape, cor, num, dir);
+
+        // Crear una instancia de la clase CRUDCliente
+        CRUDCliente crudCliente = new CRUDCliente();
+        crudCliente.actualizarCliente(cliente);
+
+        mostrar();
+limpiarCampos();
+        JOptionPane.showMessageDialog(null, "Cliente actualizado exitosamente");
+    }
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, e);
+}
+            // TODO add your handling code here:
+    }//GEN-LAST:event_btnactualizarActionPerformed
+
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+try {
+        DefaultTableModel modelo;
+        CRUDCliente cli = new CRUDCliente();
+
+        if (buscar.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
+            mostrar();
+        } else {
+            modelo = cli.buscarDatos(buscar.getText());
+            Tablaclientes.setModel(modelo);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);       
+              }
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_BuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -372,6 +510,8 @@ JOptionPane.showMessageDialog(null,
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buscar;
+    private javax.swing.JFormattedTextField Numero;
     private javax.swing.JTable Tablaclientes;
     private javax.swing.JFormattedTextField apellido;
     private javax.swing.JButton btnactualizar;
@@ -379,10 +519,9 @@ JOptionPane.showMessageDialog(null,
     private javax.swing.JButton btneditar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JTextField buscar;
+    private javax.swing.JFormattedTextField cedula;
+    private javax.swing.JTextField correo;
     private javax.swing.JLabel fondo;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -391,7 +530,20 @@ JOptionPane.showMessageDialog(null,
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextDireccion;
     private javax.swing.JFormattedTextField nombre;
     // End of variables declaration//GEN-END:variables
+
+
+private void limpiarCampos() {
+    nombre.setText("");
+    apellido.setText("");
+    correo.setText("");
+    Numero.setText("");
+    cedula.setText("");
+    jTextDireccion.setText("");
+}
+
+
 }

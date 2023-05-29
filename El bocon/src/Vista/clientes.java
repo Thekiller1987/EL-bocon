@@ -42,6 +42,7 @@ public class clientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        cRUDCliente1 = new Controlador.Conexion.Controlador.CRUDCliente();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -239,28 +240,32 @@ char car = evt.getKeyChar();
     }//GEN-LAST:event_jTextCorreoActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-       CRUDCliente cl = new CRUDCliente();
-try {
-if ((jTextCedula.getText().equals(""))
-|| (jTextNombres.getText().equals(""))
-|| (jTextApellidos.getText().equals(""))
-|| (jTextTelefono.getText().equals(""))
-|| (jTextCorreo.getText().equals(""))
-|| (jTextDireccion.getText().equals(""))) {
+CRUDCliente cc = new CRUDCliente();
 
-JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
-} else {
-if (cl.verificarDatos(jTextCedula.getText())) {
-JOptionPane.showMessageDialog(null, "Ya existe cliente con ese número de Cédula");
-} else {
-guardarCliente();
+String cedula = jTextCedula.getText();
+String nombres = jTextNombres.getText();
+String apellidos = jTextApellidos.getText();
+String correo = jTextCorreo.getText();
+String telefonoStr = jTextTelefono.getText();
+String direccion = jTextDireccion.getText();
+
+// Validar que no haya campos vacíos
+if (cedula.isEmpty() || nombres.isEmpty() || apellidos.isEmpty() || correo.isEmpty() || telefonoStr.isEmpty() || direccion.isEmpty()) {
+    JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
+    return; // Salir del método sin guardar
+}
+
+// Validar que el campo de teléfono sea numérico
+
+// Crear el objeto POJOClientes con los valores
+POJOClientes cl = new POJOClientes(cedula, nombres, apellidos, correo, telefonoStr, direccion);
+
+// Guardar el cliente utilizando el CRUDCliente
+cc.guardar(cl);
+
 limpiar();
-JOptionPane.showMessageDialog(null, "Datos GuardadosCorrectamente");
-}
-}
-} catch (HeadlessException e) {
-    JOptionPane.showMessageDialog(null ,"error" + e);
-}
+
+JOptionPane.showMessageDialog(null, "Datos Guardados Correctamente");
     }//GEN-LAST:event_btnguardarActionPerformed
 
     /**
@@ -302,6 +307,7 @@ JOptionPane.showMessageDialog(null, "Datos GuardadosCorrectamente");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncerrar;
     private javax.swing.JButton btnguardar;
+    private Controlador.Conexion.Controlador.CRUDCliente cRUDCliente1;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -317,26 +323,13 @@ JOptionPane.showMessageDialog(null, "Datos GuardadosCorrectamente");
     private javax.swing.JFormattedTextField jTextNombres;
     private javax.swing.JFormattedTextField jTextTelefono;
     // End of variables declaration//GEN-END:variables
-
-public void guardarCliente() {
-    CRUDCliente cc = new CRUDCliente();
-    POJOClientes cl = new POJOClientes(jTextCedula.getText(),
-        jTextNombres.getText(),
-        jTextApellidos.getText(),
-        jTextCorreo.getText(), // Utilizar campo "correo" en lugar de "sobrenombre"
-        jTextTelefono.getText(),
-        jTextDireccion.getText()
-    );
-    cc.Guardar(cl);
-}
-public void limpiar(){
+public void limpiar() {
     jTextCedula.setText("");
     jTextNombres.setText("");
     jTextApellidos.setText("");
+    jTextCorreo.setText("");
     jTextTelefono.setText("");
     jTextDireccion.setText("");
-    jTextCorreo.setText("");
 }
-
   
 }
