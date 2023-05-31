@@ -228,7 +228,7 @@ public void mostrar(){
                 buscarActionPerformed(evt);
             }
         });
-        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 320, -1));
+        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 290, -1));
 
         jLabel5.setText("Direccion");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, -1, -1));
@@ -247,7 +247,7 @@ public void mostrar(){
                 BuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 50, -1));
+        getContentPane().add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 60, -1));
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));

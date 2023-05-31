@@ -8,6 +8,7 @@ import Controlador.Conexion.Controlador.CRUDProducto;
 import Controlador.Conexion.Controlador.CrudProveedor;
 import Modelo.POJOProducto;
 import Modelo.POJOProveedor;
+import java.awt.List;
 import java.awt.event.KeyEvent;
 import static java.awt.image.ImageObserver.PROPERTIES;
 import javax.swing.JOptionPane;
@@ -28,7 +29,7 @@ public class productos1 extends javax.swing.JFrame {
  setExtendedState(MAXIMIZED_BOTH);
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
 
-    }
+}
 
     /** 
      * This method is called from within the constructor to initialize the form.
@@ -57,6 +58,8 @@ public class productos1 extends javax.swing.JFrame {
         textDesc = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
         alcohol = new javax.swing.JFormattedTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,7 +73,7 @@ public class productos1 extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
 
         jLabel4.setText("Categoria");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 110, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 110, 30));
 
         jLabel2.setText("Nombre del Producto");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
@@ -145,13 +148,13 @@ public class productos1 extends javax.swing.JFrame {
                 CategoriaActionPerformed(evt);
             }
         });
-        getContentPane().add(Categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 210, 30));
+        getContentPane().add(Categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 210, 30));
 
         jLabel7.setText("Cantidad");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, -1, -1));
 
         textcant.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        getContentPane().add(textcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 480, 100, -1));
+        getContentPane().add(textcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 100, -1));
 
         textDesc.setColumns(20);
         textDesc.setRows(5);
@@ -160,10 +163,16 @@ public class productos1 extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 350, 50));
 
         jLabel8.setText("% de Alchohol");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, -1, -1));
 
         alcohol.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        getContentPane().add(alcohol, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 40, -1));
+        getContentPane().add(alcohol, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 40, -1));
+
+        jLabel9.setText("Proveedor");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 210, -1));
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -215,6 +224,8 @@ char car = evt.getKeyChar();
     }//GEN-LAST:event_TextNombreKeyTyped
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
+
+
  
  // TODO add your handling code here:
     }//GEN-LAST:event_btnguardarActionPerformed
@@ -266,6 +277,7 @@ char car = evt.getKeyChar();
     private javax.swing.JButton btncerrar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JLabel fondo;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -274,6 +286,7 @@ char car = evt.getKeyChar();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextArea textDesc;
     private javax.swing.JFormattedTextField textcant;

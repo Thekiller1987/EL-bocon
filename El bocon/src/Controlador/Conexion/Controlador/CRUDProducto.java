@@ -129,18 +129,18 @@ cbst.executeUpdate();
        }
     
        
-       public void Guardar(POJOProducto pro){
+       public void Guardar(POJOProducto agregarProducto){
    try {
         CallableStatement cbst = cn.prepareCall("{call InsertarProducto(?,?,?,?,?,?,?,?,?)}");
-        cbst.setInt(1, pro.getId_producto());
-        cbst.setString(2, pro.getNombre());
-        cbst.setInt(3, pro.getCantidad());
-        cbst.setDouble(4, pro.getPrecio());
-        cbst.setString(5, pro.getDescripcion());
-        cbst.setDouble(6, pro.getPorcentaje_alcohol());
-        cbst.setInt(7, pro.getId_proveedor());
-        cbst.setInt(8, pro.getId_marca());
-        cbst.setInt(9, pro.getId_categoria());
+        cbst.setInt(1, agregarProducto.getId_producto());
+        cbst.setString(2, agregarProducto.getNombre());
+        cbst.setInt(3, agregarProducto.getCantidad());
+        cbst.setDouble(4, agregarProducto.getPrecio());
+        cbst.setString(5, agregarProducto.getDescripcion());
+        cbst.setDouble(6, agregarProducto.getPorcentaje_alcohol());
+        cbst.setInt(7, agregarProducto.getId_proveedor());
+        cbst.setInt(8, agregarProducto.getId_marca());
+        cbst.setInt(9, agregarProducto.getId_categoria());
         cbst.executeUpdate();
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, e);
