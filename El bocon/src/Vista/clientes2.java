@@ -116,7 +116,19 @@ public void mostrar(){
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+<<<<<<< HEAD
+        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 350, -1));
+
+        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0%"))));
+        jFormattedTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 70, -1));
+=======
         getContentPane().add(Numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 350, -1));
+>>>>>>> c301547ebbb5c0141f2e3b1e2206f5339d0636cd
 
         btneliminar.setForeground(new java.awt.Color(255, 0, 0));
         btneliminar.setText("Eliminar");
@@ -137,7 +149,6 @@ public void mostrar(){
         getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, 100, 40));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Editar Cliente");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 360, -1));
 
@@ -176,7 +187,6 @@ public void mostrar(){
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 560, 120));
 
-        btncerrar1.setForeground(new java.awt.Color(0, 0, 0));
         btncerrar1.setText("Regresar");
         btncerrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,7 +228,17 @@ public void mostrar(){
             }
         });
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 350, 30));
+<<<<<<< HEAD
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 350, -1));
+=======
         getContentPane().add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 350, -1));
+>>>>>>> c301547ebbb5c0141f2e3b1e2206f5339d0636cd
 
         jLabel7.setText("Correo");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
@@ -395,6 +415,15 @@ JOptionPane.showMessageDialog(null,
 }        // TODO add your handling code here:
     }//GEN-LAST:event_TablaclientesMouseClicked
 
+<<<<<<< HEAD
+    private void jFormattedTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+=======
     private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
     int datoSeleccionado = Tablaclientes.getSelectedRow();
     if (datoSeleccionado >= 0) {
@@ -470,6 +499,7 @@ try {
         
 // TODO add your handling code here:
     }//GEN-LAST:event_BuscarActionPerformed
+>>>>>>> c301547ebbb5c0141f2e3b1e2206f5339d0636cd
 
     /**
      * @param args the command line arguments

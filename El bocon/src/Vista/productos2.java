@@ -4,11 +4,15 @@
  */
 package Vista;
 
+import Controlador.Conexion.Controlador.CRUDProducto;
+import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
+ import Modelo.POJOProducto;
 
 /**
  *
@@ -16,6 +20,10 @@ import javax.swing.text.MaskFormatter;
  */
 public class productos2 extends javax.swing.JFrame {
 
+    
+    int datoSeleccionado = -1;
+     int Producto;
+    
     /**
      * Creates new form prueba
      */
@@ -24,7 +32,18 @@ public class productos2 extends javax.swing.JFrame {
         initComponents();
  setExtendedState(MAXIMIZED_BOTH);
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
-
+ 
+    }
+ public void mostrar() { 
+try {
+    DefaultTableModel modelo;
+CRUDProducto cli = new CRUDProducto(); //objeto de la clase Crudproveedor
+modelo = cli.mostrarDatos();
+tablaproductos.setModel(modelo);
+} catch (Exception e) {
+JOptionPane.showMessageDialog(null, e);
+}
+ 
     }
 
     /** 
@@ -43,7 +62,7 @@ public class productos2 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btneditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaproductos = new javax.swing.JTable();
         btncerrar1 = new javax.swing.JButton();
         nombre = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -82,18 +101,27 @@ public class productos2 extends javax.swing.JFrame {
 
         btnactualizar.setForeground(new java.awt.Color(0, 51, 255));
         btnactualizar.setText("Actualizar");
+        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnactualizarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 690, 100, 40));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Editar Producto");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 360, -1));
 
         btneditar.setForeground(new java.awt.Color(0, 255, 51));
         btneditar.setText("Editar");
+        btneditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btneditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 690, 100, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaproductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -104,11 +132,10 @@ public class productos2 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaproductos);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 560, 120));
 
-        btncerrar1.setForeground(new java.awt.Color(0, 0, 0));
         btncerrar1.setText("Regresar");
         btncerrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,25 +214,65 @@ public class productos2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
-            // TODO add your handling code here:
-    }//GEN-LAST:event_btneliminarActionPerformed
+     if (datoSeleccionado >= 0) {
+String dato =
+String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 0));
+CRUDProducto producto = new CRUDProducto();
+if (JOptionPane.showConfirmDialog(rootPane,
+"Se eliminará el registro, ¿desea continuar?",
 
+"Eliminar Registro",
+JOptionPane.WARNING_MESSAGE,
+JOptionPane.YES_NO_OPTION)
+== JOptionPane.YES_OPTION) {
+
+producto.eliminar(dato);
+mostrar();
+JOptionPane.showMessageDialog(null,
+"Dato eliminado correctamente");
+}
+} else {
+JOptionPane.showMessageDialog(null,
+"Debe seleccionar un registro de la tabla");
+
+        
+        
+    }//GEN-LAST:event_btneliminarActionPerformed
+    }
     private void btncerrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncerrar1ActionPerformed
    this.dispose();  
-               // TODO add your handling code here:
+              
+   
+   
+   
+   
+   
     }//GEN-LAST:event_btncerrar1ActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
 
-      // TODO add your handling code here:
+         MaskFormatter formatter = null;
+        try {
+            formatter = new MaskFormatter("*************************"); //Definir la mascara
+            formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
+        } catch (ParseException e) {
+            e.printStackTrace();
+        
+        }  
     }//GEN-LAST:event_nombreActionPerformed
 
     private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
+      
+        
+        
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jFormattedTextField2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -235,6 +302,68 @@ char car = evt.getKeyChar();
         
 // TODO add your handling code here:
     }//GEN-LAST:event_nombreKeyTyped
+   
+    private void tablaproductosMouseClicked(java.awt.event.MouseEvent evt){
+        
+        datoSeleccionado = tablaproductos.rowAtPoint(evt.getPoint());
+        
+    }
+    
+    
+    
+    
+    
+    
+    private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
+        
+        
+        if (datoSeleccionado >= 0) {
+            // Obtener los datos de la fila seleccionada
+        
+         Producto = Integer.parseInt((String)this.tablaproductos.getValueAt(datoSeleccionado, 0));
+        String nombreProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 1));
+        String cantidadProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 2));
+        String descripcionProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 3));
+        String categoriaProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 4));    
+         
+        nombre.setText(nombreProducto);
+        cantidad.setText(cantidadProducto);
+        descripcion.setText(descripcionProducto);
+        categoria.setText(categoriaProducto);
+        
+            
+        }
+    }//GEN-LAST:event_btneditarActionPerformed
+
+    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+       try {
+         String nombreProducto = nombre.getText();
+         String cantidadProducto = cantidad.getText();
+         String descripcionProducto = descripcion.getText();
+         String categoriaProducto = categoria.getText();  
+         
+         if (nombreProducto.trim().isEmpty() || cantidadProducto.trim().isEmpty() || descripcionProducto.trim().isEmpty() || categoriaProducto.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Tiene campos vacíos");
+         }else{
+          POJOProducto producto = new POJOProducto( Producto , nombreProducto, cantidadProducto, descripcionProducto, categoriaProducto);    
+          
+          CRUDProducto CRUDProducto = new CRUDProducto();
+          CRUDProducto.actualizar(producto);
+          mostrar();
+          
+          JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
+          limpiarCampos();
+          
+         }
+       }catch (Exception e){
+           JOptionPane.showMessageDialog(null, "Error: " + e);
+         
+       }
+        
+        
+        
+        
+    }//GEN-LAST:event_btnactualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,6 +401,7 @@ char car = evt.getKeyChar();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new productos2().setVisible(true);
             }
@@ -297,8 +427,12 @@ char car = evt.getKeyChar();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JFormattedTextField nombre;
+    private javax.swing.JTable tablaproductos;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarCampos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -10,6 +10,10 @@ package Modelo;
  * @author Milton
  */
 public class POJOProducto {
+<<<<<<< HEAD
+
+    public POJOProducto(int id_producto, String nombre, int cantidad, float precio, String descripcion, int id_proveedor, int id_marca, int id_categoria, float porcentaje_alcohol) {
+=======
   private int id_producto;
     private String nombre;
     private int cantidad;
@@ -21,6 +25,7 @@ public class POJOProducto {
     private int id_categoria;
     
     public POJOProducto(int id_producto, String nombre, int cantidad, double precio, String descripcion, double porcentaje_alcohol, int id_proveedor, int id_marca, int id_categoria) {
+>>>>>>> c301547ebbb5c0141f2e3b1e2206f5339d0636cd
         this.id_producto = id_producto;
         this.nombre = nombre;
         this.cantidad = cantidad;
@@ -31,9 +36,21 @@ public class POJOProducto {
         this.id_marca = id_marca;
         this.id_categoria = id_categoria;
     }
+<<<<<<< HEAD
+
+    public POJOProducto(int Producto, String nombreProducto, String cantidadProducto, String descripcionProducto, String categoriaProducto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+
+
+
+=======
     
     // Getters y setters
     
+>>>>>>> c301547ebbb5c0141f2e3b1e2206f5339d0636cd
     public int getId_producto() {
         return id_producto;
     }
@@ -86,6 +103,18 @@ public class POJOProducto {
         return id_proveedor;
     }
     
+<<<<<<< HEAD
+    int id_producto;
+    String nombre;
+    int cantidad;
+    float precio;
+    String descripcion;
+    int id_proveedor;
+    int id_marca;
+    int id_categoria;
+    float porcentaje_alcohol;
+ 
+=======
     public void setId_proveedor(int id_proveedor) {
         this.id_proveedor = id_proveedor;
     }
@@ -105,4 +134,5 @@ public class POJOProducto {
     public void setId_categoria(int id_categoria) {
         this.id_categoria = id_categoria;
     }
+>>>>>>> c301547ebbb5c0141f2e3b1e2206f5339d0636cd
 }
