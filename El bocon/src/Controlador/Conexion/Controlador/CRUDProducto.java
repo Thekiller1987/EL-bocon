@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -132,6 +132,7 @@ cbst.executeUpdate();
        }
     
        
+<<<<<<< HEAD
        public void Guardar(POJOProducto producto){
            try{
                CallableStatement cbst = cn.prepareCall("{call AgregarProducto(?,?,?,?,?,?,?,?,?)}");
@@ -143,6 +144,24 @@ cbst.executeUpdate();
             cbst.executeUpdate();
            }catch (SQLException e){
                JOptionPane.showMessageDialog(null, e);
+=======
+       public void Guardar(POJOProducto agregarProducto){
+   try {
+        CallableStatement cbst = cn.prepareCall("{call InsertarProducto(?,?,?,?,?,?,?,?,?)}");
+        cbst.setInt(1, agregarProducto.getId_producto());
+        cbst.setString(2, agregarProducto.getNombre());
+        cbst.setInt(3, agregarProducto.getCantidad());
+        cbst.setDouble(4, agregarProducto.getPrecio());
+        cbst.setString(5, agregarProducto.getDescripcion());
+        cbst.setDouble(6, agregarProducto.getPorcentaje_alcohol());
+        cbst.setInt(7, agregarProducto.getId_proveedor());
+        cbst.setInt(8, agregarProducto.getId_marca());
+        cbst.setInt(9, agregarProducto.getId_categoria());
+        cbst.executeUpdate();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+
+>>>>>>> c301547ebbb5c0141f2e3b1e2206f5339d0636cd
            }
        }
        
