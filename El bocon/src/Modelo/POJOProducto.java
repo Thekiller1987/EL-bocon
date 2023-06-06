@@ -10,16 +10,6 @@ package Modelo;
  * @author Milton
  */
 public class POJOProducto {
-    
-    int id_producto;
-    String nombre;
-    int cantidad;
-    float precio;
-    String descripcion;
-    int id_proveedor;
-    int id_marca;
-    int id_categoria;
-    float porcentaje_alcohol;
 
     public POJOProducto(int id_producto, String nombre, int cantidad, float precio, String descripcion, int id_proveedor, int id_marca, int id_categoria, float porcentaje_alcohol) {
         this.id_producto = id_producto;
@@ -32,6 +22,14 @@ public class POJOProducto {
         this.id_categoria = id_categoria;
         this.porcentaje_alcohol = porcentaje_alcohol;
     }
+
+    public POJOProducto(int Producto, String nombreProducto, String cantidadProducto, String descripcionProducto, String categoriaProducto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+
+
 
     public int getId_producto() {
         return id_producto;
@@ -106,6 +104,14 @@ public class POJOProducto {
     }
     
     
-    
-    
+    int id_producto;
+    String nombre;
+    int cantidad;
+    float precio;
+    String descripcion;
+    int id_proveedor;
+    int id_marca;
+    int id_categoria;
+    float porcentaje_alcohol;
+ 
 }
