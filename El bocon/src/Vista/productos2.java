@@ -70,11 +70,11 @@ JOptionPane.showMessageDialog(null, e);
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        categoria = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jFormattedTextField4 = new javax.swing.JFormattedTextField();
+        cantidad = new javax.swing.JFormattedTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        descripcion = new javax.swing.JTextArea();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -186,23 +186,23 @@ JOptionPane.showMessageDialog(null, e);
         });
         getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 350, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        categoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                categoriaActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 210, 30));
+        getContentPane().add(categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 210, 30));
 
         jLabel7.setText("Cantidad");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, -1, -1));
 
-        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        getContentPane().add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 100, -1));
+        cantidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        getContentPane().add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 100, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        descripcion.setColumns(20);
+        descripcion.setRows(5);
+        jScrollPane2.setViewportView(descripcion);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 350, 60));
 
@@ -275,9 +275,9 @@ JOptionPane.showMessageDialog(null,
         
     }//GEN-LAST:event_jFormattedTextField2ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_categoriaActionPerformed
 
     private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
 char car = evt.getKeyChar();
@@ -325,40 +325,12 @@ char car = evt.getKeyChar();
         String cantidadProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 2));
         String descripcionProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 3));
         String categoriaProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 4));    
-         
-        nombre.setText(nombreProducto);
-        cantidad.setText(cantidadProducto);
-        descripcion.setText(descripcionProducto);
-        categoria.setText(categoriaProducto);
-        
-            
-        }
+
+          }
     }//GEN-LAST:event_btneditarActionPerformed
 
     private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
-       try {
-         String nombreProducto = nombre.getText();
-         String cantidadProducto = cantidad.getText();
-         String descripcionProducto = descripcion.getText();
-         String categoriaProducto = categoria.getText();  
-         
-         if (nombreProducto.trim().isEmpty() || cantidadProducto.trim().isEmpty() || descripcionProducto.trim().isEmpty() || categoriaProducto.trim().isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Tiene campos vacíos");
-         }else{
-          POJOProducto producto = new POJOProducto( Producto , nombreProducto, cantidadProducto, descripcionProducto, categoriaProducto);    
-          
-          CRUDProducto CRUDProducto = new CRUDProducto();
-          CRUDProducto.actualizar(producto);
-          mostrar();
-          
-          JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
-          limpiarCampos();
-          
-         }
-       }catch (Exception e){
-           JOptionPane.showMessageDialog(null, "Error: " + e);
-         
-       }
+     
         
         
         
@@ -413,11 +385,12 @@ char car = evt.getKeyChar();
     private javax.swing.JButton btncerrar1;
     private javax.swing.JButton btneditar;
     private javax.swing.JButton btneliminar;
+    private javax.swing.JFormattedTextField cantidad;
+    private javax.swing.JComboBox<String> categoria;
+    private javax.swing.JTextArea descripcion;
     private javax.swing.JLabel fondo;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -427,7 +400,6 @@ char car = evt.getKeyChar();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JFormattedTextField nombre;
     private javax.swing.JTable tablaproductos;
     // End of variables declaration//GEN-END:variables
