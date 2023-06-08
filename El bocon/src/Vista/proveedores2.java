@@ -217,6 +217,11 @@ JOptionPane.showMessageDialog(null, e);
                 jtextbuscarActionPerformed(evt);
             }
         });
+        jtextbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtextbuscarKeyTyped(evt);
+            }
+        });
         getContentPane().add(jtextbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 320, -1));
 
         fondo.setAutoscrolls(true);
@@ -290,20 +295,7 @@ this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_jtextbuscarActionPerformed
 
     private void BTNBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBuscarActionPerformed
-try {
-        DefaultTableModel modelo;
-        CrudProveedor cli = new CrudProveedor();
-
-        if (jtextbuscar.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
-            mostrar();
-        } else {
-            modelo = cli.buscarDatos(jtextbuscar.getText());
-            tablaproveedores.setModel(modelo);
-        }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, e);
-    }        // TODO add your handling code here:
+    // TODO add your handling code here:
     }//GEN-LAST:event_BTNBuscarActionPerformed
 
     private void tablaproveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproveedoresMouseClicked
@@ -363,6 +355,22 @@ try {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnactualizarActionPerformed
+
+    private void jtextbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtextbuscarKeyTyped
+try {
+        DefaultTableModel modelo;
+        CrudProveedor cli = new CrudProveedor();
+
+        if (jtextbuscar.getText().equals("")) {
+            mostrar();
+        } else {
+            modelo = cli.buscarDatos(jtextbuscar.getText());
+            tablaproveedores.setModel(modelo);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+    }            // TODO add your handling code here:
+    }//GEN-LAST:event_jtextbuscarKeyTyped
 
     /**
      * @param args the command line arguments

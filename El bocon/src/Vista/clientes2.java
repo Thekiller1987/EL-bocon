@@ -76,7 +76,6 @@ public void mostrar(){
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextDireccion = new javax.swing.JTextArea();
-        Buscar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -228,7 +227,12 @@ public void mostrar(){
                 buscarActionPerformed(evt);
             }
         });
-        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 290, -1));
+        buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                buscarKeyTyped(evt);
+            }
+        });
+        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 350, -1));
 
         jLabel5.setText("Direccion");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, -1, -1));
@@ -238,16 +242,6 @@ public void mostrar(){
         jScrollPane2.setViewportView(jTextDireccion);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 350, 40));
-
-        Buscar.setForeground(new java.awt.Color(153, 153, 153));
-        Buscar.setText("Buscar");
-        Buscar.setToolTipText("");
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 60, -1));
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -355,6 +349,7 @@ try {
         }
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, e);
+        mostrar();
     }          // TODO add your handling code here:
  try {
 DefaultTableModel modelo;
@@ -452,13 +447,12 @@ limpiarCampos();
             // TODO add your handling code here:
     }//GEN-LAST:event_btnactualizarActionPerformed
 
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-try {
+    private void buscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarKeyTyped
+        // TODO add your handling code here:
+        try {
         DefaultTableModel modelo;
         CRUDCliente cli = new CRUDCliente();
-
         if (buscar.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
             mostrar();
         } else {
             modelo = cli.buscarDatos(buscar.getText());
@@ -467,9 +461,7 @@ try {
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, e);       
               }
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_BuscarActionPerformed
+    }//GEN-LAST:event_buscarKeyTyped
 
     /**
      * @param args the command line arguments
@@ -510,7 +502,6 @@ try {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Buscar;
     private javax.swing.JFormattedTextField Numero;
     private javax.swing.JTable Tablaclientes;
     private javax.swing.JFormattedTextField apellido;
