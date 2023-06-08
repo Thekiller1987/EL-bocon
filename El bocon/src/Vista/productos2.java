@@ -320,7 +320,7 @@ char car = evt.getKeyChar();
         if (datoSeleccionado >= 0) {
             // Obtener los datos de la fila seleccionada
         
-         Producto = Integer.parseInt((String)this.tablaproductos.getValueAt(datoSeleccionado, 0));
+        Producto = Integer.parseInt((String)this.tablaproductos.getValueAt(datoSeleccionado, 0));
         String nombreProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 1));
         String cantidadProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 2));
         String descripcionProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 3));

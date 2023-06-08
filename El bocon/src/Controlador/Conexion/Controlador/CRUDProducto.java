@@ -118,9 +118,9 @@ cbst.executeUpdate();
             cbst.setInt(producto.getId_producto(), 1);
             cbst.setString(2, producto.getNombre());
             cbst.setInt(producto.getCantidad(),3);
-            cbst.setFloat(4, producto.getPrecio());
+            cbst.setFloat(4, (float) producto.getPrecio());
             cbst.setString(5, producto.getDescripcion());
-            cbst.setFloat(6, producto.getPorcentaje_alcohol());
+            cbst.setFloat(6, (float) producto.getPorcentaje_alcohol());
             cbst.setInt(7, producto.getId_proveedor());
             cbst.setInt(8, producto.getId_marca());
             cbst.setInt(9, producto.getId_categoria());
@@ -132,40 +132,25 @@ cbst.executeUpdate();
        }
     
        
-<<<<<<< HEAD
+
        public void Guardar(POJOProducto producto){
            try{
-               CallableStatement cbst = cn.prepareCall("{call AgregarProducto(?,?,?,?,?,?,?,?,?)}");
+            CallableStatement cbst = cn.prepareCall("{call InsertarProducto(?,?,?,?,?,?,?,?,?)}");
             cbst.setString(1, producto.getNombre());
             cbst.setInt(2, producto.getCantidad());
             cbst.setString(3, producto.getDescripcion());
-            cbst.setFloat(4, producto.getPrecio());
-            cbst.setFloat(5, producto.getPorcentaje_alcohol());
+            cbst.setFloat(4, (float) producto.getPrecio());
+            cbst.setFloat(5, (float) producto.getPorcentaje_alcohol());
             cbst.executeUpdate();
            }catch (SQLException e){
                JOptionPane.showMessageDialog(null, e);
-=======
-       public void Guardar(POJOProducto agregarProducto){
-   try {
-        CallableStatement cbst = cn.prepareCall("{call InsertarProducto(?,?,?,?,?,?,?,?,?)}");
-        cbst.setInt(1, agregarProducto.getId_producto());
-        cbst.setString(2, agregarProducto.getNombre());
-        cbst.setInt(3, agregarProducto.getCantidad());
-        cbst.setDouble(4, agregarProducto.getPrecio());
-        cbst.setString(5, agregarProducto.getDescripcion());
-        cbst.setDouble(6, agregarProducto.getPorcentaje_alcohol());
-        cbst.setInt(7, agregarProducto.getId_proveedor());
-        cbst.setInt(8, agregarProducto.getId_marca());
-        cbst.setInt(9, agregarProducto.getId_categoria());
-        cbst.executeUpdate();
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, e);
-
->>>>>>> c301547ebbb5c0141f2e3b1e2206f5339d0636cd
            }
        }
        
+   
        
+       
+
         public boolean verificarDatos(String dato){
              ResultSet rs;
              try{

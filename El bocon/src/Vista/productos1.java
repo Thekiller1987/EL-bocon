@@ -7,7 +7,6 @@ package Vista;
 import Controlador.Conexion.Controlador.CRUDProducto;
 import Controlador.Conexion.Controlador.CrudProveedor;
 import Modelo.POJOProducto;
-import Modelo.POJOProveedor;
 import java.awt.List;
 import java.awt.event.KeyEvent;
 import static java.awt.image.ImageObserver.PROPERTIES;
@@ -225,9 +224,35 @@ char car = evt.getKeyChar();
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
 
+        String nombre = Nombre.getText();
+        String descripcion = Descripcion.getText();
+        double precio = Precio.getText();
+        int cantidad = Cantidad.getText();
+        double porcentaje_alcohol = Porcentaje_alcohol.getText();
+        
+         // Crear un objeto del producto con los datos ingresados
+         
+         POJOProducto producto = new POJOProducto(PROPERTIES, Nombre.getText(), Descripcion.getText(), Precio.getText(), Cantidad.getText(), Porcentaje_alcohol.getText());
+         
+           // Crear una instancia del CRUDProducto
+           
+           CRUDProducto CRUDProducto =  new CRUDProducto();
+           
+           // Llamar al método Guardar del CRUDProducto para guardar el producto en la base de datos
+           
+           CRUDProducto.Guardar(producto);
+           
+           // Limpiar los campos del formulario
+           
+          limpiarCampos();
+          
+           // Mostrar un mensaje de éxito
+           
+           JOptionPane.showMessageDialog(null, "Producto guardado correctamente");
+           
 
  
- // TODO add your handling code here:
+ 
     }//GEN-LAST:event_btnguardarActionPerformed
 
     /**
