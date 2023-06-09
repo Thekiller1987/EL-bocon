@@ -174,26 +174,40 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   String usuario = txtlogin.getText();
-String contrasena = new String(txtlpasword.getPassword());
+String usuario = txtlogin.getText();
+    String contrasena = new String(txtlpasword.getPassword());
 
-// Realizar la validación del usuario y contraseña
-if (validarUsuario(usuario, contrasena)) {
-    // Acceso concedido, redirigir a la ventana principal
-    JOptionPane.showMessageDialog(null, "Acceso concedido");
-    // código para abrir la ventana principal
-    try {
-        lobby panel2 = new lobby()
-                ;
-        panel2.setVisible(true);
-  
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }     
-} else {
-    // Acceso denegado, mostrar mensaje de error
-    JOptionPane.showMessageDialog(null, "Acceso denegado");
-}
+    // Realizar la validación del usuario y contraseña
+    int nivelAcceso = validarUsuario(usuario, contrasena);
+
+    if (nivelAcceso > 0) {
+        // Acceso concedido, redirigir a la ventana principal según el nivel de acceso
+        JOptionPane.showMessageDialog(null, "Acceso concedido");
+
+        if (nivelAcceso >= 10) {
+            // Nivel de acceso mayor o igual a 10, redirigir a lobby2
+            try {
+                lobby2 panel2 = new lobby2();
+                panel2.setVisible(true);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else if (nivelAcceso == 5) {
+            // Nivel de acceso igual a 5, redirigir a lobby
+            try {   
+                lobby panel2 = new lobby();
+                panel2.setVisible(true);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            // Otro nivel de acceso, mostrar mensaje de error
+            JOptionPane.showMessageDialog(null, "Nivel de acceso inválido");
+        }
+    } else {
+        // Acceso denegado, mostrar mensaje de error
+        JOptionPane.showMessageDialog(null, "Contraseña o Usuario Incorrecto");
+    }
 
 
             // TODO add your handling code here:
@@ -265,7 +279,7 @@ if (validarUsuario(usuario, contrasena)) {
     private javax.swing.JTextField txtlogin;
     private javax.swing.JPasswordField txtlpasword;
     // End of variables declaration//GEN-END:variables
-   private boolean validarUsuario(String usuario, String contrasena) {
+private int validarUsuario(String usuario, String contrasena) {
     Connection cn = null;
     CallableStatement cs = null;
     ResultSet rs = null;
@@ -284,13 +298,12 @@ if (validarUsuario(usuario, contrasena)) {
         cs.execute();
 
         // Obtener el valor del parámetro de salida
-        int loginSuccess = cs.getInt(3);
+        int nivelAcceso = cs.getInt(3);
 
-        // Si el valor de loginSuccess es 1, el usuario y la contraseña son válidos
-        return loginSuccess == 1;
+        return nivelAcceso;
     } catch (SQLException ex) {
         Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-        return false;
+        return 0;
     } finally {
         // Cerrar recursos
         if (rs != null) {

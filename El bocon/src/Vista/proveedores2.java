@@ -109,11 +109,6 @@ JOptionPane.showMessageDialog(null, e);
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        Numero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NumeroActionPerformed(evt);
-            }
-        });
         getContentPane().add(Numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 350, 30));
 
         btneliminar.setForeground(new java.awt.Color(255, 0, 0));
@@ -135,6 +130,7 @@ JOptionPane.showMessageDialog(null, e);
         getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 100, 40));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Editar Proveedor");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 360, -1));
 
@@ -175,6 +171,7 @@ JOptionPane.showMessageDialog(null, e);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 560, 120));
 
+        btncerrar1.setForeground(new java.awt.Color(0, 0, 0));
         btncerrar1.setText("Regresar");
         btncerrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,6 +215,11 @@ JOptionPane.showMessageDialog(null, e);
         jtextbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtextbuscarActionPerformed(evt);
+            }
+        });
+        jtextbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtextbuscarKeyTyped(evt);
             }
         });
         getContentPane().add(jtextbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 320, -1));
@@ -293,20 +295,7 @@ this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_jtextbuscarActionPerformed
 
     private void BTNBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNBuscarActionPerformed
-try {
-        DefaultTableModel modelo;
-        CrudProveedor cli = new CrudProveedor();
-
-        if (jtextbuscar.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
-            mostrar();
-        } else {
-            modelo = cli.buscarDatos(jtextbuscar.getText());
-            tablaproveedores.setModel(modelo);
-        }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, e);
-    }        // TODO add your handling code here:
+    // TODO add your handling code here:
     }//GEN-LAST:event_BTNBuscarActionPerformed
 
     private void tablaproveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproveedoresMouseClicked
@@ -367,9 +356,21 @@ try {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnactualizarActionPerformed
 
-    private void NumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NumeroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NumeroActionPerformed
+    private void jtextbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtextbuscarKeyTyped
+try {
+        DefaultTableModel modelo;
+        CrudProveedor cli = new CrudProveedor();
+
+        if (jtextbuscar.getText().equals("")) {
+            mostrar();
+        } else {
+            modelo = cli.buscarDatos(jtextbuscar.getText());
+            tablaproveedores.setModel(modelo);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+    }            // TODO add your handling code here:
+    }//GEN-LAST:event_jtextbuscarKeyTyped
 
     /**
      * @param args the command line arguments

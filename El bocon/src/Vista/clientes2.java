@@ -76,7 +76,6 @@ public void mostrar(){
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextDireccion = new javax.swing.JTextArea();
-        Buscar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,19 +115,7 @@ public void mostrar(){
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-<<<<<<< HEAD
-        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 350, -1));
-
-        jFormattedTextField4.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0%"))));
-        jFormattedTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jFormattedTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 70, -1));
-=======
         getContentPane().add(Numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, 350, -1));
->>>>>>> c301547ebbb5c0141f2e3b1e2206f5339d0636cd
 
         btneliminar.setForeground(new java.awt.Color(255, 0, 0));
         btneliminar.setText("Eliminar");
@@ -149,6 +136,7 @@ public void mostrar(){
         getContentPane().add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 420, 100, 40));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Editar Cliente");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 360, -1));
 
@@ -187,6 +175,7 @@ public void mostrar(){
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, 560, 120));
 
+        btncerrar1.setForeground(new java.awt.Color(0, 0, 0));
         btncerrar1.setText("Regresar");
         btncerrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,17 +217,7 @@ public void mostrar(){
             }
         });
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 350, 30));
-<<<<<<< HEAD
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 350, -1));
-=======
         getContentPane().add(correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 350, -1));
->>>>>>> c301547ebbb5c0141f2e3b1e2206f5339d0636cd
 
         jLabel7.setText("Correo");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
@@ -248,7 +227,12 @@ public void mostrar(){
                 buscarActionPerformed(evt);
             }
         });
-        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 290, -1));
+        buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                buscarKeyTyped(evt);
+            }
+        });
+        getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 350, -1));
 
         jLabel5.setText("Direccion");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 350, -1, -1));
@@ -258,16 +242,6 @@ public void mostrar(){
         jScrollPane2.setViewportView(jTextDireccion);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 350, 40));
-
-        Buscar.setForeground(new java.awt.Color(153, 153, 153));
-        Buscar.setText("Buscar");
-        Buscar.setToolTipText("");
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 50, 60, -1));
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -375,6 +349,7 @@ try {
         }
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, e);
+        mostrar();
     }          // TODO add your handling code here:
  try {
 DefaultTableModel modelo;
@@ -415,15 +390,6 @@ JOptionPane.showMessageDialog(null,
 }        // TODO add your handling code here:
     }//GEN-LAST:event_TablaclientesMouseClicked
 
-<<<<<<< HEAD
-    private void jFormattedTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField4ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-=======
     private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
     int datoSeleccionado = Tablaclientes.getSelectedRow();
     if (datoSeleccionado >= 0) {
@@ -457,7 +423,7 @@ try {
     String nom = nombre.getText();
     String ape = apellido.getText();
     String cor = correo.getText();
-String num = Numero.getText();
+    String num = Numero.getText();
     String dir = jTextDireccion.getText();
 
   
@@ -481,13 +447,12 @@ limpiarCampos();
             // TODO add your handling code here:
     }//GEN-LAST:event_btnactualizarActionPerformed
 
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-try {
+    private void buscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buscarKeyTyped
+        // TODO add your handling code here:
+        try {
         DefaultTableModel modelo;
         CRUDCliente cli = new CRUDCliente();
-
         if (buscar.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
             mostrar();
         } else {
             modelo = cli.buscarDatos(buscar.getText());
@@ -496,10 +461,7 @@ try {
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, e);       
               }
-        
-// TODO add your handling code here:
-    }//GEN-LAST:event_BuscarActionPerformed
->>>>>>> c301547ebbb5c0141f2e3b1e2206f5339d0636cd
+    }//GEN-LAST:event_buscarKeyTyped
 
     /**
      * @param args the command line arguments
@@ -540,7 +502,6 @@ try {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Buscar;
     private javax.swing.JFormattedTextField Numero;
     private javax.swing.JTable Tablaclientes;
     private javax.swing.JFormattedTextField apellido;

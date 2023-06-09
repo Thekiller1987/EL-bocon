@@ -186,7 +186,7 @@ char car = evt.getKeyChar();
     }//GEN-LAST:event_NombreKeyTyped
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-String nombre = Nombre.getText();
+    String nombre = Nombre.getText();
     String marca = Marca.getText();
     String ruc = Ruc.getText();
     String telefono = Numero.getText();

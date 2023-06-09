@@ -4,11 +4,23 @@
  */
 package Vista;
 
+
+import Controlador.Conexion.Controlador.CRUDFacturacion;
+import Modelo.POJOFacturacion;
+import java.awt.event.KeyEvent;
+import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author waska
  */
 public class ventas extends javax.swing.JFrame {
+
+    public Object Cantidad;
+
+    
 
     /**
      * Creates new form ventas
@@ -35,7 +47,7 @@ public class ventas extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaventas = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -57,13 +69,11 @@ public class ventas extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 240, 140, 50));
 
-        buscartxt.setBackground(new java.awt.Color(255, 255, 255));
         buscartxt.setText("Buscar");
         getContentPane().add(buscartxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 700, 40));
 
         jButton2.setBackground(new java.awt.Color(115, 112, 166));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +104,7 @@ public class ventas extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 140, 50));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaventas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -113,14 +123,24 @@ public class ventas extends javax.swing.JFrame {
                 "Codigo", "Nombre", "Desccripcion", "Cantidad", "Precio"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaventas);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 990, 380));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 210, 30));
 
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
+        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 140, 70, 30));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -150,8 +170,26 @@ this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+    
+        
+      
+      
+    
+    
+    
+        
+        
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+       
+        
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,6 +238,6 @@ this.dispose();         // TODO add your handling code here:
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaventas;
     // End of variables declaration//GEN-END:variables
 }
