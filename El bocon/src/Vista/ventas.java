@@ -6,11 +6,14 @@ package Vista;
 
 
 import Controlador.Conexion.Controlador.CRUDFacturacion;
+import Controlador.Conexion.Controlador.CRUDProducto;
 import Modelo.POJOFacturacion;
 import java.awt.event.KeyEvent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import Modelo.POJOCategoria;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,11 +29,32 @@ public class ventas extends javax.swing.JFrame {
      * Creates new form ventas
      */
     public ventas() {
-        initComponents(); setExtendedState(MAXIMIZED_BOTH);     
+        initComponents(); setExtendedState(MAXIMIZED_BOTH);   
+        llenarPOJOCategoria();
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/vista.png");
 
         
     }
+    
+    public void llenarPOJOCategoria(){
+        CRUDProducto producto = new CRUDProducto();
+     ArrayList<POJOCategoria> listaPOJOCategoria = producto.mostrarDatosCombo();
+     jComboCategoria.removeAllItems();
+     for (int i = 0; i < listaPOJOCategoria.size(); i++){
+     jComboCategoria.addItem(new POJOCategoria(
+             listaPOJOCategoria.get(i).getId_categoria(),
+             listaPOJOCategoria.get(i).getNombre()));
+    }
+    
+     
+     
+    
+    }
+    
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,7 +72,7 @@ public class ventas extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaventas = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboCategoria = new javax.swing.JComboBox<>();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -127,13 +151,12 @@ public class ventas extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 990, 380));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jComboCategoriaActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 210, 30));
+        getContentPane().add(jComboCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 210, 30));
 
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -181,11 +204,11 @@ this.dispose();         // TODO add your handling code here:
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jComboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboCategoriaActionPerformed
        
         
         
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jComboCategoriaActionPerformed
 
     private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
         // TODO add your handling code here:
@@ -233,7 +256,7 @@ this.dispose();         // TODO add your handling code here:
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<POJOCategoria> jComboCategoria;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

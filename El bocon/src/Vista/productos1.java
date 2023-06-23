@@ -5,11 +5,17 @@
 package Vista;
 
 import Controlador.Conexion.Controlador.CRUDProducto;
+import Controlador.Conexion.Controlador.CrudProveedor;
 import Modelo.POJOProducto;
 import java.awt.List;
 import java.awt.event.KeyEvent;
 import static java.awt.image.ImageObserver.PROPERTIES;
 import javax.swing.JOptionPane;
+import Modelo.POJOCategoria;
+import Modelo.POJOMarca;
+import java.util.ArrayList;
+import Modelo.POJOProveedor;
+import java.math.BigDecimal;
 
 
 /**
@@ -18,16 +24,82 @@ import javax.swing.JOptionPane;
  */
 public class productos1 extends javax.swing.JFrame {
 
+    int datoSeleccionado = -1;
+    int Producto;    
+    
+    
     /**
      * Creates new form prueba
      */
     public productos1() {
-       
+        
         initComponents();
+        llenarPOJOCategoria();
+        llenarPOJOProveedor();
  setExtendedState(MAXIMIZED_BOTH);
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
 
 }
+    
+    
+    public void llenarPOJOCategoria(){
+        
+     CRUDProducto producto = new CRUDProducto();
+     ArrayList<POJOCategoria> listaPOJOCategoria = producto.mostrarDatosCombo();
+     jComboCategoria.removeAllItems();
+     for (int i = 0; i < listaPOJOCategoria.size(); i++){
+     jComboCategoria.addItem(new POJOCategoria(
+             listaPOJOCategoria.get(i).getId_categoria(),
+             listaPOJOCategoria.get(i).getNombre()));
+        
+    }
+    
+    }
+    
+    public void llenarPOJOProveedor(){
+        
+        CrudProveedor proveedor = new CrudProveedor();
+        ArrayList<POJOProveedor> listaPOJOProveedor = proveedor.mostrarDatosCombo();
+        jComboProveedor.removeAllItems();
+        for (int i = 0; i < listaPOJOProveedor.size(); i++){
+            jComboProveedor.addItem(new POJOProveedor(
+             listaPOJOProveedor.get(i).getIdProveedor(),
+             listaPOJOProveedor.get(i).getNombre()));
+                   
+        }
+        
+    }
+
+    
+    public void GuardaProductos(){
+        CRUDProducto producto = new CRUDProducto();
+        
+        //Obtener el id de categoria seleccionada de combox
+        
+        POJOProducto categoriaSeleccionada = (POJOProducto) jComboCategoria.getSelectedItem();
+        
+        int Id_categoria = categoriaSeleccionada.getId_categoria();
+        
+        POJOProveedor proverdorSeleccionada = (POJOProveedor) jComboProveedor.getSelectedItem();
+        
+        int idProveedor = proverdorSeleccionada.getIdProveedor();
+        
+        POJOMarca marcaSeleccionada = (POJOMarca) jCombomarca.getSelectedItem();
+        
+        int id_marca = marcaSeleccionada.getId_marca();
+        
+        POJOProducto pr;
+        pr = new POJOProducto(TextNombre.getText(),
+                               Integer.parseInt(textcant.getText()),
+                Double.parseDouble(TextPC.getText()),
+                textDesc.getText(), 
+                Double.parseDouble(alcohol.getText()),
+                idProveedor,
+                id_marca,
+                Id_categoria);
+                
+    }
+    
 
     /** 
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +121,7 @@ public class productos1 extends javax.swing.JFrame {
         TextNombre = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         TextPC = new javax.swing.JFormattedTextField();
-        Categoria = new javax.swing.JComboBox<>();
+        jComboCategoria = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         textcant = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -57,8 +129,9 @@ public class productos1 extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         alcohol = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboProveedor = new javax.swing.JComboBox<>();
         fondo = new javax.swing.JLabel();
+        jCombomarca = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -108,7 +181,6 @@ public class productos1 extends javax.swing.JFrame {
         getContentPane().add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 580, 130, 70));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Agregar Producto");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 360, -1));
 
@@ -140,13 +212,12 @@ public class productos1 extends javax.swing.JFrame {
         });
         getContentPane().add(TextPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 350, -1));
 
-        Categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bebida Alcoholica", "Bebida  No Alcoholica", "Snack" }));
-        Categoria.addActionListener(new java.awt.event.ActionListener() {
+        jComboCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CategoriaActionPerformed(evt);
+                jComboCategoriaActionPerformed(evt);
             }
         });
-        getContentPane().add(Categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 210, 30));
+        getContentPane().add(jComboCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 210, 30));
 
         jLabel7.setText("Cantidad");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, -1, -1));
@@ -169,16 +240,23 @@ public class productos1 extends javax.swing.JFrame {
         jLabel9.setText("Proveedor");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 210, -1));
+        jComboProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboProveedorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 210, -1));
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -10, 1590, 970));
 
+        jCombomarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jCombomarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void TextPVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextPVActionPerformed
@@ -191,9 +269,9 @@ this.dispose();       // TODO add your handling code here:
        // TODO add your handling code here:
     }//GEN-LAST:event_TextNombreActionPerformed
 
-    private void CategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoriaActionPerformed
+    private void jComboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboCategoriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CategoriaActionPerformed
+    }//GEN-LAST:event_jComboCategoriaActionPerformed
 
     private void TextPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPCActionPerformed
         // TODO add your handling code here:
@@ -222,10 +300,13 @@ char car = evt.getKeyChar();
     }//GEN-LAST:event_TextNombreKeyTyped
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
-        CRUDProducto producto = new CRUDProducto
+
         
         
-           // Crear una instancia del CRUDProducto
+        
+        
+           // Crear un objeto del proveedor con los datos ingresados
+           
            
           
            // Llamar al método Guardar del CRUDProducto para guardar el producto en la base de datos
@@ -241,8 +322,14 @@ char car = evt.getKeyChar();
            
 
  
- 
+                       
     }//GEN-LAST:event_btnguardarActionPerformed
+
+    private void jComboProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboProveedorActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_jComboProveedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,7 +370,6 @@ char car = evt.getKeyChar();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JComboBox<String> Categoria;
     public javax.swing.JFormattedTextField TextNombre;
     public javax.swing.JFormattedTextField TextPC;
     private javax.swing.JFormattedTextField TextPV;
@@ -291,7 +377,9 @@ char car = evt.getKeyChar();
     private javax.swing.JButton btncerrar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JLabel fondo;
-    private javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<POJOCategoria> jComboCategoria;
+    private javax.swing.JComboBox<POJOProveedor> jComboProveedor;
+    private javax.swing.JComboBox<String> jCombomarca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -311,7 +399,7 @@ private void limpiarCampos() {
     textDesc.setText("");
     TextPC.setText("");
     TextPV.setText("");
-    Categoria.setSelectedIndex(0);
+    jComboCategoria.setSelectedIndex(0);
     textcant.setText("");
     alcohol.setText("");
 }

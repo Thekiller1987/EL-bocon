@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 import Modelo.POJOProducto;
+import Modelo.POJOCategoria;
+import java.util.ArrayList;
 
 
 /**
@@ -21,9 +23,8 @@ import Modelo.POJOProducto;
  */
 public class productos2 extends javax.swing.JFrame {
 
-    
     int datoSeleccionado = -1;
-     int Producto;
+    int Producto;
     
     /**
      * Creates new form prueba
@@ -31,6 +32,7 @@ public class productos2 extends javax.swing.JFrame {
     public productos2() {
        
         initComponents();
+        llenarPOJOCategoria();
  setExtendedState(MAXIMIZED_BOTH);
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
  
@@ -45,7 +47,22 @@ tablaproductos.setModel(modelo);
 JOptionPane.showMessageDialog(null, e);
 }
  
-    }
+ 
+ }
+ 
+ public void llenarPOJOCategoria(){
+     
+     CRUDProducto producto = new CRUDProducto();
+     ArrayList<POJOCategoria> listaPOJOCategoria = producto.mostrarDatosCombo();
+     jComboCategoria.removeAllItems();
+     for (int i = 0; i < listaPOJOCategoria.size(); i++){
+     jComboCategoria.addItem(new POJOCategoria(
+             listaPOJOCategoria.get(i).getId_categoria(),
+             listaPOJOCategoria.get(i).getNombre()));
+     }
+
+ 
+ }
 
     /** 
      * This method is called from within the constructor to initialize the form.
@@ -68,10 +85,10 @@ JOptionPane.showMessageDialog(null, e);
         nombre = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        preciov = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        categoria = new javax.swing.JComboBox<>();
+        precio = new javax.swing.JFormattedTextField();
+        jComboCategoria = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         cantidad = new javax.swing.JFormattedTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -168,32 +185,31 @@ JOptionPane.showMessageDialog(null, e);
         jLabel4.setText("Categoria");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 110, 30));
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+        preciov.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        preciov.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
+                preciovActionPerformed(evt);
             }
         });
-        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 350, -1));
+        getContentPane().add(preciov, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 350, -1));
 
         jLabel5.setText("Precio de venta");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
 
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jFormattedTextField2.addActionListener(new java.awt.event.ActionListener() {
+        precio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        precio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField2ActionPerformed(evt);
+                precioActionPerformed(evt);
             }
         });
-        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 350, -1));
+        getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 350, -1));
 
-        categoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        categoria.addActionListener(new java.awt.event.ActionListener() {
+        jComboCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoriaActionPerformed(evt);
+                jComboCategoriaActionPerformed(evt);
             }
         });
-        getContentPane().add(categoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 210, 30));
+        getContentPane().add(jComboCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 210, 30));
 
         jLabel7.setText("Cantidad");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, -1, -1));
@@ -262,23 +278,27 @@ JOptionPane.showMessageDialog(null,
         }  
     }//GEN-LAST:event_nombreActionPerformed
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+    private void preciovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preciovActionPerformed
       
         
         
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+    }//GEN-LAST:event_preciovActionPerformed
 
-    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
+    private void precioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioActionPerformed
         
         
         
         
         
-    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
+    }//GEN-LAST:event_precioActionPerformed
 
-    private void categoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_categoriaActionPerformed
+    private void jComboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboCategoriaActionPerformed
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jComboCategoriaActionPerformed
 
     private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
 char car = evt.getKeyChar();
@@ -334,7 +354,7 @@ char car = evt.getKeyChar();
          nombre.setText(nombreProducto);
          cantidad.setText(cantidadProducto);
          descripcion.setText(descripcionProducto);
-         categoria.setToolTipText(categoriaProducto);
+         jComboCategoria.setToolTipText(categoriaProducto);
          
          } else {
         JOptionPane.showMessageDialog(null, "Debe seleccionar un registro para actualizar");
@@ -344,36 +364,27 @@ char car = evt.getKeyChar();
 
     private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
      
-        try{
-            String nom = nombre.getText();
-            String cant = cantidad.getText();
-            String desc = descripcion.getText();
-            Object cat = categoria.getSelectedItem();
-            
-            
-             // Verificar si hay campos vacíos
-            if (nom.isEmpty() || cant.isEmpty() || desc.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+        CRUDProducto producto = new CRUDProducto();
         
-        }else{
-                
-                POJOProducto producto = new POJOProducto(nom, cant, desc, cat);
-                
-                 // Crear una instancia de la clase CRUDCliente
-                CRUDProducto CRUDProducto = new CRUDProducto();
-                CRUDProducto.actualizar(producto);
-                mostrar();
-                
+        try{
+            if (nombre.getText().equals("")
+            || descripcion.getText().equals("")
+            || precio.getText().equals("")
+            || cantidad.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Tiene datos vacios");
+            }else{
+                EditarProducto();
                 limpiarCampos();
-                JOptionPane.showMessageDialog(null, "Producto actualizado exitosamente");
-                
-           
+                Mostrar();
+                JOptionPane.showMessageDialog(null, "Datos actualizados");
             }
             
-        } catch (Exception e){
-         JOptionPane.showMessageDialog(null, e);
-        
+            
+        }catch (HeadlessException e){
+             JOptionPane.showMessageDialog(null, "Error: "+ e);
         }
+     
+        
     }//GEN-LAST:event_btnactualizarActionPerformed
 
     /**
@@ -425,11 +436,9 @@ char car = evt.getKeyChar();
     private javax.swing.JButton btneditar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JFormattedTextField cantidad;
-    private javax.swing.JComboBox<String> categoria;
     private javax.swing.JTextArea descripcion;
     private javax.swing.JLabel fondo;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JComboBox<POJOCategoria> jComboCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -440,10 +449,20 @@ char car = evt.getKeyChar();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JFormattedTextField nombre;
+    private javax.swing.JFormattedTextField precio;
+    private javax.swing.JFormattedTextField preciov;
     private javax.swing.JTable tablaproductos;
     // End of variables declaration//GEN-END:variables
 
     private void limpiarCampos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void Mostrar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void EditarProducto() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

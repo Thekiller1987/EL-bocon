@@ -34,13 +34,17 @@ public class POJOProducto {
         this.porcentaje_alcohol = porcentaje_alcohol;
     }
 
-    public POJOProducto(int Producto, String nombreProducto, String cantidadProducto, String descripcionProducto, String categoriaProducto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public POJOProducto(String nombre, int cantidad, double precio, String descripcion, double porcentaje_alcohol, int id_proveedor, int id_marca, int id_categoria) {
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.porcentaje_alcohol = porcentaje_alcohol;
+        this.id_proveedor = id_proveedor;
+        this.id_marca = id_marca;
+        this.id_categoria = id_categoria;
     }
 
-    public POJOProducto(String nom, String cant, String desc, Object cat) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public int getId_producto() {
         return id_producto;

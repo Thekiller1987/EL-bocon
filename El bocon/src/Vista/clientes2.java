@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
+
+
 /**
  *
  * @author waska
@@ -394,15 +396,15 @@ JOptionPane.showMessageDialog(null,
     int datoSeleccionado = Tablaclientes.getSelectedRow();
     if (datoSeleccionado >= 0) {
         String idCliente = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 0));
-        String nombre = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 1));
-        String apellido = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 2));
+        String nombres = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 1));
+        String apellidos = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 2));
         String correo = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 3));
-         String telefono = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 4));
+        String telefono = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 4));
         String direccion = String.valueOf(Tablaclientes.getValueAt(datoSeleccionado, 5));
 
         
-        this.nombre.setText(nombre);
-        this.apellido.setText(apellido);
+        this.nombre.setText(nombres);
+        this.apellido.setText(apellidos);
         this.correo.setText(correo);
         this.jTextDireccion.setText(direccion);
         this.Numero.setText(telefono);

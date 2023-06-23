@@ -2,17 +2,36 @@ package Controlador.Conexion.Controlador;
 
 import Controlador.Conexion.conexion;
 import Modelo.POJOProveedor;
-import Vista.proveedores1;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class CrudProveedor {
     private final conexion con = new conexion();
     private final Connection cn = (Connection) con.conectar();
+    
+    
+    public ArrayList mostrarDatosCombo(){
+        
+        ArrayList<POJOProveedor> proveedor = new ArrayList();
+        try{
+             CallableStatement cbstc = cn.prepareCall("{call llenarProveedor}");
+            ResultSet rs = cbstc.executeQuery();
+             while (rs.next()) {
+                 POJOProveedor prov = new POJOProveedor();
+                 prov.setIdProveedor(Integer.parseInt(rs.getString("Id_proveedor")));
+                 prov.setNombre(rs.getString("NombreProveedor"));
+                 proveedor.add(prov);
+             }
+        }catch(SQLException e){
+             JOptionPane.showMessageDialog(null, e);
+        }
+        return proveedor;
+    }
 
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;

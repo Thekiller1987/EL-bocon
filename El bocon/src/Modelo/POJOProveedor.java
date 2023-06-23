@@ -20,6 +20,14 @@ public class POJOProveedor {
         this.numero = numero;
     }
 
+    public POJOProveedor() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public POJOProveedor(int idProveedor, String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public int getIdProveedor() {
         return idProveedor;
     }
@@ -67,6 +75,8 @@ public class POJOProveedor {
      String ruc;
      String numero;
 
-
-  
+ @Override
+    public String toString(){
+     return  idProveedor +" - "+ nombre;
+    }
 }

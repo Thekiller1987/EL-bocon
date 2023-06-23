@@ -13,6 +13,9 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
+import java.util.ArrayList;
+import Modelo.POJOCategoria;
+
 
 
 /**
@@ -27,12 +30,36 @@ public class CRUDProducto {
      private final conexion con = new conexion();
     private final Connection cn = (Connection)con.conectar();
     
+    public ArrayList mostrarDatosCombo(){
+        
+        ArrayList<POJOCategoria> Categorias = new ArrayList();
+        
+        try{
+            CallableStatement cbstc = cn.prepareCall("{call llenarCategorias}");
+            ResultSet rs = cbstc.executeQuery();
+            while (rs.next()) {
+                POJOCategoria cat = new POJOCategoria();
+                cat.setId_categoria(String.valueOf(Integer.parseInt(rs.getString("IdCategoria"))));
+                cat.setNombre(rs.getString("nombreCategoria"));
+                Categorias.add(cat);
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return Categorias;
+    }
+    
+    
+
+    
+    
+    
     public DefaultTableModel mostrarDatos(){
         ResultSet rs;
         DefaultTableModel modelo;
         String[] titulos = {"id_producto", "nombre", "cantidad", "precio", "descripcion","porcentaje_alcohol","id_proveedor","id_marca","id_categoria"};
         
-         String[] registro = new String[6];
+         String[] registro = new String[9];
     modelo = new DefaultTableModel(null, titulos);
     
     try{
