@@ -19,6 +19,10 @@ public class POJOClientes {
         this.direccion = direccion;
     }
 
+    public POJOClientes(String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getCedula() {
         return cedula;
     }
