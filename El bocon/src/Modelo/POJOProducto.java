@@ -7,51 +7,26 @@ package Modelo;
 
 /**
  *
- * @author Milton
+ * @author Milton/waskar
  */
 public class POJOProducto {
-    
-    int id_producto;
-    String nombre;
-    int cantidad;
-    double precio;
-    String descripcion;
-    double porcentaje_alcohol;
-    int id_proveedor;
-    int id_marca;
-    int id_categoria;
 
-    public POJOProducto(int id_producto, String nombre, int cantidad, double precio, String descripcion, double porcentaje_alcohol, int id_proveedor, int id_marca, int id_categoria) {
-
-        this.id_producto = id_producto;
+    public POJOProducto(int id, String nombre, String descripcion, String precioCompra, String precioVenta, String porcentajeAlcohol, String cantidad) {
+        this.id = id;
         this.nombre = nombre;
-        this.cantidad = cantidad;
-        this.precio = precio;
         this.descripcion = descripcion;
-        this.id_proveedor = id_proveedor;
-        this.id_marca = id_marca;
-        this.id_categoria = id_categoria;
-        this.porcentaje_alcohol = porcentaje_alcohol;
-    }
-
-    public POJOProducto(String nombre, int cantidad, double precio, String descripcion, double porcentaje_alcohol, int id_proveedor, int id_marca, int id_categoria) {
-        this.nombre = nombre;
+        this.precioCompra = precioCompra;
+        this.precioVenta = precioVenta;
+        this.porcentajeAlcohol = porcentajeAlcohol;
         this.cantidad = cantidad;
-        this.precio = precio;
-        this.descripcion = descripcion;
-        this.porcentaje_alcohol = porcentaje_alcohol;
-        this.id_proveedor = id_proveedor;
-        this.id_marca = id_marca;
-        this.id_categoria = id_categoria;
     }
 
-
-    public int getId_producto() {
-        return id_producto;
+    public int getId() {
+        return id;
     }
 
-    public void setId_producto(int id_producto) {
-        this.id_producto = id_producto;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -62,22 +37,6 @@ public class POJOProducto {
         this.nombre = nombre;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -86,37 +45,43 @@ public class POJOProducto {
         this.descripcion = descripcion;
     }
 
-    public double getPorcentaje_alcohol() {
-        return porcentaje_alcohol;
+    public String getPrecioCompra() {
+        return precioCompra;
     }
 
-    public void setPorcentaje_alcohol(double porcentaje_alcohol) {
-        this.porcentaje_alcohol = porcentaje_alcohol;
+    public void setPrecioCompra(String precioCompra) {
+        this.precioCompra = precioCompra;
     }
 
-    public int getId_proveedor() {
-        return id_proveedor;
+    public String getPrecioVenta() {
+        return precioVenta;
     }
 
-    public void setId_proveedor(int id_proveedor) {
-        this.id_proveedor = id_proveedor;
+    public void setPrecioVenta(String precioVenta) {
+        this.precioVenta = precioVenta;
     }
 
-    public int getId_marca() {
-        return id_marca;
+    public String getPorcentajeAlcohol() {
+        return porcentajeAlcohol;
     }
 
-    public void setId_marca(int id_marca) {
-        this.id_marca = id_marca;
+    public void setPorcentajeAlcohol(String porcentajeAlcohol) {
+        this.porcentajeAlcohol = porcentajeAlcohol;
     }
 
-    public int getId_categoria() {
-        return id_categoria;
+    public String getCantidad() {
+        return cantidad;
     }
 
-    public void setId_categoria(int id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setCantidad(String cantidad) {
+        this.cantidad = cantidad;
     }
-
     
+    int id;
+   String nombre;
+   String descripcion;
+   String precioCompra;
+    String precioVenta;
+    String porcentajeAlcohol;
+    String cantidad;
 }

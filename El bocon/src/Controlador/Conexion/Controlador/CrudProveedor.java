@@ -15,23 +15,7 @@ public class CrudProveedor {
     private final Connection cn = (Connection) con.conectar();
     
     
-    public ArrayList mostrarDatosCombo(){
-        
-        ArrayList<POJOProveedor> proveedor = new ArrayList();
-        try{
-             CallableStatement cbstc = cn.prepareCall("{call llenarProveedor}");
-            ResultSet rs = cbstc.executeQuery();
-             while (rs.next()) {
-                 POJOProveedor prov = new POJOProveedor();
-                 prov.setIdProveedor(Integer.parseInt(rs.getString("Id_proveedor")));
-                 prov.setNombre(rs.getString("NombreProveedor"));
-                 proveedor.add(prov);
-             }
-        }catch(SQLException e){
-             JOptionPane.showMessageDialog(null, e);
-        }
-        return proveedor;
-    }
+   
 
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class productos2 extends javax.swing.JFrame {
 
     int datoSeleccionado = -1;
-    int Producto;
+    int id;
     
     /**
      * Creates new form prueba
@@ -32,37 +32,14 @@ public class productos2 extends javax.swing.JFrame {
     public productos2() {
        
         initComponents();
-        llenarPOJOCategoria();
+Mostrar();
  setExtendedState(MAXIMIZED_BOTH);
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
  
     }
- public void mostrar() { 
-try {
-    DefaultTableModel modelo;
-CRUDProducto cli = new CRUDProducto(); //objeto de la clase Crudproveedor
-modelo = cli.mostrarDatos();
-tablaproductos.setModel(modelo);
-} catch (Exception e) {
-JOptionPane.showMessageDialog(null, e);
-}
  
  
- }
  
- public void llenarPOJOCategoria(){
-     
-     CRUDProducto producto = new CRUDProducto();
-     ArrayList<POJOCategoria> listaPOJOCategoria = producto.mostrarDatosCombo();
-     jComboCategoria.removeAllItems();
-     for (int i = 0; i < listaPOJOCategoria.size(); i++){
-     jComboCategoria.addItem(new POJOCategoria(
-             listaPOJOCategoria.get(i).getId_categoria(),
-             listaPOJOCategoria.get(i).getNombre()));
-     }
-
- 
- }
 
     /** 
      * This method is called from within the constructor to initialize the form.
@@ -79,20 +56,20 @@ JOptionPane.showMessageDialog(null, e);
         btnactualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btneditar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaproductos = new javax.swing.JTable();
         btncerrar1 = new javax.swing.JButton();
         nombre = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         preciov = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         precio = new javax.swing.JFormattedTextField();
-        jComboCategoria = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         cantidad = new javax.swing.JFormattedTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         descripcion = new javax.swing.JTextArea();
+        alcohol = new javax.swing.JFormattedTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tablaproductos = new javax.swing.JTable();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -139,21 +116,6 @@ JOptionPane.showMessageDialog(null, e);
         });
         getContentPane().add(btneditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 690, 100, 40));
 
-        tablaproductos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tablaproductos);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, 560, 120));
-
         btncerrar1.setText("Regresar");
         btncerrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,9 +144,6 @@ JOptionPane.showMessageDialog(null, e);
         jLabel3.setText("Precio de Compra");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, -1));
 
-        jLabel4.setText("Categoria");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 110, 30));
-
         preciov.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         preciov.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,18 +163,11 @@ JOptionPane.showMessageDialog(null, e);
         });
         getContentPane().add(precio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 350, -1));
 
-        jComboCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboCategoriaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jComboCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 210, 30));
-
         jLabel7.setText("Cantidad");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 460, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 440, -1, -1));
 
         cantidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        getContentPane().add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 460, 100, -1));
+        getContentPane().add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 100, -1));
 
         descripcion.setColumns(20);
         descripcion.setRows(5);
@@ -223,9 +175,45 @@ JOptionPane.showMessageDialog(null, e);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 350, 60));
 
+        alcohol.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        alcohol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alcoholActionPerformed(evt);
+            }
+        });
+        getContentPane().add(alcohol, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 40, -1));
+
+        jLabel8.setText("% de Alchohol");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, -1, -1));
+
+        tablaproductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tablaproductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaproductosMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tablaproductos);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, -1, 170));
+
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-30, -20, 1590, 970));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -30, 1590, 970));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -244,7 +232,7 @@ JOptionPane.YES_NO_OPTION)
 == JOptionPane.YES_OPTION) {
 
 producto.eliminar(dato);
-mostrar();
+Mostrar();
 JOptionPane.showMessageDialog(null,
 "Dato eliminado correctamente");
 }
@@ -292,14 +280,6 @@ JOptionPane.showMessageDialog(null,
         
     }//GEN-LAST:event_precioActionPerformed
 
-    private void jComboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboCategoriaActionPerformed
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_jComboCategoriaActionPerformed
-
     private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
 char car = evt.getKeyChar();
         if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
@@ -323,46 +303,37 @@ char car = evt.getKeyChar();
         
 // TODO add your handling code here:
     }//GEN-LAST:event_nombreKeyTyped
-   
-    private void tablaproductosMouseClicked(java.awt.event.MouseEvent evt){
-        
-        datoSeleccionado = tablaproductos.rowAtPoint(evt.getPoint());
-        
-    }
-    
-    
-    
+ 
     
     
     
     private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
-        
-        int datoSeleccionado = tablaproductos.getSelectedRow();
+  if (datoSeleccionado >= 0) {
+        // Obtener los datos seleccionados en la tabla
+        id = Integer.parseInt((String)this.tablaproductos.getValueAt(datoSeleccionado, 0));
+        String nombre = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 1));
+        String descripcion = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 2));
+        String precioCompra = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 3));
+        String precioVenta = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 4));
+        String porcentajeAlcohol = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 5));
+        String cantidad = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 6));
 
-        if (datoSeleccionado >= 0) {
-            // Obtener los datos de la fila seleccionada
-        
-        Producto = Integer.parseInt((String)this.tablaproductos.getValueAt(datoSeleccionado, 0));
-        String nombreProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 1));
-        String cantidadProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 2));
-        String descripcionProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 3));
-        String categoriaProducto = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 4));    
-        
-         // Actualizar los campos del formulario con los datos obtenidos
-         
-         
-         nombre.setText(nombreProducto);
-         cantidad.setText(cantidadProducto);
-         descripcion.setText(descripcionProducto);
-         jComboCategoria.setToolTipText(categoriaProducto);
-         
-         } else {
-        JOptionPane.showMessageDialog(null, "Debe seleccionar un registro para actualizar");
-
-          }
+        // Rellenar los campos del formulario con los datos seleccionados
+  
+        this.nombre.setText(nombre);
+        this.descripcion.setText(descripcion);
+        this.precio.setText(precioCompra);
+        this.preciov.setText(precioVenta);
+        this.alcohol.setText(porcentajeAlcohol);
+        this.cantidad.setText(cantidad);
+    } else {
+        JOptionPane.showMessageDialog(null, "Debe seleccionar un registro de la tabla");
+    
+}     
     }//GEN-LAST:event_btneditarActionPerformed
 
     private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+<<<<<<< HEAD
      
         CRUDProducto producto = new CRUDProducto();
         
@@ -386,7 +357,49 @@ char car = evt.getKeyChar();
         }
      
         
+=======
+try {
+    // Obtener los datos ingresados por el usuario
+    String nombreProducto = nombre.getText();
+    String descripcionProducto = descripcion.getText();
+    String precioCompra = precio.getText();
+    String precioVenta = preciov.getText();
+    String porcentajeAlcohol = alcohol.getText();
+    String Cantidad = cantidad.getText();
+ 
+    // Verificar si hay campos vacíos
+    if (nombreProducto.trim().isEmpty() || descripcionProducto.trim().isEmpty() || precioCompra.trim().isEmpty() || precioVenta.trim().isEmpty() || porcentajeAlcohol.trim().isEmpty() || Cantidad.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Tiene campos vacíos");
+    } else {
+        // Crear un objeto del producto con los datos ingresados
+        POJOProducto producto = new POJOProducto(id, nombreProducto, descripcionProducto, precioCompra, precioVenta, porcentajeAlcohol, Cantidad);
+
+        // Crear una instancia del CRUDProducto
+        CRUDProducto crudProducto = new CRUDProducto();
+
+        // Llamar al método actualizar del CRUDProducto para actualizar los datos en la base de datos
+        crudProducto.actualizar(producto);
+
+        // Llamar al método mostrar() para actualizar la tabla de productos
+        Mostrar();
+
+        JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
+        limpiarCampos();
+    }
+} catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Error: " + e);
+}
+>>>>>>> 01b1ec62cf7e9ce4eb5fdbaaf0b5c8f05839ff8f
     }//GEN-LAST:event_btnactualizarActionPerformed
+
+    private void alcoholActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alcoholActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alcoholActionPerformed
+
+    private void tablaproductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproductosMouseClicked
+datoSeleccionado = tablaproductos.rowAtPoint(evt.getPoint());        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaproductosMouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -432,6 +445,7 @@ char car = evt.getKeyChar();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JFormattedTextField alcohol;
     private javax.swing.JButton btnactualizar;
     private javax.swing.JButton btncerrar1;
     private javax.swing.JButton btneditar;
@@ -439,20 +453,19 @@ char car = evt.getKeyChar();
     private javax.swing.JFormattedTextField cantidad;
     private javax.swing.JTextArea descripcion;
     private javax.swing.JLabel fondo;
-    private javax.swing.JComboBox<POJOCategoria> jComboCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JFormattedTextField nombre;
     private javax.swing.JFormattedTextField precio;
     private javax.swing.JFormattedTextField preciov;
-    private javax.swing.JTable tablaproductos;
+    public javax.swing.JTable tablaproductos;
     // End of variables declaration//GEN-END:variables
 
     private void limpiarCampos() {
@@ -460,10 +473,14 @@ char car = evt.getKeyChar();
     }
 
     private void Mostrar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    private void EditarProducto() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+try {
+    DefaultTableModel modelo;
+CRUDProducto cli = new CRUDProducto(); //objeto de la clase Crudproveedor
+modelo = cli.mostrarDatos();
+tablaproductos.setModel(modelo);
+} catch (Exception e) {
+JOptionPane.showMessageDialog(null, e);
 }
+
+}
+    }

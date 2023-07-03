@@ -32,75 +32,10 @@ public class productos1 extends javax.swing.JFrame {
      * Creates new form prueba
      */
     public productos1() {
-        
-        initComponents();
-        llenarPOJOCategoria();
-        llenarPOJOProveedor();
- setExtendedState(MAXIMIZED_BOTH);
- rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
-
+     initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
+        rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
 }
-    
-    
-    public void llenarPOJOCategoria(){
-        
-     CRUDProducto producto = new CRUDProducto();
-     ArrayList<POJOCategoria> listaPOJOCategoria = producto.mostrarDatosCombo();
-     jComboCategoria.removeAllItems();
-     for (int i = 0; i < listaPOJOCategoria.size(); i++){
-     jComboCategoria.addItem(new POJOCategoria(
-             listaPOJOCategoria.get(i).getId_categoria(),
-             listaPOJOCategoria.get(i).getNombre()));
-        
-    }
-    
-    }
-    
-    public void llenarPOJOProveedor(){
-        
-        CrudProveedor proveedor = new CrudProveedor();
-        ArrayList<POJOProveedor> listaPOJOProveedor = proveedor.mostrarDatosCombo();
-        jComboProveedor.removeAllItems();
-        for (int i = 0; i < listaPOJOProveedor.size(); i++){
-            jComboProveedor.addItem(new POJOProveedor(
-             listaPOJOProveedor.get(i).getIdProveedor(),
-             listaPOJOProveedor.get(i).getNombre()));
-                   
-        }
-        
-    }
-
-    
-    public void GuardaProductos(){
-        CRUDProducto producto = new CRUDProducto();
-        
-        //Obtener el id de categoria seleccionada de combox
-        
-        POJOProducto categoriaSeleccionada = (POJOProducto) jComboCategoria.getSelectedItem();
-        
-        int Id_categoria = categoriaSeleccionada.getId_categoria();
-        
-        POJOProveedor proverdorSeleccionada = (POJOProveedor) jComboProveedor.getSelectedItem();
-        
-        int idProveedor = proverdorSeleccionada.getIdProveedor();
-        
-        POJOMarca marcaSeleccionada = (POJOMarca) jCombomarca.getSelectedItem();
-        
-        int id_marca = marcaSeleccionada.getId_marca();
-        
-        POJOProducto pr;
-        pr = new POJOProducto(TextNombre.getText(),
-                               Integer.parseInt(textcant.getText()),
-                Double.parseDouble(TextPC.getText()),
-                textDesc.getText(), 
-                Double.parseDouble(alcohol.getText()),
-                idProveedor,
-                id_marca,
-                Id_categoria);
-                
-    }
-    
-
     /** 
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,27 +46,22 @@ public class productos1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         TextPV = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         btncerrar = new javax.swing.JButton();
         btnguardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        TextNombre = new javax.swing.JFormattedTextField();
+        Nombre = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         TextPC = new javax.swing.JFormattedTextField();
-        jComboCategoria = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         textcant = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        textDesc = new javax.swing.JTextArea();
+        Descripcion = new javax.swing.JTextArea();
         jLabel8 = new javax.swing.JLabel();
         alcohol = new javax.swing.JFormattedTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jComboProveedor = new javax.swing.JComboBox<>();
         fondo = new javax.swing.JLabel();
-        jCombomarca = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -142,9 +72,6 @@ public class productos1 extends javax.swing.JFrame {
 
         jLabel3.setText("Precio de Compra");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
-
-        jLabel4.setText("Categoria");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 110, 30));
 
         jLabel2.setText("Nombre del Producto");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
@@ -185,21 +112,21 @@ public class productos1 extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 360, -1));
 
         try {
-            TextNombre.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("******************************")));
+            Nombre.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("******************************")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        TextNombre.addActionListener(new java.awt.event.ActionListener() {
+        Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextNombreActionPerformed(evt);
+                NombreActionPerformed(evt);
             }
         });
-        TextNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+        Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                TextNombreKeyTyped(evt);
+                NombreKeyTyped(evt);
             }
         });
-        getContentPane().add(TextNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 350, 30));
+        getContentPane().add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 350, 30));
 
         jLabel5.setText("Precio de venta");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
@@ -212,47 +139,32 @@ public class productos1 extends javax.swing.JFrame {
         });
         getContentPane().add(TextPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 350, -1));
 
-        jComboCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboCategoriaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jComboCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 210, 30));
-
         jLabel7.setText("Cantidad");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, -1, -1));
 
         textcant.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        getContentPane().add(textcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 100, -1));
+        getContentPane().add(textcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, 100, -1));
 
-        textDesc.setColumns(20);
-        textDesc.setRows(5);
-        jScrollPane1.setViewportView(textDesc);
+        Descripcion.setColumns(20);
+        Descripcion.setRows(5);
+        jScrollPane1.setViewportView(Descripcion);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 350, 50));
 
         jLabel8.setText("% de Alchohol");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, -1, -1));
 
         alcohol.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        getContentPane().add(alcohol, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 40, -1));
-
-        jLabel9.setText("Proveedor");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, -1, -1));
-
-        jComboProveedor.addActionListener(new java.awt.event.ActionListener() {
+        alcohol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboProveedorActionPerformed(evt);
+                alcoholActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 210, -1));
+        getContentPane().add(alcohol, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 40, -1));
 
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -10, 1590, 970));
-
-        jCombomarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jCombomarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -265,19 +177,15 @@ public class productos1 extends javax.swing.JFrame {
 this.dispose();       // TODO add your handling code here:
     }//GEN-LAST:event_btncerrarActionPerformed
 
-    private void TextNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNombreActionPerformed
+    private void NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreActionPerformed
        // TODO add your handling code here:
-    }//GEN-LAST:event_TextNombreActionPerformed
-
-    private void jComboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboCategoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboCategoriaActionPerformed
+    }//GEN-LAST:event_NombreActionPerformed
 
     private void TextPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPCActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextPCActionPerformed
 
-    private void TextNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNombreKeyTyped
+    private void NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NombreKeyTyped
 char car = evt.getKeyChar();
         if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
                 && car != 'á'//minusculas
@@ -297,39 +205,39 @@ char car = evt.getKeyChar();
                 && (car != (char) KeyEvent.VK_SPACE)){
         
         evt.consume();}        // TODO add your handling code here:
-    }//GEN-LAST:event_TextNombreKeyTyped
+    }//GEN-LAST:event_NombreKeyTyped
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
 
-        
-        
-        
-        
-           // Crear un objeto del proveedor con los datos ingresados
-           
-           
-          
-           // Llamar al método Guardar del CRUDProducto para guardar el producto en la base de datos
-           
-          
-           // Limpiar los campos del formulario
-           
-         
-          
-           // Mostrar un mensaje de éxito
-           
-           
-           
+ String nombre = Nombre.getText();
+    String descripcion = Descripcion.getText();
+    String precioCompra = TextPC.getText();
+    String precioVenta = TextPV.getText();
+    String porcentajeAlcohol = alcohol.getText();
+    String cantidad = textcant.getText();
 
- 
+    // Crear un objeto del producto con los datos ingresados
+    POJOProducto producto = new POJOProducto(0, nombre, descripcion, precioCompra, precioVenta, porcentajeAlcohol, cantidad);
+
+    // Crear una instancia del CRUDProducto
+    CRUDProducto crudProducto = new CRUDProducto();
+
+    // Llamar al método Guardar del CRUDProducto para guardar el producto en la base de datos
+    crudProducto.Guardar(producto);
+    
+    // Limpiar los campos del formulario
+     limpiarCampos();
+
+    // Mostrar un mensaje de éxito
+    JOptionPane.showMessageDialog(null, "Producto guardado correctamente");
+
+        
                        
     }//GEN-LAST:event_btnguardarActionPerformed
 
-    private void jComboProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboProveedorActionPerformed
-        
-        
-        
-    }//GEN-LAST:event_jComboProveedorActionPerformed
+    private void alcoholActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alcoholActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alcoholActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,36 +278,30 @@ char car = evt.getKeyChar();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JFormattedTextField TextNombre;
+    public javax.swing.JTextArea Descripcion;
+    public javax.swing.JFormattedTextField Nombre;
     public javax.swing.JFormattedTextField TextPC;
     private javax.swing.JFormattedTextField TextPV;
     public javax.swing.JFormattedTextField alcohol;
     private javax.swing.JButton btncerrar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JLabel fondo;
-    public javax.swing.JComboBox<POJOCategoria> jComboCategoria;
-    private javax.swing.JComboBox<POJOProveedor> jComboProveedor;
-    private javax.swing.JComboBox<String> jCombomarca;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextArea textDesc;
     private javax.swing.JFormattedTextField textcant;
     // End of variables declaration//GEN-END:variables
 
 private void limpiarCampos() {
-    TextNombre.setText("");
-    textDesc.setText("");
+    Nombre.setText("");
+    Descripcion.setText("");
     TextPC.setText("");
     TextPV.setText("");
-    jComboCategoria.setSelectedIndex(0);
     textcant.setText("");
     alcohol.setText("");
 }

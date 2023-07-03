@@ -189,6 +189,7 @@ String usuario = txtlogin.getText();
             try {
                 lobby2 panel2 = new lobby2();
                 panel2.setVisible(true);
+                this.dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -197,6 +198,7 @@ String usuario = txtlogin.getText();
             try {   
                 lobby panel2 = new lobby();
                 panel2.setVisible(true);
+                      this.dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
