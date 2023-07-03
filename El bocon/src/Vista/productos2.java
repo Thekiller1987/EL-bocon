@@ -370,6 +370,7 @@ char car = evt.getKeyChar();
             if (nombre.getText().equals("")
             || descripcion.getText().equals("")
             || precio.getText().equals("")
+            || preciov.getText().equals("")
             || cantidad.getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Tiene datos vacios");
             }else{
