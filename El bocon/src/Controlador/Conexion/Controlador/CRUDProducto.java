@@ -42,7 +42,7 @@ public class CRUDProducto {
     modelo = new DefaultTableModel(null, titulos);
     
     try{
-        CallableStatement cbstc = cn.prepareCall("{call obtenerProducto}");
+         CallableStatement cbstc = cn.prepareCall("{call obtenerProducto}");
         rs = cbstc.executeQuery();
         
          while (rs.next()){
@@ -72,7 +72,7 @@ public class CRUDProducto {
        DefaultTableModel modelo;
        
        
-       String[] titulos = {"id_producto","nombre","cantidad","precio","descripcion","porcentaje_alcohol","id_proveedor","id_marca","id_categoria"};
+        String[] titulos = {"id_producto","nombre","cantidad","precio","descripcion","porcentaje_alcohol","id_proveedor","id_marca","id_categoria"};
        String[] registro = new String[5];           
        modelo = new DefaultTableModel(null, titulos);
        

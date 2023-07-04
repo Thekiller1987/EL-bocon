@@ -333,31 +333,6 @@ char car = evt.getKeyChar();
     }//GEN-LAST:event_btneditarActionPerformed
 
     private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
-<<<<<<< HEAD
-     
-        CRUDProducto producto = new CRUDProducto();
-        
-        try{
-            if (nombre.getText().equals("")
-            || descripcion.getText().equals("")
-            || precio.getText().equals("")
-            || preciov.getText().equals("")
-            || cantidad.getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Tiene datos vacios");
-            }else{
-                EditarProducto();
-                limpiarCampos();
-                Mostrar();
-                JOptionPane.showMessageDialog(null, "Datos actualizados");
-            }
-            
-            
-        }catch (HeadlessException e){
-             JOptionPane.showMessageDialog(null, "Error: "+ e);
-        }
-     
-        
-=======
 try {
     // Obtener los datos ingresados por el usuario
     String nombreProducto = nombre.getText();
@@ -389,7 +364,6 @@ try {
 } catch (Exception e) {
     JOptionPane.showMessageDialog(null, "Error:" + e);
 }
->>>>>>> 01b1ec62cf7e9ce4eb5fdbaaf0b5c8f05839ff8f
     }//GEN-LAST:event_btnactualizarActionPerformed
 
     private void alcoholActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alcoholActionPerformed
