@@ -78,7 +78,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/background 
             }
         });
         seclientes.add(editar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 91, 140, 110));
-        seclientes.add(fondoSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 280));
+        seclientes.add(fondoSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, -130, 590, 280));
 
         getContentPane().add(seclientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 280));
 

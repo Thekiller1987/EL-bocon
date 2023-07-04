@@ -362,7 +362,7 @@ try {
         limpiarCampos();
     }
 } catch (Exception e) {
-    JOptionPane.showMessageDialog(null, "Error: " + e);
+    JOptionPane.showMessageDialog(null, "Error:" + e);
 }
     }//GEN-LAST:event_btnactualizarActionPerformed
 
@@ -442,9 +442,14 @@ datoSeleccionado = tablaproductos.rowAtPoint(evt.getPoint());        // TODO add
     public javax.swing.JTable tablaproductos;
     // End of variables declaration//GEN-END:variables
 
-    private void limpiarCampos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+private void limpiarCampos() {
+    nombre.setText("");
+    descripcion.setText("");
+    precio.setText("");
+    preciov.setText("");
+    alcohol.setText("");
+    cantidad.setText("");
+}
 
     private void Mostrar() {
 try {
