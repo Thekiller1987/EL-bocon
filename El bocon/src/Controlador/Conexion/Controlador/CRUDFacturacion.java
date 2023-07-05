@@ -107,12 +107,10 @@ public class CRUDFacturacion {
        
         public void Guardar(POJOFacturacion fc){
             try{
-                CallableStatement cbst = cn.prepareCall("{call CrearFacturacion(?,?,?,?)}");
-                cbst.setInt(fc.getId_facturacion(), 1);
-                cbst.setString(2, fc.getFecha());
-                cbst.setInt(3, fc.getDNI());
-                cbst.setString(4, fc.getId_empelado());
-                
+                CallableStatement cbst = cn.prepareCall("{call InsertarFacturacion(?,?,?)}");
+                cbst.setString(1, fc.getFecha());
+                cbst.setInt(2, fc.getDNI());
+                cbst.setString(3, fc.getId_empelado());
                 cbst.executeUpdate();
                 
                 

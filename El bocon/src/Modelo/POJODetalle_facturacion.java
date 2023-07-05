@@ -13,9 +13,30 @@ package Modelo;
  */
 public class POJODetalle_facturacion {
  
+    int id_detalle_facturacion;
     int id_producto;
     int id_facturacion;
     int cantidad;
+
+    public POJODetalle_facturacion(int id_detalle_facturacion, int id_producto, int id_facturacion, int cantidad) {
+        this.id_detalle_facturacion = id_detalle_facturacion;
+        this.id_producto = id_producto;
+        this.id_facturacion = id_facturacion;
+        this.cantidad = cantidad;
+    }
+
+    public POJODetalle_facturacion() {
+    }
+    
+    
+
+    public int getId_detalle_facturacion() {
+        return id_detalle_facturacion;
+    }
+
+    public void setId_detalle_facturacion(int id_detalle_facturacion) {
+        this.id_detalle_facturacion = id_detalle_facturacion;
+    }
 
     public int getId_producto() {
         return id_producto;
@@ -40,13 +61,8 @@ public class POJODetalle_facturacion {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
-    public POJODetalle_facturacion(int id_producto, int id_facturacion, int cantidad) {
-        this.id_producto = id_producto;
-        this.id_facturacion = id_facturacion;
-        this.cantidad = cantidad;
-    }
     
     
     
 }
+   

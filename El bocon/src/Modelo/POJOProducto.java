@@ -21,6 +21,17 @@ public class POJOProducto {
         this.cantidad = cantidad;
     }
 
+    public POJOProducto(String nombre, String descripcion, String precioCompra, String precioVenta, String porcentajeAlcohol, String cantidad) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precioCompra = precioCompra;
+        this.precioVenta = precioVenta;
+        this.porcentajeAlcohol = porcentajeAlcohol;
+        this.cantidad = cantidad;
+    }
+    
+    
+
     public int getId() {
         return id;
     }

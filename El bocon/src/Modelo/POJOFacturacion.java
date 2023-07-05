@@ -12,23 +12,20 @@ import java.util.Date;
  */
 public class POJOFacturacion {
     
-    String id_facturacion;
+    int id_facturacion;
     String fecha;
-    int DNI;
-    String id_empelado;
 
-    public POJOFacturacion(String id_facturacion, String fecha, int DNI, String id_empelado) {
+    public POJOFacturacion(int id_facturacion, String fecha) {
         this.id_facturacion = id_facturacion;
         this.fecha = fecha;
-        this.DNI = DNI;
-        this.id_empelado = id_empelado;
     }
+    
 
-    public String getId_facturacion() {
+    public int getId_facturacion() {
         return id_facturacion;
     }
 
-    public void setId_facturacion(String id_facturacion) {
+    public void setId_facturacion(int id_facturacion) {
         this.id_facturacion = id_facturacion;
     }
 
@@ -39,21 +36,8 @@ public class POJOFacturacion {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+   
 
-    public int getDNI() {
-        return DNI;
-    }
-
-    public void setDNI(int DNI) {
-        this.DNI = DNI;
-    }
-
-    public String getId_empelado() {
-        return id_empelado;
-    }
-
-    public void setId_empelado(String id_empelado) {
-        this.id_empelado = id_empelado;
-    }
+    
     
 }

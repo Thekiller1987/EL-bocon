@@ -103,21 +103,7 @@ public class CRUDDetalle_facturacion {
          }
          
          
-        public void Guardar(POJODetalle_facturacion dt){
-            try{
-                 CallableStatement cbst = cn.prepareCall("{call Creardeatlle_facturacion(?,?,?,?)}");
-                 
-                 cbst.setInt(dt.getId_producto(),1);
-                 cbst.setInt(dt.getId_facturacion(), 2);
-                 cbst.setInt(dt.getCantidad(), 3);
-                  
-                 cbst.executeUpdate();
-                 
-            }catch (SQLException e){
-                 JOptionPane.showMessageDialog(null, e);
-            }
-            
-        }
+        
          
         public boolean verificarDatos(String dato){
             ResultSet rs;
@@ -130,4 +116,44 @@ public class CRUDDetalle_facturacion {
                  JOptionPane.showMessageDialog(null, e);
             } return false;
         }
+        
+        public String id_facturacion(){
+        ResultSet rs;
+      String idv="";
+             String sql =("Select max(id_facturacion)  from Facturacion");
+            
+            
+            try {
+                PreparedStatement pst =cn.prepareStatement(sql);
+               rs=pst.executeQuery();
+               
+                while (rs.next()) {
+                    idv=rs.getString(1);
+                    
+                }
+               
+               
+            } catch (SQLException e1) {
+               
+            }
+            
+            return idv;
+        }  
+        
+        public void Guardar(POJODetalle_facturacion dt){
+            try{
+                 CallableStatement cbst = cn.prepareCall("{call Insertar Detalle_Facturacion(?,?,?,?)}");
+                 
+                 cbst.setInt(dt.getId_producto(),1);
+                 cbst.setInt(dt.getId_facturacion(), 2);
+                 cbst.setInt(dt.getCantidad(), 3);
+                  
+                 cbst.executeUpdate();
+                 
+            }catch (SQLException e){
+                 JOptionPane.showMessageDialog(null, e);
+            }
+            
+        }
+        
 }
