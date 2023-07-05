@@ -100,7 +100,7 @@ public class ventas extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 240, 140, 50));
 
         buscartxt.setText("Buscar");
-        getContentPane().add(buscartxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 700, 40));
+        getContentPane().add(buscartxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 700, 40));
 
         jButton2.setBackground(new java.awt.Color(115, 112, 166));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -155,7 +155,7 @@ public class ventas extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaventas);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 990, 380));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 890, 200));
 
         id.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
         id.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +213,14 @@ this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    
+try {
+        AgProductos panel2 = new AgProductos()
+                ;
+        panel2.setVisible(true);
+  
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }      
         
       
       
