@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ventas extends javax.swing.JFrame {
 
-    public Object Cantidad;
+
 
     
 
@@ -41,23 +41,6 @@ public class ventas extends javax.swing.JFrame {
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/vista.png");
     }
     
-    public void guardarVenta() {
-        
-         CRUDFacturacion fac = new CRUDFacturacion();
-         POJOFacturacion defac = new POJOFacturacion(
-                 Integer.parseInt(id.getText()), 
-                 fecha.getText());
-                  fac.Guardar(defac);
-                  
-                   //----------------------
-                   //Insertar Detalle_venta
-                   
-                   
-        POJODetalle_facturacion dfac = new POJODetalle_facturacion();
-        CRUDDetalle_facturacion cd = new CRUDDetalle_facturacion();
-        String id_factu = cd.id_facturacion();
-        dfac.setId_facturacion(Integer.parseInt(id_factu));
-    }
     
   
      /**
@@ -75,13 +58,7 @@ public class ventas extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaventas = new javax.swing.JTable();
-        id = new javax.swing.JFormattedTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        fecha = new javax.swing.JFormattedTextField();
-        cantidad = new javax.swing.JFormattedTextField();
-        jLabel3 = new javax.swing.JLabel();
+        DetalleFacturacion = new javax.swing.JTable();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,7 +111,7 @@ public class ventas extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 140, 50));
 
-        tablaventas.setModel(new javax.swing.table.DefaultTableModel(
+        DetalleFacturacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -153,45 +130,9 @@ public class ventas extends javax.swing.JFrame {
                 "Codigo", "Nombre", "Desccripcion", "Cantidad", "Precio"
             }
         ));
-        jScrollPane1.setViewportView(tablaventas);
+        jScrollPane1.setViewportView(DetalleFacturacion);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 890, 200));
-
-        id.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
-        id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idActionPerformed(evt);
-            }
-        });
-        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 70, 30));
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setText("Fecha :");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 140, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel4.setText("ID : ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, -1, -1));
-
-        fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
-        fecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fechaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 140, 70, 30));
-
-        cantidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
-        cantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cantidadActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 140, 70, 30));
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setText("Cantidad");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 140, -1, -1));
 
         fondo.setPreferredSize(new java.awt.Dimension(1580, 960));
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1580, 960));
@@ -231,18 +172,6 @@ try {
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_idActionPerformed
-
-    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fechaActionPerformed
-
-    private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cantidadActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -279,29 +208,23 @@ try {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTable DetalleFacturacion;
     private javax.swing.JTextField buscartxt;
-    private javax.swing.JFormattedTextField cantidad;
-    private javax.swing.JFormattedTextField fecha;
     private javax.swing.JLabel fondo;
-    private javax.swing.JFormattedTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaventas;
     // End of variables declaration//GEN-END:variables
 
 
  private void Mostrar() {
 try {
     DefaultTableModel modelo;
-CRUDProducto cli = new CRUDProducto(); //objeto de la clase Crudproveedor
+CRUDDetalle_facturacion cli = new CRUDDetalle_facturacion(); //objeto de la clase Crudproveedor
 modelo = cli.mostrarDatos();
-tablaventas.setModel(modelo);
+DetalleFacturacion.setModel(modelo);
 } catch (Exception e) {
 JOptionPane.showMessageDialog(null, e);
 }

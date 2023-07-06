@@ -23,20 +23,20 @@ public class CRUDFacturacion {
          
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"id_facturacion", "Date_fecha", "DNI", "id_empelado"};
+        String[] titulos = {"id_producto,id_facturacion,cantidad"};
         
         String[] registro = new String[4];
         modelo = new DefaultTableModel(null, titulos);
         
         try{
-             CallableStatement cbstc = cn.prepareCall("{call MostrarFacturacion}");
+             CallableStatement cbstc = cn.prepareCall("{call obtenerDetalle}");
         rs = cbstc.executeQuery();
         
         while (rs.next())
-             registro[0] = rs.getString("id_facturacion");
-             registro[1] = rs.getString("Date_fecha");
-             registro[2] = rs.getString("DNI");
-             registro[3] = rs.getString("id_empleado");
+             registro[0] = rs.getString("id_producto");
+             registro[1] = rs.getString("id_facturacion");
+             registro[2] = rs.getString("cantidad");
+
             
              modelo.addRow(registro);
         

@@ -13,8 +13,8 @@ import java.sql.SQLException;
 public class conexion {
     
 private final String
-url="jdbc:sqlserver://localhost:1433;databaseName=BD_ELBOCON;"
-+ "integratedSecurity=true;" +"encrypt=true;trustServerCertificate=true";
+url="jdbc:sqlserver://localhost:1433;databaseName=DB_ELBOCON;"
++ "integratedSecurity=true;" +"encrypt=true;trustServerCertificate=true;user=wa,password=123";
 Connection cn;
 public Connection conectar(){
 try {

@@ -5,20 +5,23 @@
 package Vista;
 
 
+import Controlador.Conexion.Controlador.CRUDProducto;
 import javax.swing.JOptionPane;
-
-
+import javax.swing.table.DefaultTableModel;
+import Vista.ventas;
 /**
  *
  * @author waska
  */
 public class AgProductos extends javax.swing.JFrame {
-
+    int datoSeleccionado = -1;
+    int id;
     /**
      * Creates new form SeClientes
      */
     public AgProductos() {
         initComponents();
+        Mostrar();
 rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/vista.png");
           this.setResizable(false);
           this.setLocation(400 ,200);
@@ -37,9 +40,15 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/vista.png")
         agregar1 = new javax.swing.JButton();
         cerrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaproductos = new javax.swing.JTable();
         buscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        nombre = new javax.swing.JTextField();
+        cantidad = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        descripcion = new javax.swing.JTextField();
         fondoSec = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,7 +64,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/vista.png")
                 agregar1ActionPerformed(evt);
             }
         });
-        getContentPane().add(agregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 160, 30));
+        getContentPane().add(agregar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 160, 30));
 
         cerrar.setBackground(new java.awt.Color(115, 112, 166));
         cerrar.setForeground(new java.awt.Color(255, 0, 0));
@@ -67,7 +76,7 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/vista.png")
         });
         getContentPane().add(cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, 80, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaproductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -78,9 +87,14 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/vista.png")
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tablaproductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaproductosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tablaproductos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 550, 250));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 550, 170));
 
         buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +110,24 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/vista.png")
 
         jLabel1.setText("Buscar Productos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 70, -1));
+        getContentPane().add(cantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 40, -1));
+
+        jLabel2.setText("Nombre");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
+
+        jLabel3.setText("Descripcion");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
+
+        jLabel4.setText("Cantidad");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
+        getContentPane().add(descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 80, -1));
         getContentPane().add(fondoSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 460));
 
         pack();
@@ -106,8 +138,17 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/vista.png")
     }//GEN-LAST:event_cerrarActionPerformed
 
     private void agregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar1ActionPerformed
-
-        // TODO add your handling code here:
+  if (datoSeleccionado >= 0) {
+        // Obtener los datos seleccionados en la tabla
+        id = Integer.parseInt((String)this.tablaproductos.getValueAt(datoSeleccionado, 0));
+        String nombre1 = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 1));
+        String descripcion1 = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 2));
+        String cantidad2 = String.valueOf(tablaproductos.getValueAt(datoSeleccionado, 6));
+        
+        this.nombre.setText(nombre1);
+        this.descripcion.setText(descripcion1);
+        this.cantidad.setText(cantidad2);
+         }
     }//GEN-LAST:event_agregar1ActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
@@ -118,6 +159,14 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/vista.png")
         // TODO add your handling code here:
 
     }//GEN-LAST:event_buscarKeyTyped
+
+    private void tablaproductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproductosMouseClicked
+datoSeleccionado = tablaproductos.rowAtPoint(evt.getPoint());          // TODO add your handling code here:
+    }//GEN-LAST:event_tablaproductosMouseClicked
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,13 +207,27 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondoSec,"src/vista.imagenes/vista.png")
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar1;
     private javax.swing.JTextField buscar;
+    public javax.swing.JTextField cantidad;
     private javax.swing.JButton cerrar;
+    public javax.swing.JTextField descripcion;
     private javax.swing.JLabel fondoSec;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTextField nombre;
+    private javax.swing.JTable tablaproductos;
     // End of variables declaration//GEN-END:variables
-}
 
-        
-    
+private void Mostrar() {
+try {
+    DefaultTableModel modelo;
+CRUDProducto cli = new CRUDProducto(); //objeto de la clase Crudproveedor
+modelo = cli.mostrarDatos();
+tablaproductos.setModel(modelo);
+} catch (Exception e) {
+JOptionPane.showMessageDialog(null, e);
+}
+}
+}

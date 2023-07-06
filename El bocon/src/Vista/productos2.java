@@ -30,31 +30,15 @@ public class productos2 extends javax.swing.JFrame {
      * Creates new form prueba
      */
     public productos2() {
-        
+       
         initComponents();
-        Mostrar();
+Mostrar();
  setExtendedState(MAXIMIZED_BOTH);
  rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/background formulario.png");
  
     }
  
-    public void EditarProducto() {
-        
-        CRUDProducto producto = new CRUDProducto();
-        // Obtener el ID de la categoría seleccionada del JComboBox
-        
-        POJOProducto pro = new POJOProducto(Integer.parseInt(idproducto.getText()),
-                    nombre1.getText(),
-                    descripcion.getText(),
-                    precio.getText(),
-                    preciov.getText(),
-                    alcohol.getText(),
-                    cantidad.getText());
-        
-        producto.actualizar(pro);
-
-        
-    }
+ 
  
 
     /** 
@@ -73,7 +57,7 @@ public class productos2 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btneditar = new javax.swing.JButton();
         btncerrar1 = new javax.swing.JButton();
-        idproducto = new javax.swing.JFormattedTextField();
+        nombre = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         preciov = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -86,7 +70,6 @@ public class productos2 extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaproductos = new javax.swing.JTable();
-        nombre1 = new javax.swing.JFormattedTextField();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -142,21 +125,21 @@ public class productos2 extends javax.swing.JFrame {
         getContentPane().add(btncerrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 690, 100, 40));
 
         try {
-            idproducto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
+            nombre.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        idproducto.addActionListener(new java.awt.event.ActionListener() {
+        nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                idproductoActionPerformed(evt);
+                nombreActionPerformed(evt);
             }
         });
-        idproducto.addKeyListener(new java.awt.event.KeyAdapter() {
+        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                idproductoKeyTyped(evt);
+                nombreKeyTyped(evt);
             }
         });
-        getContentPane().add(idproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 30, 30));
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 350, 30));
 
         jLabel3.setText("Precio de Compra");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, -1));
@@ -228,23 +211,6 @@ public class productos2 extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 490, -1, 170));
 
-        try {
-            nombre1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("************************")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        nombre1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombre1ActionPerformed(evt);
-            }
-        });
-        nombre1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                nombre1KeyTyped(evt);
-            }
-        });
-        getContentPane().add(nombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 350, 30));
-
         fondo.setAutoscrolls(true);
         fondo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -30, 1590, 970));
@@ -288,7 +254,7 @@ JOptionPane.showMessageDialog(null,
    
     }//GEN-LAST:event_btncerrar1ActionPerformed
 
-    private void idproductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idproductoActionPerformed
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
 
          MaskFormatter formatter = null;
         try {
@@ -298,7 +264,7 @@ JOptionPane.showMessageDialog(null,
             e.printStackTrace();
         
         }  
-    }//GEN-LAST:event_idproductoActionPerformed
+    }//GEN-LAST:event_nombreActionPerformed
 
     private void preciovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preciovActionPerformed
       
@@ -314,7 +280,7 @@ JOptionPane.showMessageDialog(null,
         
     }//GEN-LAST:event_precioActionPerformed
 
-    private void idproductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idproductoKeyTyped
+    private void nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyTyped
 char car = evt.getKeyChar();
         if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
                 && car != 'á'//minusculas
@@ -336,7 +302,7 @@ char car = evt.getKeyChar();
         evt.consume();}
         
 // TODO add your handling code here:
-    }//GEN-LAST:event_idproductoKeyTyped
+    }//GEN-LAST:event_nombreKeyTyped
  
     
     
@@ -354,7 +320,7 @@ char car = evt.getKeyChar();
 
         // Rellenar los campos del formulario con los datos seleccionados
   
-        this.idproducto.setText(nombre);
+        this.nombre.setText(nombre);
         this.descripcion.setText(descripcion);
         this.precio.setText(precioCompra);
         this.preciov.setText(precioVenta);
@@ -367,34 +333,9 @@ char car = evt.getKeyChar();
     }//GEN-LAST:event_btneditarActionPerformed
 
     private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
-
-
-     
-        CRUDProducto producto = new CRUDProducto();
-        
-        try{
-            if (idproducto.getText().equals("")
-            || descripcion.getText().equals("")
-            || precio.getText().equals("")
-            || preciov.getText().equals("")
-            || cantidad.getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Tiene datos vacios");
-            }else{
-                EditarProducto();
-                limpiarCampos();
-                Mostrar();
-                JOptionPane.showMessageDialog(null, "Datos actualizados");
-            }
-            
-            
-        }catch (HeadlessException e){
-             JOptionPane.showMessageDialog(null, "Error: "+ e);
-        }
-     
-        
 try {
     // Obtener los datos ingresados por el usuario
-    String nombreProducto = nombre1.getText();
+    String nombreProducto = nombre.getText();
     String descripcionProducto = descripcion.getText();
     String precioCompra = precio.getText();
     String precioVenta = preciov.getText();
@@ -406,43 +347,13 @@ try {
         JOptionPane.showMessageDialog(null, "Tiene campos vacíos");
     } else {
         // Crear un objeto del producto con los datos ingresados
-        POJOProducto producto1 = new POJOProducto(id, nombreProducto, descripcionProducto, precioCompra, precioVenta, porcentajeAlcohol, Cantidad);
+        POJOProducto producto = new POJOProducto(id, nombreProducto, descripcionProducto, precioCompra, precioVenta, porcentajeAlcohol, Cantidad);
 
+        // Crear una instancia del CRUDProducto
+        CRUDProducto crudProducto = new CRUDProducto();
 
-////try {
-//    // Obtener los datos ingresados por el usuario
-//    String nombreProducto = nombre.getText();
-//    String descripcionProducto = descripcion.getText();
-//    String precioCompra = precio.getText();
-//    String precioVenta = preciov.getText();
-//    String porcentajeAlcohol = alcohol.getText();
-//    String Cantidad = cantidad.getText();
-// 
-//    // Verificar si hay campos vacíos
-//    if (nombreProducto.trim().isEmpty() || descripcionProducto.trim().isEmpty() || precioCompra.trim().isEmpty() || precioVenta.trim().isEmpty() || porcentajeAlcohol.trim().isEmpty() || Cantidad.trim().isEmpty()) {
-//        JOptionPane.showMessageDialog(null, "Tiene campos vacíos");
-//    } else {
-//        // Crear un objeto del producto con los datos ingresados
-//        POJOProducto producto = new POJOProducto(id, nombreProducto, descripcionProducto, precioCompra, precioVenta, porcentajeAlcohol, Cantidad);
-//
-//        // Crear una instancia del CRUDProducto
-//        CRUDProducto crudProducto = new CRUDProducto();
-//
-//        // Llamar al método actualizar del CRUDProducto para actualizar los datos en la base de datos
-//        crudProducto.actualizar(producto);
-//
-//        // Llamar al método mostrar() para actualizar la tabla de productos
-//        Mostrar();
-//
-//        JOptionPane.showMessageDialog(null, "Datos Actualizados Correctamente");
-//        limpiarCampos();
-//    }
-//} catch (Exception e) {
-//    JOptionPane.showMessageDialog(null, "Error: " + e);
-//}
-
-// Llamar al método actualizar del CRUDProducto para actualizar los datos en la base de datos
-        CRUDProducto producto2 = new CRUDProducto();
+        // Llamar al método actualizar del CRUDProducto para actualizar los datos en la base de datos
+        crudProducto.actualizar(producto);
 
         // Llamar al método mostrar() para actualizar la tabla de productos
         Mostrar();
@@ -453,7 +364,6 @@ try {
 } catch (Exception e) {
     JOptionPane.showMessageDialog(null, "Error:" + e);
 }
-
     }//GEN-LAST:event_btnactualizarActionPerformed
 
     private void alcoholActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alcoholActionPerformed
@@ -463,14 +373,6 @@ try {
     private void tablaproductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproductosMouseClicked
 datoSeleccionado = tablaproductos.rowAtPoint(evt.getPoint());        // TODO add your handling code here:
     }//GEN-LAST:event_tablaproductosMouseClicked
-
-    private void nombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombre1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombre1ActionPerformed
-
-    private void nombre1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombre1KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombre1KeyTyped
 
 
     /**
@@ -506,6 +408,14 @@ datoSeleccionado = tablaproductos.rowAtPoint(evt.getPoint());        // TODO add
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -525,7 +435,6 @@ datoSeleccionado = tablaproductos.rowAtPoint(evt.getPoint());        // TODO add
     private javax.swing.JFormattedTextField cantidad;
     private javax.swing.JTextArea descripcion;
     private javax.swing.JLabel fondo;
-    private javax.swing.JFormattedTextField idproducto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -535,14 +444,14 @@ datoSeleccionado = tablaproductos.rowAtPoint(evt.getPoint());        // TODO add
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JFormattedTextField nombre1;
+    private javax.swing.JFormattedTextField nombre;
     private javax.swing.JFormattedTextField precio;
     private javax.swing.JFormattedTextField preciov;
     public javax.swing.JTable tablaproductos;
     // End of variables declaration//GEN-END:variables
 
 private void limpiarCampos() {
-    nombre1.setText("");
+    nombre.setText("");
     descripcion.setText("");
     precio.setText("");
     preciov.setText("");
