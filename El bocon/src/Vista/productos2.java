@@ -367,7 +367,7 @@ char car = evt.getKeyChar();
     }//GEN-LAST:event_btneditarActionPerformed
 
     private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
-<<<<<<< HEAD
+
 
      
         CRUDProducto producto = new CRUDProducto();
@@ -392,10 +392,9 @@ char car = evt.getKeyChar();
         }
      
         
-=======
 try {
     // Obtener los datos ingresados por el usuario
-    String nombreProducto = nombre.getText();
+    String nombreProducto = nombre1.getText();
     String descripcionProducto = descripcion.getText();
     String precioCompra = precio.getText();
     String precioVenta = preciov.getText();
@@ -407,8 +406,8 @@ try {
         JOptionPane.showMessageDialog(null, "Tiene campos vacíos");
     } else {
         // Crear un objeto del producto con los datos ingresados
-        POJOProducto producto = new POJOProducto(id, nombreProducto, descripcionProducto, precioCompra, precioVenta, porcentajeAlcohol, Cantidad);
->>>>>>> 06e4a87be79e22075be0b864b2d1d08a69974ab4
+        POJOProducto producto1 = new POJOProducto(id, nombreProducto, descripcionProducto, precioCompra, precioVenta, porcentajeAlcohol, Cantidad);
+
 
 ////try {
 //    // Obtener los datos ingresados por el usuario
@@ -442,10 +441,8 @@ try {
 //    JOptionPane.showMessageDialog(null, "Error: " + e);
 //}
 
-<<<<<<< HEAD
-=======
-        // Llamar al método actualizar del CRUDProducto para actualizar los datos en la base de datos
-        crudProducto.actualizar(producto);
+// Llamar al método actualizar del CRUDProducto para actualizar los datos en la base de datos
+        CRUDProducto producto2 = new CRUDProducto();
 
         // Llamar al método mostrar() para actualizar la tabla de productos
         Mostrar();
@@ -456,7 +453,7 @@ try {
 } catch (Exception e) {
     JOptionPane.showMessageDialog(null, "Error:" + e);
 }
->>>>>>> 06e4a87be79e22075be0b864b2d1d08a69974ab4
+
     }//GEN-LAST:event_btnactualizarActionPerformed
 
     private void alcoholActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alcoholActionPerformed
@@ -545,7 +542,7 @@ datoSeleccionado = tablaproductos.rowAtPoint(evt.getPoint());        // TODO add
     // End of variables declaration//GEN-END:variables
 
 private void limpiarCampos() {
-    nombre.setText("");
+    nombre1.setText("");
     descripcion.setText("");
     precio.setText("");
     preciov.setText("");

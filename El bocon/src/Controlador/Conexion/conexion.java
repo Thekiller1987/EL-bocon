@@ -14,7 +14,7 @@ public class conexion {
     
 private final String
 url="jdbc:sqlserver://localhost:1433;databaseName=BD_ELBOCON;"
-+ "integratedSecurity=true;" +"encrypt=true;trustServerCertificate=true;user=wa,password=123";
++ "integratedSecurity=true;" +"encrypt=true;trustServerCertificate=true";
 Connection cn;
 public Connection conectar(){
 try {
