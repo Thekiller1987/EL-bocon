@@ -7,8 +7,10 @@ package Vista;
 
 import Modelo.POJO_Usuario;
 import Controlador.CRUD_Usuario;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -95,6 +97,7 @@ public class Usuarios extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -124,6 +127,8 @@ public class Usuarios extends javax.swing.JInternalFrame {
         btnbuscar = new javax.swing.JButton();
         btnsalir = new javax.swing.JButton();
 
+        jTextField1.setText("jTextField1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 51));
@@ -136,6 +141,18 @@ public class Usuarios extends javax.swing.JInternalFrame {
         jLabel2.setText("Nombre:");
 
         jLabel3.setText("Apellidos:");
+
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
+
+        txtapellidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtapellidosActionPerformed(evt);
+            }
+        });
 
         btnbuscarempleado.setText("...");
         btnbuscarempleado.addActionListener(new java.awt.event.ActionListener() {
@@ -480,6 +497,26 @@ public class Usuarios extends javax.swing.JInternalFrame {
         cboestado.setSelectedItem(tablalistado.getValueAt(fila,7).toString());
     }//GEN-LAST:event_tablalistadoMouseClicked
 
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+  MaskFormatter formatter = null;
+        try {
+            formatter = new MaskFormatter("*************************"); //Definir la mascara
+            formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreActionPerformed
+
+    private void txtapellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtapellidosActionPerformed
+  MaskFormatter formatter = null;
+        try {
+            formatter = new MaskFormatter("*************************"); //Definir la mascara
+            formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtapellidosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -539,6 +576,7 @@ public class Usuarios extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tablalistado;
     public static javax.swing.JTextField txtapellidos;
     private javax.swing.JTextField txtbuscar;

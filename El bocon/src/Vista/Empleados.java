@@ -8,8 +8,10 @@ package Vista;
 import Modelo.POJO_Empleado;
 import Controlador.CRUD_Empleado;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -44,7 +46,7 @@ public class Empleados extends javax.swing.JInternalFrame {
         txtidempleado.setEnabled(false);
         txtnombre.setEnabled(false);
         txtapellidos.setEnabled(false);
-        txtdni.setEnabled(false);
+        txtdni1.setEnabled(false);
         txttelefono.setEnabled(false);
         txtdireccion.setEnabled(false);
         txtbuscar.setEnabled(false);
@@ -61,7 +63,7 @@ public class Empleados extends javax.swing.JInternalFrame {
         txtidempleado.setEnabled(true);
         txtnombre.setEnabled(true);
         txtapellidos.setEnabled(true);
-        txtdni.setEnabled(true);
+        txtdni1.setEnabled(true);
         txttelefono.setEnabled(true);
         txtdireccion.setEnabled(true);
         txtbuscar.setEnabled(true);
@@ -75,7 +77,7 @@ public class Empleados extends javax.swing.JInternalFrame {
          txtidempleado.setText("");
          txtnombre.setText("");
          txtapellidos.setText("");
-         txtdni.setText("");
+         txtdni1.setText("");
          txttelefono.setText("");
          txtdireccion.setText("");
      }
@@ -99,6 +101,7 @@ public class Empleados extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txttelefono1 = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -110,18 +113,25 @@ public class Empleados extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtdni = new javax.swing.JTextField();
-        txttelefono = new javax.swing.JTextField();
         txtdireccion = new javax.swing.JTextField();
         btnnuevo = new javax.swing.JButton();
         btneliminar = new javax.swing.JButton();
         btnguardar = new javax.swing.JButton();
+        txttelefono = new javax.swing.JFormattedTextField();
+        txtdni1 = new javax.swing.JFormattedTextField();
         jLabel7 = new javax.swing.JLabel();
         txtbuscar = new javax.swing.JTextField();
         btnbuscar = new javax.swing.JButton();
         btnsalir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablalistado = new javax.swing.JTable();
+
+        txttelefono1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####-####"))));
+        txttelefono1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttelefono1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -135,6 +145,12 @@ public class Empleados extends javax.swing.JInternalFrame {
         jLabel2.setText("Nombre:");
 
         jLabel3.setText("Apellidos:");
+
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
 
         txtapellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,41 +185,65 @@ public class Empleados extends javax.swing.JInternalFrame {
             }
         });
 
+        try {
+            txttelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txttelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttelefonoActionPerformed(evt);
+            }
+        });
+
+        try {
+            txtdni1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtdni1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdni1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtidempleado, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtapellidos)))
+                .addGap(92, 92, 92)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel4))
+                .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txttelefono)
+                        .addGap(29, 29, 29)
                         .addComponent(btnguardar))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtidempleado, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtapellidos)))
-                        .addGap(92, 92, 92)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(40, 40, 40)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtdni, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txtdni1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnnuevo)
                             .addComponent(btneliminar))))
@@ -220,19 +260,19 @@ public class Empleados extends javax.swing.JInternalFrame {
                             .addComponent(txtidempleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel4))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnnuevo)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnnuevo)
+                            .addComponent(txtdni1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnguardar))
+                    .addComponent(btnguardar)
+                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -328,7 +368,13 @@ public class Empleados extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtapellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtapellidosActionPerformed
-        // TODO add your handling code here:
+  MaskFormatter formatter = null;
+        try {
+            formatter = new MaskFormatter("*************************"); //Definir la mascara
+            formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_txtapellidosActionPerformed
 
     private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
@@ -369,7 +415,7 @@ public class Empleados extends javax.swing.JInternalFrame {
         dts.setIdempleado(txtidempleado.getText());
         dts.setNombre(txtnombre.getText());
         dts.setApellidos(txtapellidos.getText());
-        dts.setDni(txtdni.getText());
+        dts.setDni(txtdni1.getText());
         dts.setTelefono(txttelefono.getText());
         dts.setDireccion(txtdireccion.getText());
         
@@ -426,11 +472,33 @@ public class Empleados extends javax.swing.JInternalFrame {
         txtidempleado.setText(tablalistado.getValueAt(fila,0).toString());
         txtnombre.setText(tablalistado.getValueAt(fila,1).toString());
         txtapellidos.setText(tablalistado.getValueAt(fila,2).toString());
-        txtdni.setText(tablalistado.getValueAt(fila,3).toString());
+        txtdni1.setText(tablalistado.getValueAt(fila,3).toString());
         txttelefono.setText(tablalistado.getValueAt(fila,4).toString());
         txtdireccion.setText(tablalistado.getValueAt(fila,5).toString());
         
     }//GEN-LAST:event_tablalistadoMouseClicked
+
+    private void txttelefono1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelefono1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttelefono1ActionPerformed
+
+    private void txttelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttelefonoActionPerformed
+
+    private void txtdni1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdni1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdni1ActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+  MaskFormatter formatter = null;
+        try {
+            formatter = new MaskFormatter("*************************"); //Definir la mascara
+            formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -490,9 +558,10 @@ public class Empleados extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtapellidos;
     private javax.swing.JTextField txtbuscar;
     private javax.swing.JTextField txtdireccion;
-    private javax.swing.JTextField txtdni;
+    private javax.swing.JFormattedTextField txtdni1;
     private javax.swing.JTextField txtidempleado;
     private javax.swing.JTextField txtnombre;
-    private javax.swing.JTextField txttelefono;
+    private javax.swing.JFormattedTextField txttelefono;
+    private javax.swing.JFormattedTextField txttelefono1;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,7 +7,9 @@ package Vista;
 
 import Modelo.POJO_Categoria;
 import Controlador.CRUD_Categoria;
+import java.text.ParseException;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -47,6 +49,12 @@ public class Categoria extends javax.swing.JInternalFrame{
         jLabel1.setText("Ingreso de Categoria");
 
         jLabel2.setText("Ingrese Categoria:");
+
+        txtcategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcategoriaActionPerformed(evt);
+            }
+        });
 
         btnguardar.setText("Guardar");
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +146,16 @@ public class Categoria extends javax.swing.JInternalFrame{
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
       dispose();
     }//GEN-LAST:event_btnsalirActionPerformed
+
+    private void txtcategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcategoriaActionPerformed
+  MaskFormatter formatter = null;
+        try {
+            formatter = new MaskFormatter("*************************"); //Definir la mascara
+            formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcategoriaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -59,7 +59,7 @@ WHERE ventas."idventa"=$P{idventa}]]>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[RUC:    2010345673245]]></text>
+				<text><![CDATA[RUC:    ]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="640" y="35" width="100" height="20" uuid="e7aa2901-c1bc-4a98-ae33-b855bad697e1"/>
@@ -108,14 +108,14 @@ WHERE ventas."idventa"=$P{idventa}]]>
 				<textElement>
 					<font size="14" isBold="true" isItalic="true" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[av.San Carlos 432 Los Olivos]]></text>
+				<text><![CDATA[Costado Este Americable]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="174" y="76" width="162" height="20" forecolor="#3333FF" backcolor="#FFFFFF" uuid="64daec7d-daa6-4e7f-ad09-db12ae31ed0e"/>
 				<textElement>
 					<font size="14" isBold="true" isItalic="true" isUnderline="true"/>
 				</textElement>
-				<text><![CDATA[Telefono: 954326432]]></text>
+				<text><![CDATA[Telefono: 88201863]]></text>
 			</staticText>
 			<line>
 				<reportElement x="17" y="106" width="773" height="1" uuid="c2a4e093-3857-49bc-a976-e979ab351813"/>
@@ -263,7 +263,7 @@ WHERE ventas."idventa"=$P{idventa}]]>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[IGV:]]></text>
+				<text><![CDATA[IVA:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="573" y="53" width="100" height="20" uuid="dc568e01-9bc9-43df-bab5-d363135dbce8"/>
