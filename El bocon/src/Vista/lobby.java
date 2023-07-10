@@ -5,11 +5,17 @@
  */
 package Vista;
 
-import java.awt.Component;
-import java.awt.Image;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import javax.swing.ImageIcon;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.JasperExportManager;
 
 /**
  *
@@ -264,6 +270,11 @@ public class lobby extends javax.swing.JFrame {
 
         mnureportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/rptes.png"))); // NOI18N
         mnureportes.setText("Reportes");
+        mnureportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mnureportesMouseClicked(evt);
+            }
+        });
         menuBar.add(mnureportes);
 
         mnuayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/ayuda.png"))); // NOI18N
@@ -379,6 +390,43 @@ public class lobby extends javax.swing.JFrame {
         form.toFront();
         form.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void mnureportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnureportesMouseClicked
+ String reportPath = "src/Reportes/ventas.jrxml"; // Ruta del archivo JRXML
+        
+        // Establecer la conexión a la base de datos
+        String url="jdbc:sqlserver://localhost:1433;databaseName=DB_ELBACAN;"
++ "integratedSecurity=true;" +"encrypt=true;trustServerCertificate=true;user=wa,password=123";
+        
+        try {
+            Connection connection = DriverManager.getConnection(url);
+            
+            // Compilar el archivo JRXML a un objeto JasperReport
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportPath);
+            
+            // Parámetros (si los hay) para el informe
+            Map<String, Object> parameters = new HashMap<>();
+            // parameters.put("parametro1", valor1);
+            // parameters.put("parametro2", valor2);
+            
+            // Llenar el informe con los datos de la conexión y los parámetros
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
+            
+            // Exportar el informe a PDF
+            String outputFileName = "ventas.pdf";
+            JasperExportManager.exportReportToPdfFile(jasperPrint, outputFileName);
+            
+            System.out.println("Informe generado con éxito.");
+            
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+;// TODO add your handling code here:
+    }//GEN-LAST:event_mnureportesMouseClicked
 
     /**
      * @param args the command line arguments
