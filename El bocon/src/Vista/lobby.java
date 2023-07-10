@@ -5,17 +5,21 @@
  */
 package Vista;
 
+import Controlador.Conexion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
 
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -67,9 +71,6 @@ public class lobby extends javax.swing.JFrame {
         mnuconfiguraciones = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        mnureportes = new javax.swing.JMenu();
-        mnuayuda = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -268,24 +269,6 @@ public class lobby extends javax.swing.JFrame {
 
         menuBar.add(mnuconfiguraciones);
 
-        mnureportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/rptes.png"))); // NOI18N
-        mnureportes.setText("Reportes");
-        mnureportes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mnureportesMouseClicked(evt);
-            }
-        });
-        menuBar.add(mnureportes);
-
-        mnuayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/ayuda.png"))); // NOI18N
-        mnuayuda.setText("Ayuda");
-
-        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/info.png"))); // NOI18N
-        jMenuItem7.setText("Ayuda");
-        mnuayuda.add(jMenuItem7);
-
-        menuBar.add(mnuayuda);
-
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -378,10 +361,19 @@ public class lobby extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-                DetalleVenta form = new DetalleVenta();
-        contenedor.add(form);
-        form.toFront();
-        form.setVisible(true);
+         Conexion con = new Conexion();
+        Connection cn = (Connection) con.conectar();
+        
+        String path = "C:\\Users\\waska\\OneDrive\\Escritorio\\Proyecto el bocon clase\\El bocon\\src\\Reportes\\hventas.jrxml";
+        JasperReport jr;
+        try {
+            jr = JasperCompileManager.compileReport(path);
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(jr, null, cn);
+            JasperViewer.viewReport(mostrarReporte,false);
+
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -390,43 +382,6 @@ public class lobby extends javax.swing.JFrame {
         form.toFront();
         form.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void mnureportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mnureportesMouseClicked
- String reportPath = "src/Reportes/ventas.jrxml"; // Ruta del archivo JRXML
-        
-        // Establecer la conexión a la base de datos
-        String url="jdbc:sqlserver://localhost:1433;databaseName=DB_ELBACAN;"
-+ "integratedSecurity=true;" +"encrypt=true;trustServerCertificate=true;user=wa,password=123";
-        
-        try {
-            Connection connection = DriverManager.getConnection(url);
-            
-            // Compilar el archivo JRXML a un objeto JasperReport
-            JasperReport jasperReport = JasperCompileManager.compileReport(reportPath);
-            
-            // Parámetros (si los hay) para el informe
-            Map<String, Object> parameters = new HashMap<>();
-            // parameters.put("parametro1", valor1);
-            // parameters.put("parametro2", valor2);
-            
-            // Llenar el informe con los datos de la conexión y los parámetros
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
-            
-            // Exportar el informe a PDF
-            String outputFileName = "ventas.pdf";
-            JasperExportManager.exportReportToPdfFile(jasperPrint, outputFileName);
-            
-            System.out.println("Informe generado con éxito.");
-            
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    
-;// TODO add your handling code here:
-    }//GEN-LAST:event_mnureportesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -479,18 +434,15 @@ public class lobby extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     public static javax.swing.JLabel lblapellidos;
     public static javax.swing.JLabel lblidusuario;
     public static javax.swing.JLabel lblnombre;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu mnualmacen;
     private javax.swing.JMenu mnuarchivo;
-    private javax.swing.JMenu mnuayuda;
     private javax.swing.JMenu mnucompras;
     private javax.swing.JMenu mnuconfiguraciones;
     private javax.swing.JMenu mnuconsultas;
-    private javax.swing.JMenu mnureportes;
     private javax.swing.JMenu mnuventas;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
