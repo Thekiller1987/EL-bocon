@@ -1,28 +1,32 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/MDIApplication.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Vista;
 
-import javax.swing.JOptionPane;
-import rsscalelabel.RSScaleLabel;
- 
+import java.awt.Component;
+import java.awt.Image;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import javax.swing.ImageIcon;
+
 /**
  *
- * @author waska
+ * @author waskar
  */
 public class lobby extends javax.swing.JFrame {
-
+ 
     /**
-     * Creates new form lobby
+     * Creates new form FrmMenu
      */
     public lobby() {
         initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
-rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
-
+             this.setResizable(false);
+              setExtendedState(MAXIMIZED_BOTH);
+        
+    
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,178 +37,348 @@ rsscalelabel.RSScaleLabel.setScaleLabel(fondo, "src/vista.imagenes/lobby.png");
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        contenedor = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        fondo = new javax.swing.JLabel();
+        lblidusuario = new javax.swing.JLabel();
+        lblnombre = new javax.swing.JLabel();
+        lblapellidos = new javax.swing.JLabel();
+        menuBar = new javax.swing.JMenuBar();
+        mnuarchivo = new javax.swing.JMenu();
+        openMenuItem = new javax.swing.JMenuItem();
+        saveMenuItem = new javax.swing.JMenuItem();
+        mnualmacen = new javax.swing.JMenu();
+        cutMenuItem = new javax.swing.JMenuItem();
+        copyMenuItem = new javax.swing.JMenuItem();
+        mnucompras = new javax.swing.JMenu();
+        contentsMenuItem = new javax.swing.JMenuItem();
+        aboutMenuItem = new javax.swing.JMenuItem();
+        mnuventas = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        mnuconsultas = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        mnuconfiguraciones = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        mnureportes = new javax.swing.JMenu();
+        mnuayuda = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1540, 900));
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(160, 33, 33));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/salida.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        contenedor.setBackground(new java.awt.Color(204, 204, 204));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel1.setText("Usuario: ");
+
+        lblidusuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblidusuario.setForeground(new java.awt.Color(255, 0, 51));
+        lblidusuario.setText("jLabel2");
+
+        lblnombre.setBackground(new java.awt.Color(255, 0, 51));
+        lblnombre.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblnombre.setForeground(new java.awt.Color(255, 0, 51));
+        lblnombre.setText("jLabel3");
+        lblnombre.setAutoscrolls(true);
+
+        lblapellidos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblapellidos.setForeground(new java.awt.Color(255, 0, 51));
+        lblapellidos.setText("jLabel4");
+
+        javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
+        contenedor.setLayout(contenedorLayout);
+        contenedorLayout.setHorizontalGroup(
+            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contenedorLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(26, 26, 26)
+                .addComponent(lblidusuario)
+                .addGap(87, 87, 87)
+                .addComponent(lblnombre)
+                .addGap(102, 102, 102)
+                .addComponent(lblapellidos)
+                .addContainerGap(259, Short.MAX_VALUE))
+        );
+        contenedorLayout.setVerticalGroup(
+            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorLayout.createSequentialGroup()
+                .addContainerGap(381, Short.MAX_VALUE)
+                .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblidusuario)
+                    .addComponent(lblnombre)
+                    .addComponent(lblapellidos))
+                .addContainerGap())
+        );
+
+        mnuarchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/inicio.png"))); // NOI18N
+        mnuarchivo.setMnemonic('f');
+        mnuarchivo.setText("Archivo");
+
+        openMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/cerrarcesion.png"))); // NOI18N
+        openMenuItem.setMnemonic('o');
+        openMenuItem.setText("Cerrar Sesion");
+        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                openMenuItemActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1350, 60, 120, 110));
+        mnuarchivo.add(openMenuItem);
 
-        jButton5.setBackground(new java.awt.Color(160, 33, 33));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/objetivo.png"))); // NOI18N
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        saveMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/salir.png"))); // NOI18N
+        saveMenuItem.setMnemonic('s');
+        saveMenuItem.setText("Salir");
+        saveMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                saveMenuItemActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 120, 110));
+        mnuarchivo.add(saveMenuItem);
 
-        jButton6.setBackground(new java.awt.Color(160, 33, 33));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/capital-humano.png"))); // NOI18N
-        jButton6.setToolTipText("");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        menuBar.add(mnuarchivo);
+
+        mnualmacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/Almacen.png"))); // NOI18N
+        mnualmacen.setMnemonic('e');
+        mnualmacen.setText("Almacen");
+
+        cutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/Productos.jpg"))); // NOI18N
+        cutMenuItem.setMnemonic('t');
+        cutMenuItem.setText("Productos");
+        cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                cutMenuItemActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 60, 120, 110));
+        mnualmacen.add(cutMenuItem);
 
-        jButton3.setBackground(new java.awt.Color(160, 33, 33));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/paquete.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        copyMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/categoria.png"))); // NOI18N
+        copyMenuItem.setMnemonic('y');
+        copyMenuItem.setText("Categorias");
+        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                copyMenuItemActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 120, 110));
+        mnualmacen.add(copyMenuItem);
 
-        jButton2.setBackground(new java.awt.Color(160, 33, 33));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/cajero.png"))); // NOI18N
-        jButton2.setAutoscrolls(true);
-        jButton2.setBorderPainted(false);
-        jButton2.setOpaque(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        menuBar.add(mnualmacen);
+
+        mnucompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/compras1.png"))); // NOI18N
+        mnucompras.setMnemonic('h');
+        mnucompras.setText("Compras");
+
+        contentsMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/compras.png"))); // NOI18N
+        contentsMenuItem.setMnemonic('c');
+        contentsMenuItem.setText("Compras");
+        contentsMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                contentsMenuItemActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 120, 110));
+        mnucompras.add(contentsMenuItem);
 
-        jButton4.setBackground(new java.awt.Color(160, 33, 33));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/metodo-de-pago.png"))); // NOI18N
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        aboutMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/proveedores_m.png"))); // NOI18N
+        aboutMenuItem.setMnemonic('a');
+        aboutMenuItem.setText("Proveedores");
+        aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                aboutMenuItemActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 120, 110));
+        mnucompras.add(aboutMenuItem);
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Estadisticas");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, -1, -1));
+        menuBar.add(mnucompras);
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Venta");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, -1, -1));
+        mnuventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/ventas_1.png"))); // NOI18N
+        mnuventas.setText("Ventas");
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Productos");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/ventas (1).png"))); // NOI18N
+        jMenuItem1.setText("Ventas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mnuventas.add(jMenuItem1);
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Proveedores");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, -1, -1));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/clientes.png"))); // NOI18N
+        jMenuItem2.setText("Clientes");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        mnuventas.add(jMenuItem2);
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Clientes");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, -1, -1));
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1550, 910));
+        menuBar.add(mnuventas);
+
+        mnuconsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/consultas.png"))); // NOI18N
+        mnuconsultas.setText("Consultas");
+
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/ventasrealizadas.png"))); // NOI18N
+        jMenuItem3.setText("Ventas Realizadas");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        mnuconsultas.add(jMenuItem3);
+
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/comprasrealizadas.png"))); // NOI18N
+        jMenuItem4.setText("Compras Realizadas");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        mnuconsultas.add(jMenuItem4);
+
+        menuBar.add(mnuconsultas);
+
+        mnuconfiguraciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/configuraciones.png"))); // NOI18N
+        mnuconfiguraciones.setText("Configuraciones");
+
+        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/User.png"))); // NOI18N
+        jMenuItem5.setText("Conf. Usuarios");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        mnuconfiguraciones.add(jMenuItem5);
+
+        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/empleados.png"))); // NOI18N
+        jMenuItem6.setText("Empleados");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        mnuconfiguraciones.add(jMenuItem6);
+
+        menuBar.add(mnuconfiguraciones);
+
+        mnureportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/rptes.png"))); // NOI18N
+        mnureportes.setText("Reportes");
+        menuBar.add(mnureportes);
+
+        mnuayuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/ayuda.png"))); // NOI18N
+        mnuayuda.setText("Ayuda");
+
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/info.png"))); // NOI18N
+        jMenuItem7.setText("Ayuda");
+        mnuayuda.add(jMenuItem7);
+
+        menuBar.add(mnuayuda);
+
+        setJMenuBar(menuBar);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(contenedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(contenedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        try {
-            Seproveedores panel2 = new Seproveedores()
-            ;
-            panel2.setVisible(true);
+    private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
+        Producto form = new Producto();
+        contenedor.add(form);
+        form.toFront();
+        form.setVisible(true);
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }          // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_cutMenuItemActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try {
-            ventas panel2 = new ventas()
-            ;
-            panel2.setVisible(true);
+    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
+        Categoria form = new Categoria();
+        contenedor.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_copyMenuItemActionPerformed
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }           // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        Proveedor form = new Proveedor();
+        contenedor.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-             try {
-            SeClientes panel2 = new SeClientes()
-            ;
-            panel2.setVisible(true);
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Cliente form = new Cliente();
+        contenedor.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }       // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        Usuarios form = new Usuarios();
+        contenedor.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        Empleados form = new Empleados();
+        contenedor.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void saveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveMenuItemActionPerformed
+        dispose();
+    }//GEN-LAST:event_saveMenuItemActionPerformed
+
+    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
+        Login form = new Login();
+        form.setVisible(true);
+        form.pack();
+        this.setVisible(false);
+
+    }//GEN-LAST:event_openMenuItemActionPerformed
+
+    private void contentsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contentsMenuItemActionPerformed
+        Compra form = new Compra();
+        contenedor.add(form);
+        form.toFront();
+        form.setVisible(true);
+        Compra.txtidusuario.setText(lblidusuario.getText());
+        Compra.txtnombreusuario.setText(lblnombre.getText() + " " + lblapellidos.getText());
 
 
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_contentsMenuItemActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-try {
-        Seproducto panel2 = new Seproducto()
-                ;
-        panel2.setVisible(true);
-  
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }            // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Venta form = new Venta();
+        contenedor.add(form);
+        form.toFront();
+        form.setVisible(true);
+        Venta.txtidusuario.setText(lblidusuario.getText());
+        Venta.txtnombreusuario.setText(lblnombre.getText() + " " + lblapellidos.getText());
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-  try {
-            estadisticas panel2 = new estadisticas()
-            ;
-            panel2.setVisible(true);
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+                DetalleVenta form = new DetalleVenta();
+        contenedor.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al mostrar el panel: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    DetalleCompra form = new DetalleCompra();
+        contenedor.add(form);
+        form.toFront();
+        form.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,6 +406,9 @@ try {
             java.util.logging.Logger.getLogger(lobby.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -242,18 +419,34 @@ try {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JPanel contenedor;
+    private javax.swing.JMenuItem contentsMenuItem;
+    private javax.swing.JMenuItem copyMenuItem;
+    private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    public static javax.swing.JLabel lblapellidos;
+    public static javax.swing.JLabel lblidusuario;
+    public static javax.swing.JLabel lblnombre;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu mnualmacen;
+    private javax.swing.JMenu mnuarchivo;
+    private javax.swing.JMenu mnuayuda;
+    private javax.swing.JMenu mnucompras;
+    private javax.swing.JMenu mnuconfiguraciones;
+    private javax.swing.JMenu mnuconsultas;
+    private javax.swing.JMenu mnureportes;
+    private javax.swing.JMenu mnuventas;
+    private javax.swing.JMenuItem openMenuItem;
+    private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 
+    
 }
