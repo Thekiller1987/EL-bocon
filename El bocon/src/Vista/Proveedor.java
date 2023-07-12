@@ -378,7 +378,7 @@ public class Proveedor extends javax.swing.JInternalFrame{
         
         if (accion.equals("guardar")) {
             if (func.insertar(dts)) {
-                JOptionPane.showConfirmDialog(rootPane, "Cliente registrado");
+                JOptionPane.showConfirmDialog(rootPane, "Proveedor registrado");
                 mostrar("");
                 Limpiar();
                 inhabilitar();
@@ -388,7 +388,7 @@ public class Proveedor extends javax.swing.JInternalFrame{
         }else if (accion.equals("editar")) {
             
             if (func.editar(dts)) {
-                JOptionPane.showConfirmDialog(rootPane, "Cliente editado con exito");
+                JOptionPane.showConfirmDialog(rootPane, "Proveedor editado con exito");
                 mostrar("");
                 Limpiar();
                 inhabilitar();

@@ -157,16 +157,17 @@ public class vistaProducto extends javax.swing.JFrame {
            if (evt.getClickCount()== 2) {
             int fila=tablalistado.getSelectedRow();
             String cod;
-            String producto, precio;
+            String producto, precio,stock;
 
             cod=tablalistado.getValueAt(fila,0).toString();
             producto=tablalistado.getValueAt(fila,2).toString();
             precio=tablalistado.getValueAt(fila,5).toString();
-
+             stock=tablalistado.getValueAt(fila,7).toString();
+             
             Compra.txtidproducto.setText(cod);
             Compra.txtproducto.setText(producto);
             Compra.txtpreciocompra.setText(precio);
-
+            Compra.txtstock.setText(stock);
             this.dispose();
 
         }  
@@ -200,8 +201,7 @@ public class vistaProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnbuscarActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        dispose();
-    }//GEN-LAST:event_btnsalirActionPerformed
+this.dispose();    }//GEN-LAST:event_btnsalirActionPerformed
 
     /**
      * @param args the command line arguments

@@ -32,6 +32,7 @@ public class lobby extends javax.swing.JFrame {
      */
     public lobby() {
         initComponents();
+    
              this.setResizable(false);
               setExtendedState(MAXIMIZED_BOTH);
         
@@ -102,13 +103,13 @@ public class lobby extends javax.swing.JFrame {
             .addGroup(contenedorLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(40, 40, 40)
                 .addComponent(lblidusuario)
-                .addGap(87, 87, 87)
+                .addGap(56, 56, 56)
                 .addComponent(lblnombre)
-                .addGap(102, 102, 102)
+                .addGap(72, 72, 72)
                 .addComponent(lblapellidos)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(306, Short.MAX_VALUE))
         );
         contenedorLayout.setVerticalGroup(
             contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

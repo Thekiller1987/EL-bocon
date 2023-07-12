@@ -560,24 +560,24 @@ public void Limpiar(){
     }//GEN-LAST:event_txttelefonoActionPerformed
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
-  MaskFormatter formatter = null;
+ MaskFormatter formatter = null;
         try {
             formatter = new MaskFormatter("*************************"); //Definir la mascara
             formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
         } catch (ParseException e) {
             e.printStackTrace();
-        }        // TODO add your handling code here:
+        }         // TODO add your handling code here:
     }//GEN-LAST:event_txtnombreActionPerformed
 
     private void txtapellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtapellidosActionPerformed
-
-        MaskFormatter formatter = null;
+       MaskFormatter formatter = null;
         try {
             formatter = new MaskFormatter("*************************"); //Definir la mascara
             formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
         } catch (ParseException e) {
             e.printStackTrace();
-        }        // TODO add your handling code here:
+        }     
+    // TODO add your handling code here:
     }//GEN-LAST:event_txtapellidosActionPerformed
 
     /**
@@ -652,3 +652,4 @@ public void Limpiar(){
     private javax.swing.JFormattedTextField txttelefono;
     // End of variables declaration//GEN-END:variables
 }
+

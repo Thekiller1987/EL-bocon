@@ -332,9 +332,15 @@ public class Venta extends javax.swing.JInternalFrame{
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 51));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "FECHA DE COMPRA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "FECHA DE VENTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel2.setText("Fecha:");
+
+        dcfecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dcfechaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -361,6 +367,10 @@ public class Venta extends javax.swing.JInternalFrame{
 
         jLabel10.setText("Precio:");
 
+        txtidproducto.setEditable(false);
+
+        txtproducto.setEditable(false);
+
         btnbuscarproducto.setText("...");
         btnbuscarproducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,7 +378,16 @@ public class Venta extends javax.swing.JInternalFrame{
             }
         });
 
+        txtprecioventa.setEditable(false);
+
         jLabel11.setText("Stock:");
+
+        txtstock.setEditable(false);
+        txtstock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtstockActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Cantidad:");
 
@@ -546,6 +565,12 @@ public class Venta extends javax.swing.JInternalFrame{
 
         jLabel8.setText("Trabajador:");
 
+        txtcliente.setEditable(false);
+
+        txtidusuario.setEditable(false);
+
+        txtnombreusuario.setEditable(false);
+
         btnbuscarcliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnbuscarcliente.setText("...");
         btnbuscarcliente.addActionListener(new java.awt.event.ActionListener() {
@@ -553,6 +578,8 @@ public class Venta extends javax.swing.JInternalFrame{
                 btnbuscarclienteActionPerformed(evt);
             }
         });
+
+        txtidcliente.setEnabled(false);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -599,11 +626,22 @@ public class Venta extends javax.swing.JInternalFrame{
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setText("SUB TOTAL:");
 
+        txtsubtotal.setEditable(false);
+
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel14.setText("IGV:");
+        jLabel14.setText("IVA:");
+
+        txtimpuesto.setEditable(false);
+        txtimpuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtimpuestoActionPerformed(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("TOTAL A PAGAR:");
+
+        txttotalpagar.setEditable(false);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -649,7 +687,7 @@ public class Venta extends javax.swing.JInternalFrame{
         });
 
         btnimprimir.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnimprimir.setText("Impremir");
+        btnimprimir.setText("Imprimir");
         btnimprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnimprimirActionPerformed(evt);
@@ -861,15 +899,20 @@ public class Venta extends javax.swing.JInternalFrame{
             JasperReport report;
             JasperPrint print;
             
-            try {
-                report=JasperCompileManager.compileReport(new File("").getAbsolutePath() + "/src/Reportes/comprobanteventa.jrxml");
-                print = JasperFillManager.fillReport(report, p, this.conn);
-                JasperViewer view = new JasperViewer(print,false);
-                view.setTitle("Comprobante Venta");
-                view.setVisible(true);
-            } catch (JRException e) {
-                e.printStackTrace();
-            }
+            
+              Conexion con = new Conexion();
+        Connection cn = (Connection) con.conectar();
+        
+        String path = "C:\\Users\\waska\\OneDrive\\Escritorio\\Proyecto el bocon clase\\El bocon\\src\\Reportes\\comprobanteventa.jrxml";
+        JasperReport jr;
+        try {
+            jr = JasperCompileManager.compileReport(path);
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(jr, null, cn);
+            JasperViewer.viewReport(mostrarReporte,false);
+
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
             
         } else if (tipodocumento.equals("FACTURA")) {
             Map p = new HashMap();
@@ -893,6 +936,18 @@ public class Venta extends javax.swing.JInternalFrame{
         }
         cbotipo_comprobante.setSelectedIndex(0);
     }//GEN-LAST:event_btnimprimirActionPerformed
+
+    private void dcfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dcfechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dcfechaActionPerformed
+
+    private void txtimpuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtimpuestoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtimpuestoActionPerformed
+
+    private void txtstockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtstockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtstockActionPerformed
 
     /**
      * @param args the command line arguments

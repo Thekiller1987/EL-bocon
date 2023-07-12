@@ -8,7 +8,11 @@ package Vista;
 
 import Modelo.POJO_Usuario;
 import Controlador.CRUD_Usuario;
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,6 +25,7 @@ int cont;
     public Login() {
              this.setResizable(false);
           this.setLocation(500 ,300);
+           
           
         initComponents();
     }
