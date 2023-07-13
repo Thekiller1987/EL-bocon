@@ -35,7 +35,7 @@ go
 
 
 create proc sp_eliminar_cliente
-@codigo varchar(10)
+@codigo nvarchar(50)
 as
 delete from clientes where idcliente=@codigo
 go
@@ -81,7 +81,11 @@ go
 create proc sp_eliminar_proveedor
 @codigo varchar(10)
 as
-delete from proveedor where idproveedor=@codigo
+    
+    DELETE FROM compras WHERE idproveedor = @codigo;
+
+ 
+    DELETE FROM proveedor WHERE idproveedor = @codigo;
 go
 
 create proc sp_buscar_proveedor
@@ -107,13 +111,15 @@ GO
 create proc sp_listar_producto
 @nombre varchar(30)
 as
-select productos.idproducto, productos.serie, productos.nombre, 
-productos.f_ingreso, productos.f_vencimiento, productos.prec_compra,
-productos.prec_venta, productos.cantidad,
-productos.idcategoria, categoria.descripcion AS categ 
-from categoria INNER JOIN productos on categoria.idcategoria=productos.idcategoria
-where nombre like @nombre+'%'
-order by idcategoria
+    SELECT productos.idproducto, productos.serie, productos.nombre, 
+    productos.f_ingreso, productos.f_vencimiento, productos.prec_compra,
+    productos.prec_venta, productos.cantidad,
+    productos.idcategoria, categoria.descripcion AS categ 
+    FROM categoria
+    INNER JOIN productos ON categoria.idcategoria = productos.idcategoria
+    WHERE productos.nombre LIKE '%' + @nombre + '%'
+    ORDER BY productos.idcategoria
+END
 go
 
 --drop procedure sp_guardar_producto
@@ -154,7 +160,11 @@ go
 create proc sp_eliminar_producto
 @codigo varchar(10)
 as
-delete from productos where idproducto=@codigo
+  -- Eliminar registros de la tabla "detalle_ventas" que corresponden al producto
+    DELETE FROM detalle_ventas WHERE idproducto = @codigo;
+
+    -- Eliminar el producto de la tabla "productos"
+    DELETE FROM productos WHERE idproducto = @codigo;
 go
 
 

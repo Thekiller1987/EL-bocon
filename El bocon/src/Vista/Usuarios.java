@@ -7,6 +7,7 @@ package Vista;
 
 import Modelo.POJO_Usuario;
 import Controlador.CRUD_Usuario;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -147,10 +148,20 @@ public class Usuarios extends javax.swing.JInternalFrame {
                 txtnombreActionPerformed(evt);
             }
         });
+        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnombreKeyTyped(evt);
+            }
+        });
 
         txtapellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtapellidosActionPerformed(evt);
+            }
+        });
+        txtapellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtapellidosKeyTyped(evt);
             }
         });
 
@@ -516,6 +527,50 @@ public class Usuarios extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_txtapellidosActionPerformed
+
+    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
+char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && car != 'á' //Minúsculas
+                && car != 'é'
+                && car != 'í'
+                && car != 'ó'
+                && car != 'ú'
+                && car != 'Á' //Mayúsculas
+                && car != 'É'
+                && car != 'Í'
+                && car != 'Ó'
+                && car != 'Ú'
+                && car != 'Ü'
+                && car != 'ü'
+                && car != 'Ñ'
+                && car != 'ñ'
+                && (car != (char) KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreKeyTyped
+
+    private void txtapellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellidosKeyTyped
+char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && car != 'á' //Minúsculas
+                && car != 'é'
+                && car != 'í'
+                && car != 'ó'
+                && car != 'ú'
+                && car != 'Á' //Mayúsculas
+                && car != 'É'
+                && car != 'Í'
+                && car != 'Ó'
+                && car != 'Ú'
+                && car != 'Ü'
+                && car != 'ü'
+                && car != 'Ñ'
+                && car != 'ñ'
+                && (car != (char) KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtapellidosKeyTyped
 
     /**
      * @param args the command line arguments

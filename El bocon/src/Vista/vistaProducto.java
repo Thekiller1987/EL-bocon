@@ -52,10 +52,9 @@ public class vistaProducto extends javax.swing.JFrame {
         tablalistado = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         txtbuscar = new javax.swing.JTextField();
-        btnbuscar = new javax.swing.JButton();
         btnsalir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 255));
 
@@ -82,10 +81,9 @@ public class vistaProducto extends javax.swing.JFrame {
 
         jLabel2.setText("Buscar por Nombre:");
 
-        btnbuscar.setText("Buscar");
-        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbuscarActionPerformed(evt);
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyTyped(evt);
             }
         });
 
@@ -111,9 +109,7 @@ public class vistaProducto extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addGap(18, 18, 18)
                             .addComponent(txtbuscar)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnbuscar)
-                            .addGap(18, 18, 18)
+                            .addGap(86, 86, 86)
                             .addComponent(btnsalir))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addGap(23, 23, 23)
@@ -129,7 +125,6 @@ public class vistaProducto extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnbuscar)
                     .addComponent(btnsalir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -196,12 +191,12 @@ public class vistaProducto extends javax.swing.JFrame {
        
     }//GEN-LAST:event_tablalistadoMousePressed
 
-    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
-        mostrar(txtbuscar.getText());
-    }//GEN-LAST:event_btnbuscarActionPerformed
-
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
 this.dispose();    }//GEN-LAST:event_btnsalirActionPerformed
+
+    private void txtbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyTyped
+mostrar(txtbuscar.getText());        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarKeyTyped
 
     /**
      * @param args the command line arguments
@@ -242,7 +237,6 @@ this.dispose();    }//GEN-LAST:event_btnsalirActionPerformed
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btnsalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -7,6 +7,7 @@ package Vista;
 
 import Modelo.POJO_Proveedor;
 import Controlador.CRUD_Proveedor;
+import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -131,6 +132,17 @@ public class Proveedor extends javax.swing.JInternalFrame{
         jLabel2.setText("Razon Social:");
 
         jLabel3.setText("Direccion:");
+
+        txtrazonsocial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtrazonsocialActionPerformed(evt);
+            }
+        });
+        txtrazonsocial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtrazonsocialKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Telefono:");
 
@@ -437,6 +449,32 @@ public class Proveedor extends javax.swing.JInternalFrame{
        txtdireccion.setText(tablalistado.getValueAt(fila,4).toString());
        
     }//GEN-LAST:event_tablalistadoMouseClicked
+
+    private void txtrazonsocialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtrazonsocialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtrazonsocialActionPerformed
+
+    private void txtrazonsocialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtrazonsocialKeyTyped
+char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && car != 'á' //Minúsculas
+                && car != 'é'
+                && car != 'í'
+                && car != 'ó'
+                && car != 'ú'
+                && car != 'Á' //Mayúsculas
+                && car != 'É'
+                && car != 'Í'
+                && car != 'Ó'
+                && car != 'Ú'
+                && car != 'Ü'
+                && car != 'ü'
+                && car != 'Ñ'
+                && car != 'ñ'
+                && (car != (char) KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txtrazonsocialKeyTyped
 
     /**
      * @param args the command line arguments

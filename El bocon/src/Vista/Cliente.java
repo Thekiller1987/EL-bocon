@@ -7,6 +7,7 @@ package Vista;
 
 import Modelo.POJO_Cliente;
 import Controlador.CRUD_Cliente;
+import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
@@ -65,7 +66,7 @@ public void inhabilitar(){
     txtdireccion.setEnabled(false);
     txtbuscar.setEnabled(false);
     
-    btnbuscar.setEnabled(false);
+
     btnguardar.setEnabled(false);
     btneliminar.setEnabled(false);
     
@@ -86,8 +87,7 @@ public void habilitar(){
     txttelefono.setEnabled(true);
     txtdireccion.setEnabled(true);
     txtbuscar.setEnabled(true);
-    
-    btnbuscar.setEnabled(true);
+
     btnguardar.setEnabled(true);
     btneliminar.setEnabled(true);
     
@@ -145,7 +145,6 @@ public void Limpiar(){
         txttelefono = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         txtbuscar = new javax.swing.JTextField();
-        btnbuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablalistado = new javax.swing.JTable();
         btnsalir = new javax.swing.JButton();
@@ -184,10 +183,20 @@ public void Limpiar(){
                 txtnombreActionPerformed(evt);
             }
         });
+        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtnombreKeyTyped(evt);
+            }
+        });
 
         txtapellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtapellidosActionPerformed(evt);
+            }
+        });
+        txtapellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtapellidosKeyTyped(evt);
             }
         });
 
@@ -352,10 +361,9 @@ public void Limpiar(){
 
         jLabel10.setText("Buscar por DNI:");
 
-        btnbuscar.setText("Buscar");
-        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbuscarActionPerformed(evt);
+        txtbuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtbuscarKeyTyped(evt);
             }
         });
 
@@ -395,10 +403,8 @@ public void Limpiar(){
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(18, 18, 18)
-                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addComponent(btnbuscar)
-                        .addGap(80, 80, 80)
+                        .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(135, 135, 135)
                         .addComponent(btnsalir, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                         .addGap(71, 71, 71))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -414,7 +420,6 @@ public void Limpiar(){
                     .addComponent(jLabel10)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnbuscar)
                         .addComponent(btnsalir)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -529,10 +534,6 @@ public void Limpiar(){
         dispose();
     }//GEN-LAST:event_btnsalirActionPerformed
 
-    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
-        mostrar(txtbuscar.getText());
-    }//GEN-LAST:event_btnbuscarActionPerformed
-
     private void tablalistadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablalistadoMouseClicked
         btnguardar.setText("Editar");
         habilitar();
@@ -560,13 +561,7 @@ public void Limpiar(){
     }//GEN-LAST:event_txttelefonoActionPerformed
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
- MaskFormatter formatter = null;
-        try {
-            formatter = new MaskFormatter("*************************"); //Definir la mascara
-            formatter.setValidCharacters("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "); //Definir los caracteres validos
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }         // TODO add your handling code here:
+      // TODO add your handling code here:
     }//GEN-LAST:event_txtnombreActionPerformed
 
     private void txtapellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtapellidosActionPerformed
@@ -579,6 +574,56 @@ public void Limpiar(){
         }     
     // TODO add your handling code here:
     }//GEN-LAST:event_txtapellidosActionPerformed
+
+    private void txtbuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarKeyTyped
+       mostrar(txtbuscar.getText());        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarKeyTyped
+
+    private void txtnombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyTyped
+char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && car != 'á' //Minúsculas
+                && car != 'é'
+                && car != 'í'
+                && car != 'ó'
+                && car != 'ú'
+                && car != 'Á' //Mayúsculas
+                && car != 'É'
+                && car != 'Í'
+                && car != 'Ó'
+                && car != 'Ú'
+                && car != 'Ü'
+                && car != 'ü'
+                && car != 'Ñ'
+                && car != 'ñ'
+                && (car != (char) KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreKeyTyped
+
+    private void txtapellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtapellidosKeyTyped
+char car = evt.getKeyChar();
+        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
+                && car != 'á' //Minúsculas
+                && car != 'é'
+                && car != 'í'
+                && car != 'ó'
+                && car != 'ú'
+                && car != 'Á' //Mayúsculas
+                && car != 'É'
+                && car != 'Í'
+                && car != 'Ó'
+                && car != 'Ú'
+                && car != 'Ü'
+                && car != 'ü'
+                && car != 'Ñ'
+                && car != 'ñ'
+                && (car != (char) KeyEvent.VK_SPACE)) {
+            evt.consume();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtapellidosKeyTyped
 
     /**
      * @param args the command line arguments
@@ -619,7 +664,6 @@ public void Limpiar(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btneliminar;
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnnuevo;
